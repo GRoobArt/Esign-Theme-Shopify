@@ -1,0 +1,11 @@
+{
+  "name": "esign",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "dev": "shopify theme dev --store esign-chile.myshopify.com"
+  },
+  "license": "ISC",
+  "devDependencies": {}
+}
