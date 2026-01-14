@@ -1,0 +1,411 @@
+{% liquid
+  assign block_settings = block.settings
+  assign tabs_variant = block_settings.variant | default: 'solid'
+  assign tabs_alignment = block_settings.alignment | default: 'flex-start'
+  assign tabs_width = block_settings.tab_width | default: 'fit-content'
+  assign tabs_gap = block_settings.gap | default: 16
+%}
+
+<div
+  class="tabs-block border-style spacing-style{% if block.settings.inherit_color_scheme == false %} color-{{ block.settings.color_scheme }}{% endif %}"
+  style="
+    --tabs-gap: {{ tabs_gap }}px;
+    --tabs-alignment: {{ tabs_alignment }};
+    {% render 'border-override', settings: block.settings %}
+    {% render 'spacing-style', settings: block.settings %}
+  "
+  {{ block.shopify_attributes }}
+>
+  <tabs-component
+    class="tabs-component tabs-component--{{ block.id }}"
+    data-tabs-variant="{{ tabs_variant }}"
+    data-tabs-width="{{ tabs_width }}"
+    data-tabs-align="{{ tabs_alignment }}"
+  >
+    {% content_for 'blocks' %}
+  </tabs-component>
+</div>
+
+{% stylesheet %}
+  .tabs-block {
+    width: 100%;
+  }
+
+  tabs-component {
+    display: block;
+    width: 100%;
+  }
+
+  tabs-component tab-summary,
+  tabs-component tab-content {
+    display: block;
+  }
+
+  tabs-component[data-tabs-ready='true'] > tab-summary,
+  tabs-component[data-tabs-ready='true'] > tab-content {
+    display: none;
+  }
+
+  .tabs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-2xs) var(--gap-lg) ;
+    justify-content: var(--tabs-alignment, flex-start);
+
+    @media screen and (width < 750px) {
+      gap: var(--gap-sm, 0.75rem) var(--gap-2xs, 0.75rem) ;
+
+    }
+  }
+
+  .tabs__summary {
+    appearance: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-height: var(--minimum-touch-target, 44px);
+    padding-inline: var(--tabs-trigger-padding, 1rem);
+    padding-block: 0.35rem;
+    padding-bottom: 1rem;
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: var(--tabs-radius, 999px);
+    transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
+    color: var(--color-foreground-heading);
+    font-size: var(--font-size--h4);
+    font-weight: var(--font-heading--weight);
+  }
+
+   .tabs__summary:not(.is-active){
+    opacity: 0.3;
+   }
+
+  tabs-component[data-tabs-width='fill'] .tabs__summary {
+    flex: 1 1 calc(33% - var(--tabs-gap, 0.75rem));
+  }
+
+  tabs-component:not([data-tabs-width='fill']) .tabs__summary {
+    flex: 0 0 auto;
+  }
+
+  tabs-component[data-tabs-variant='solid'] .tabs__summary {
+    background-color: color-mix(in lch, var(--color-foreground) 12%, transparent);
+  }
+
+  tabs-component[data-tabs-variant='solid'] .tabs__summary[aria-selected='true'] {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  tabs-component[data-tabs-variant='outline'] .tabs__summary {
+    border-color: color-mix(in lch, var(--color-foreground) 40%, transparent);
+  }
+
+  tabs-component[data-tabs-variant='outline'] .tabs__summary[aria-selected='true'] {
+    border-color: var(--color-foreground);
+  }
+
+  tabs-component[data-tabs-variant='underline'] .tabs__summary {
+    border-radius: 0;
+    border: none;
+    padding-inline: 0;
+    position: relative;
+  }
+
+  tabs-component[data-tabs-variant='underline'] .tabs__summary::after {
+    content: '';
+    display: block;
+    width: 100%;
+    border-bottom: 4px solid color-mix(in lch, var(--color-primary-button-border) 35%, transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 150ms ease, border-color 150ms ease;
+  }
+
+  tabs-component[data-tabs-variant='underline'] .tabs__summary[aria-selected='true']::after {
+    transform: scaleX(1);
+    border-color: var(--color-primary-button-border);
+  }
+
+  .tabs__panels {
+    width: 100%;
+  }
+
+  .tabs__panel {
+    display: block;
+    width: 100%;
+  }
+
+  .tabs__panel[hidden] {
+    display: none;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.tabs",
+  "tag": null,
+  "class": "tabs-block",
+  "settings": [
+    {
+      "type": "select",
+      "id": "variant",
+      "label": "t:settings.style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "t:options.solid"
+        },
+        {
+          "value": "outline",
+          "label": "t:options.outline"
+        },
+        {
+          "value": "underline",
+          "label": "t:options.underline"
+        }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "t:settings.alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "t:options.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.center"
+        },
+        {
+          "value": "flex-end",
+          "label": "t:options.right"
+        },
+        {
+          "value": "space-between",
+          "label": "t:options.space_between"
+        }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "select",
+      "id": "tab_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.fill"
+        }
+      ],
+      "default": "fit-content"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "inherit_color_scheme",
+      "label": "t:settings.inherit_color_scheme",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1",
+      "visible_if": "{{ block.settings.inherit_color_scheme == false }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.borders"
+    },
+    {
+      "type": "select",
+      "id": "border",
+      "label": "t:settings.style",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:options.none"
+        },
+        {
+          "value": "solid",
+          "label": "t:options.solid"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:settings.thickness",
+      "default": 1,
+      "visible_if": "{{ block.settings.border != \"none\" }}"
+    },
+    {
+      "type": "range",
+      "id": "border_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "t:settings.opacity",
+      "default": 100,
+      "visible_if": "{{ block.settings.border != \"none\" }}"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "t:settings.border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_tab"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.tabs",
+      "category": "t:categories.layout",
+      "blocks": {
+        "tab-1": {
+          "type": "_tab",
+          "name": "t:names.tab",
+          "blocks": {
+            "text-1": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+                "width": "100%"
+              }
+            },
+            "text-2": {
+              "type": "text",
+              "settings": {
+                "text": "<h3>Our goal is for every customer.</h3>",
+                "width": "100%"
+              }
+            }
+          },
+          "block_order": ["text-1", "text-2"]
+        },
+        "tab-2": {
+          "type": "_tab",
+          "name": "t:names.tab",
+          "blocks": {
+            "text-1": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+                "width": "100%"
+              }
+            },
+            "text-2": {
+              "type": "text",
+              "settings": {
+                "text": "<h3>Our goal is for every customer.</h3>",
+                "width": "100%"
+              }
+            }
+          },
+          "block_order": ["text-1", "text-2"]
+        },
+        "tab-3": {
+          "type": "_tab",
+          "name": "t:names.tab",
+          "blocks": {
+            "text-1": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+                "width": "100%"
+              }
+            },
+            "text-2": {
+              "type": "text",
+              "settings": {
+                "text": "<h3>Our goal is for every customer.</h3>",
+                "width": "100%"
+              }
+            }
+          },
+          "block_order": ["text-1", "text-2"]
+        }
+      },
+      "block_order": ["tab-1", "tab-2", "tab-3"]
+    }
+  ]
+}
+{% endschema %}

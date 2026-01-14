@@ -62,8 +62,8 @@
         data-testid="product-information-media"
       >
         {%- content_for 'block',
-          type: '_product-media-gallery',
-          id: 'media-gallery',
+          type: 'group',
+          id: 'column-left',
           closest.product: closest.product
         -%}
       </div>
@@ -115,11 +115,11 @@
   /* Mobile styles */
   @media screen and (max-width: 749px) {
     .product-information__media {
-      grid-column: 1 / -1;
+      grid-column: 2;
     }
 
     .product-details {
-      grid-column: 2 / 3;
+      grid-column: 2;
     }
   }
 

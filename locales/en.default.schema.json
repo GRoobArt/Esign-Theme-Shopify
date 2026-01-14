@@ -149,6 +149,10 @@
     "app_required_for_ratings": "An app is required for product ratings. [Learn more](https://help.shopify.com/manual/apps)"
   },
   "html_defaults": {
+    "defaults": {
+      "title": "<h2>Title</h2>",
+      "content": "<p>Content</p>"
+    },
     "join_our_email_list": "<h2>Join our email list</h2>",
     "get_exclusive_deals_and_early_access_to_new_products": "<p>Get exclusive deals and early access to new products.</p>",
     "bestseller_h2": "<h2>Bestsellers</h2>",
@@ -221,6 +225,8 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    "tabs": "tabs",
+    "tab": "tab",
     "column": "Column",
     "product_title": "Product title",
     "custom_liquid": "Custom Liquid",
@@ -761,7 +767,6 @@
     "bottom_padding": "Bottom padding",
     "button": "Button",
     "button_text_case": "Text case",
-
     "card_hover_effect": "Card hover effect",
     "card_image_height": "Product image height",
     "card_size": "Card size",
