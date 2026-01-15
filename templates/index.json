@@ -2741,7 +2741,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h2>Nuestras soluciones</h2>",
+                "text": "<h2>NUESTRAS SOLUCIONES</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -2814,7 +2814,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Cifras que nos avalan</p>",
+            "text": "<p>CIFRAS QUE NOS AVALAN</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
