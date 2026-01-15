@@ -664,40 +664,10 @@
                             "padding-inline-end": 0
                           },
                           "blocks": {}
-                        },
-                        "text_q6xLma": {
-                          "type": "text",
-                          "name": "t:names.text",
-                          "settings": {
-                            "text": "<p>Destacado</p>",
-                            "hidden": "none",
-                            "width": "fit-content",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": true,
-                            "background_color": "#f6dd00",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 16,
-                            "padding-block-start": 4,
-                            "padding-block-end": 4,
-                            "padding-inline-start": 16,
-                            "padding-inline-end": 16
-                          },
-                          "blocks": {}
                         }
                       },
                       "block_order": [
-                        "image_jCK4mA",
-                        "text_q6xLma"
+                        "image_jCK4mA"
                       ]
                     },
                     "product_title_e39MDf": {
@@ -1055,40 +1025,10 @@
                             "padding-inline-end": 0
                           },
                           "blocks": {}
-                        },
-                        "text_3AUjmK": {
-                          "type": "text",
-                          "name": "t:names.text",
-                          "settings": {
-                            "text": "<p>Destacado</p>",
-                            "hidden": "none",
-                            "width": "fit-content",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": true,
-                            "background_color": "#f6dd00",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 16,
-                            "padding-block-start": 4,
-                            "padding-block-end": 4,
-                            "padding-inline-start": 16,
-                            "padding-inline-end": 16
-                          },
-                          "blocks": {}
                         }
                       },
                       "block_order": [
-                        "image_hBNLnK",
-                        "text_3AUjmK"
+                        "image_hBNLnK"
                       ]
                     },
                     "product_title_XxL3J3": {
@@ -1446,40 +1386,10 @@
                             "padding-inline-end": 0
                           },
                           "blocks": {}
-                        },
-                        "text_FzAijr": {
-                          "type": "text",
-                          "name": "t:names.text",
-                          "settings": {
-                            "text": "<p>Destacado</p>",
-                            "hidden": "none",
-                            "width": "fit-content",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": true,
-                            "background_color": "#f6dd00",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 16,
-                            "padding-block-start": 4,
-                            "padding-block-end": 4,
-                            "padding-inline-start": 16,
-                            "padding-inline-end": 16
-                          },
-                          "blocks": {}
                         }
                       },
                       "block_order": [
-                        "image_Ez8ig9",
-                        "text_FzAijr"
+                        "image_Ez8ig9"
                       ]
                     },
                     "product_title_ebqpid": {
@@ -1837,40 +1747,10 @@
                             "padding-inline-end": 0
                           },
                           "blocks": {}
-                        },
-                        "text_z969Ak": {
-                          "type": "text",
-                          "name": "t:names.text",
-                          "settings": {
-                            "text": "<p>Destacado</p>",
-                            "hidden": "none",
-                            "width": "fit-content",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": true,
-                            "background_color": "#f6dd00",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 16,
-                            "padding-block-start": 4,
-                            "padding-block-end": 4,
-                            "padding-inline-start": 16,
-                            "padding-inline-end": 16
-                          },
-                          "blocks": {}
                         }
                       },
                       "block_order": [
-                        "image_ycztGJ",
-                        "text_z969Ak"
+                        "image_ycztGJ"
                       ]
                     },
                     "product_title_r6wiT6": {
