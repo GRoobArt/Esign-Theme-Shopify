@@ -164,7 +164,7 @@
               "type": "tabs",
               "name": "t:names.tabs",
               "settings": {
-                "variant": "solid",
+                "variant": "underline",
                 "alignment": "flex-start",
                 "tab_width": "fit-content",
                 "gap": 16,
@@ -226,34 +226,9 @@
                     "text_jbcPjb": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+                        "text": "{{ closest.product.description }}",
                         "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    },
-                    "text_WHEGFN": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<h3>Our goal is for every customer.</h3>",
-                        "width": "100%",
-                        "max_width": "normal",
+                        "max_width": "none",
                         "alignment": "left",
                         "type_preset": "rte",
                         "font": "var(--font-body--family)",
@@ -275,8 +250,7 @@
                     }
                   },
                   "block_order": [
-                    "text_jbcPjb",
-                    "text_WHEGFN"
+                    "text_jbcPjb"
                   ]
                 }
               },
