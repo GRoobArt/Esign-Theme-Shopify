@@ -44,7 +44,7 @@
     "type_font_h6": "subheading",
     "type_size_h6": "12",
     "type_line_height_h6": "display-loose",
-    "page_width": "narrow",
+    "page_width": "wide",
     "page_transition_enabled": false,
     "transition_to_main_product": false,
     "add_to_cart_animation": false,
@@ -350,7 +350,7 @@
       },
       "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7": {
         "settings": {
-          "background": "rgba(0,0,0,0)",
+          "background": "#e7d7dd4d",
           "foreground_heading": "#000000",
           "foreground": "#000000",
           "primary": "#000000",
