@@ -1,5 +1,3 @@
-
-
 {% render 'text', block: block %}
 
 {% schema %}
@@ -11,6 +9,30 @@
       "type": "richtext",
       "id": "text",
       "label": "t:settings.text"
+    },
+    {
+      "type": "header",
+      "content": "t:names.visuality"
+    },
+    {
+      "type": "select",
+      "id": "hidden",
+      "label": "t:names.display",
+      "options": [
+        {
+          "value": "hidden--desktop",
+          "label": "t:options.hidden_desktop"
+        },
+        {
+          "value": "hidden--mobile",
+          "label": "t:options.hidden_mobile"
+        },
+        {
+          "value": "none",
+          "label": "t:options.none"
+        }
+      ],
+      "default": "none"
     },
     {
       "type": "header",
@@ -327,6 +349,20 @@
       "alpha": true,
       "default": "#00000026",
       "visible_if": "{{ block.settings.background }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "text_color",
+      "label": "t:settings.color",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "text_color_foreground",
+      "label": "t:settings.text_color",
+      "alpha": true,
+      "default": "#00000026",
+      "visible_if": "{{ block.settings.text_color }}"
     },
     {
       "type": "range",

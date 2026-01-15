@@ -68,14 +68,19 @@
             "id": "background",
             "label": "t:settings.background",
             "default": "#FFFFFF",
-            "alpha": true
+            "alpha": true,
+          },
+          {
+            "type": "color_background",
+            "id": "background_gradient",
+            "label": "t:settings.background_gradient",
           },
           {
             "type": "color",
             "id": "foreground_heading",
             "label": "t:settings.headings",
             "default": "#000000",
-            "alpha": true
+            "alpha": true,
           },
           {
             "type": "color",
@@ -124,6 +129,11 @@
             "alpha": true
           },
           {
+            "type": "color_background",
+            "id": "primary_button_background_gradient",
+            "label": "t:settings.background_gradient",
+          },
+          {
             "type": "color",
             "id": "primary_button_text",
             "label": "t:settings.text",
@@ -168,6 +178,11 @@
             "label": "t:settings.background",
             "default": "#FFFFFF",
             "alpha": true
+          },
+          {
+            "type": "color_background",
+            "id": "secondary_button_background_gradient",
+            "label": "t:settings.background_gradient",
           },
           {
             "type": "color",
@@ -331,13 +346,22 @@
         ],
         "role": {
           "text": "foreground",
-          "background": "background",
+          "background": {
+            "solid": "background",
+            "gradient": "background_gradient"
+          },
           "links": "primary",
           "icons": "foreground",
-          "primary_button": "primary_button_background",
+          "primary_button": {
+            "solid": "primary_button_background",
+            "gradient": "primary_button_background_gradient"
+          },
           "on_primary_button": "primary_button_text",
           "primary_button_border": "primary_button_border",
-          "secondary_button": "secondary_button_background",
+          "secondary_button": {
+            "solid": "secondary_button_background",
+            "gradient": "secondary_button_background_gradient"
+          },
           "on_secondary_button": "secondary_button_text",
           "secondary_button_border": "secondary_button_border"
         }

@@ -24,6 +24,30 @@
       "default": false
     },
     {
+      "type": "header",
+      "content": "t:names.visuality"
+    },
+    {
+      "type": "select",
+      "id": "hidden",
+      "label": "t:names.display",
+      "options": [
+        {
+          "value": "hidden--desktop",
+          "label": "t:options.hidden_desktop"
+        },
+        {
+          "value": "hidden--mobile",
+          "label": "t:options.hidden_mobile"
+        },
+        {
+          "value": "none",
+          "label": "t:options.none"
+        }
+      ],
+      "default": "none"
+    },
+    {
       "type": "select",
       "id": "style_class",
       "label": "t:settings.style",
@@ -42,6 +66,26 @@
         }
       ],
       "default": "button"
+    },
+     {
+      "type": "select",
+      "id": "size_class",
+      "label": "t:settings.size",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:options.none"
+        },
+        {
+          "value": "size-sm",
+          "label": "t:options.small"
+        },
+        {
+          "value": "size-lg",
+          "label": "t:options.large"
+        }
+      ],
+      "default": "none"
     },
     {
       "type": "header",

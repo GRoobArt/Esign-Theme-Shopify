@@ -225,6 +225,8 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    "visuality": "Visual",
+    "display": "Display",
     "tabs": "tabs",
     "tab": "tab",
     "column": "Column",
@@ -415,6 +417,8 @@
     "pills": "Pills"
   },
   "options": {
+    "hidden_desktop": "Hidden Desktop",
+    "hidden_mobile": "Hidden Mobile",
     "above_carousel": "Above carousel",
     "accent": "Accent",
     "adapt_to_image": "Adapt to image",
@@ -724,6 +728,8 @@
     "youtube": "YouTube"
   },
   "settings": {
+    "background_gradient": "Background Gradient",
+    "text_color": "Color",
     "accordion": "Accordion",
     "account": "Account",
     "alignment": "Alignment",

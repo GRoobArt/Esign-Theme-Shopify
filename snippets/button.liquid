@@ -10,6 +10,19 @@
 
 {% assign block_settings = block.settings %}
 
+{% liquid
+  capture class
+    if block_settings.size_class != 'none'
+      echo block_settings.size_class
+    endif
+
+    if block_settings.hidden != 'none'
+      echo ' '
+      echo block_settings.hidden
+    endif
+  endcapture
+%}
+
 <a
   {% if link == blank %}
     role="link"
@@ -19,6 +32,7 @@
   {% endif %}
   class="
     size-style
+    {{ class }}
     {{ block_settings.style_class }}
     {{ block_settings.style_class }}--{{ block.id }}
   "

@@ -1,5 +1,7 @@
 {
   "names": {
+    "visuality": "Visuality",
+    "display": "Mostrar",
     "404": "404",
     "borders": "Bordes",
     "collapsible_row": "Fila desplegable",
@@ -177,6 +179,8 @@
     "policies_and_links": "Políticas y enlaces"
   },
   "settings": {
+    "background_gradient": "Fondo Gradiente",
+    "text_color": "Color",
     "alignment": "Alineación",
     "autoplay": "Reproducción automática",
     "background": "Fondo",
@@ -544,6 +548,8 @@
     "media_type_2": "Tipo de multimedia 2"
   },
   "options": {
+    "hidden_desktop": "Ocultar Desktop",
+    "hidden_mobile": "Ocultar Mobile",
     "adapt_to_image": "Adaptar a la imagen",
     "apple": "Manzana",
     "arrow": "Flecha",
