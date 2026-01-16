@@ -991,7 +991,7 @@
     "get_exclusive_deals_and_early_access_to_new_products": "<p>Obtén ofertas exclusivas y acceso anticipado a nuevos productos.</p>"
   },
   "text_defaults": {
-    "button_label": "Comprar ahora",
+    "button_label": "Comprar",
     "collapsible_row": "Fila desplegable",
     "heading": "Encabezado",
     "email_signup_button_label": "Suscribirse",
@@ -1013,7 +1013,7 @@
     "materials": "Materiales",
     "return_policy": "Política de devoluciones",
     "shipping": "Envío",
-    "shop_now_button_label": "Comprar ahora",
+    "shop_now_button_label": "Comprar",
     "sign_up_button_label": "Registrarse",
     "submit_button_label": "Enviar",
     "up_the_ante": "Sube\nLa\nApuesta",

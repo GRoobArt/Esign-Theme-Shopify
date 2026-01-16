@@ -503,6 +503,41 @@
     {
       "name": "t:names.group",
       "category": "t:categories.layout"
+    },
+    {
+      "name": "t:names.bullet",
+      "category": "t:categories.basic",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": false,
+        "inherit_color_scheme": false,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "padding-inline-start": 24,
+        "padding-inline-end": 24,
+        "border_radius": 16,
+        "width": "fit-content"
+      },
+      "blocks": {
+        "text": {
+          "type": "text-inline",
+          "name": "t:names.text",
+          "settings": {
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left"
+          }
+        },
+        "icon": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+
+          }
+        }
+      },
+      "block_order": ["icon", "text"]
     }
   ]
 }

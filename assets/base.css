@@ -1082,7 +1082,6 @@ body:has(.header[transparent]) #header-group > *:not(.header-section) {
 
 .product-grid__card.product-grid__card {
   display: flex;
-  flex-flow: column nowrap;
   gap: var(--product-card-gap);
   align-items: var(--product-card-alignment);
   text-decoration: none;

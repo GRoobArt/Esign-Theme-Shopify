@@ -55,16 +55,6 @@
       "content": "t:content.resource_reference_product_card"
     },
     {
-      "type": "range",
-      "id": "product_card_gap",
-      "label": "t:settings.vertical_gap",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "default": 16
-    },
-    {
       "type": "checkbox",
       "id": "inherit_color_scheme",
       "label": "t:settings.inherit_color_scheme",
@@ -76,6 +66,36 @@
       "label": "t:settings.color_scheme",
       "default": "scheme-1",
       "visible_if": "{{ block.settings.inherit_color_scheme == false }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.layout"
+    },
+    {
+      "type": "select",
+      "id": "content_direction",
+      "label": "t:settings.direction",
+      "options": [
+        {
+          "value": "column",
+          "label": "t:options.vertical"
+        },
+        {
+          "value": "row",
+          "label": "t:options.horizontal"
+        }
+      ],
+      "default": "column"
+    },
+    {
+      "type": "range",
+      "id": "product_card_gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
     },
     {
       "type": "header",

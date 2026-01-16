@@ -21,7 +21,7 @@
 
 {% if bundle_product != blank and bundle_variants != blank %}
   <div
-    class="metafields-bundle spacing-style"
+    class="metafields-bundle spacing-style {% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}"
     data-bundle-block
     data-product-id="{{ product_resource.id }}"
     data-bundle-required="{{ block_settings.required }}"
@@ -197,6 +197,33 @@
       "type": "text",
       "id": "error_text",
       "label": "Error text"
+    },
+    {
+      "type": "header",
+      "content": "t:names.layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "inherit_color_scheme",
+      "label": "t:settings.inherit_color_scheme",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1",
+      "visible_if": "{{ block.settings.inherit_color_scheme == false }}"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "t:settings.border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
     },
     {
       "type": "header",

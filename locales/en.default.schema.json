@@ -225,6 +225,7 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    "bullet": "Bullet",
     "text_inline": "Text Inline",
     "visuality": "Visual",
     "display": "Display",

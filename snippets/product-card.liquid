@@ -125,7 +125,7 @@
     class="
       product-card__content
       layout-panel-flex
-      layout-panel-flex--column
+      layout-panel-flex--{{ block_settings.content_direction | default: 'column' }}
       product-grid__card
       spacing-style
       border-style
