@@ -229,7 +229,7 @@
                     "text_jbcPjb": {
                       "type": "text",
                       "settings": {
-                        "text": "{{ closest.product.metafields.product.what | metafield_tag }}",
+                        "text": "{{ closest.product.description }}",
                         "hidden": "none",
                         "width": "100%",
                         "max_width": "none",
@@ -305,7 +305,7 @@
                     "text_CrGcV7": {
                       "type": "text",
                       "settings": {
-                        "text": "{{ closest.product.description }}",
+                        "text": "{{ closest.product.metafields.product.description | metafield_tag }}",
                         "hidden": "none",
                         "width": "100%",
                         "max_width": "none",
@@ -381,7 +381,7 @@
                     "text_zPzByE": {
                       "type": "text",
                       "settings": {
-                        "text": "{{ closest.product.description }}",
+                        "text": "{{ closest.product.metafields.product.what | metafield_tag }}",
                         "hidden": "none",
                         "width": "100%",
                         "max_width": "none",
