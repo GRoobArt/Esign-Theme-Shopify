@@ -712,6 +712,8 @@
                     "product": "{{ closest.product.metafields.product.bundle.value }}",
                     "input_type": "radio",
                     "required": true,
+                    "checked": true,
+                    "add_property": false,
                     "error_text": "{{ closest.product.title }}",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
@@ -748,11 +750,11 @@
                       },
                       "blocks": {}
                     },
-                    "text_cd6H9c": {
-                      "type": "text",
-                      "name": "t:names.text",
+                    "text_inline_34VT4i": {
+                      "type": "text-inline",
+                      "name": "t:names.text_inline",
                       "settings": {
-                        "text": "<p>Selecciona la herramienta que usarás con tu certificado de firma electrónica para firmar tus documentos.</p>",
+                        "text": "{{ closest.product.metafields.option.description | metafield_text }}",
                         "hidden": "none",
                         "width": "fit-content",
                         "max_width": "normal",
@@ -780,7 +782,7 @@
                   },
                   "block_order": [
                     "text_kaFaXB",
-                    "text_cd6H9c"
+                    "text_inline_34VT4i"
                   ]
                 }
               },
@@ -834,7 +836,9 @@
                   "settings": {
                     "product": "garantia-extendida",
                     "input_type": "checkbox",
-                    "required": true,
+                    "required": false,
+                    "checked": false,
+                    "add_property": false,
                     "error_text": "",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
@@ -871,11 +875,11 @@
                       },
                       "blocks": {}
                     },
-                    "text_crFUAa": {
-                      "type": "text",
-                      "name": "t:names.text",
+                    "text_inline_KHYEee": {
+                      "type": "text-inline",
+                      "name": "t:names.text_inline",
                       "settings": {
-                        "text": "<p>Si pierdes tu PIN, emitiremos un nuevo certificado sin costo por el período de vigencia restante del certificado original.</p>",
+                        "text": "{{ closest.product.metafields.option.description | metafield_text }}",
                         "hidden": "none",
                         "width": "fit-content",
                         "max_width": "normal",
@@ -903,7 +907,7 @@
                   },
                   "block_order": [
                     "text_WDDcqU",
-                    "text_crFUAa"
+                    "text_inline_KHYEee"
                   ]
                 }
               },
