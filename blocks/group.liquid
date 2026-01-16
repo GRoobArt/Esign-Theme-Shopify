@@ -509,6 +509,8 @@
       "category": "t:categories.basic",
       "settings": {
         "content_direction": "row",
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "flex-start",
         "vertical_on_mobile": false,
         "inherit_color_scheme": false,
         "color_scheme": "scheme-1",
@@ -520,14 +522,33 @@
         "width": "fit-content"
       },
       "blocks": {
-        "text": {
-          "type": "text-inline",
-          "name": "t:names.text",
+        "group": {
+          "type": "group",
+          "name": "t:names.group",
           "settings": {
-            "width": "100%",
-            "max_width": "none",
-            "alignment": "left"
-          }
+            "content_direction": "column",
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "width": "fill",
+            "gap": 0
+          },
+          "blocks": {
+            "text-1":{
+              "type": "text-inline",
+              "name": "t:names.text",
+              "settings": {
+                "width": "100%",
+              }
+            },
+            "text-2": {
+              "type": "text-inline",
+              "name": "t:names.text",
+              "settings": {
+                "width": "100%",
+              }
+            }
+          },
+          "block_order": ["text-1", "text-2"]
         },
         "icon": {
           "type": "icon",
@@ -537,7 +558,7 @@
           }
         }
       },
-      "block_order": ["icon", "text"]
+      "block_order": ["icon", "group"]
     }
   ]
 }
