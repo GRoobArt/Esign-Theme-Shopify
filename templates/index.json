@@ -2204,9 +2204,9 @@
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "center",
                 "gap": 12,
-                "width": "custom",
+                "width": "fit-content",
                 "custom_width": 25,
-                "width_mobile": "fill",
+                "width_mobile": "fit-content",
                 "custom_width_mobile": 100,
                 "height": "fit",
                 "custom_height": 100,
@@ -2239,7 +2239,7 @@
                     "product": "opciones-de-firmado",
                     "inherit_color_scheme": false,
                     "color_scheme": "scheme-6",
-                    "content_direction": "column",
+                    "content_direction": "row",
                     "product_card_gap": 48,
                     "border": "none",
                     "border_width": 1,
@@ -2337,10 +2337,49 @@
                             "padding-inline-end": 0
                           },
                           "blocks": {}
+                        },
+                        "buy_buttons_DWdiB4": {
+                          "type": "buy-buttons",
+                          "name": "t:names.product_buy_buttons",
+                          "settings": {
+                            "stacking": false,
+                            "show_pickup_availability": true,
+                            "gift_card_form": true,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {
+                            "quantity": {
+                              "type": "quantity",
+                              "disabled": true,
+                              "static": true,
+                              "settings": {},
+                              "blocks": {}
+                            },
+                            "add-to-cart": {
+                              "type": "add-to-cart",
+                              "disabled": true,
+                              "static": true,
+                              "settings": {
+                                "style_class": "button-secondary"
+                              },
+                              "blocks": {}
+                            },
+                            "accelerated-checkout": {
+                              "type": "accelerated-checkout",
+                              "static": true,
+                              "settings": {},
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": []
                         }
                       },
                       "block_order": [
-                        "price_yPNgUJ"
+                        "price_yPNgUJ",
+                        "buy_buttons_DWdiB4"
                       ]
                     }
                   },
