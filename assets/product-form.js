@@ -225,6 +225,99 @@ class ProductFormComponent extends Component {
   };
 
   /**
+   * @returns {{isValid: boolean, variantIds: string[]}}
+   */
+  #getBundleSelections() {
+    const section = this.closest('.shopify-section');
+    if (!section) return { isValid: true, variantIds: [] };
+
+    const bundleBlocks = Array.from(section.querySelectorAll('[data-bundle-block]'));
+    const variantIds = [];
+    let isValid = true;
+
+    bundleBlocks.forEach((block) => {
+      if (block instanceof HTMLElement && block.dataset.productId && block.dataset.productId !== this.dataset.productId) {
+        return;
+      }
+
+      const required = block instanceof HTMLElement && block.dataset.bundleRequired === 'true';
+      const inputs = Array.from(block.querySelectorAll('[data-bundle-input]'));
+      const checkedInputs = inputs.filter((input) => input instanceof HTMLInputElement && input.checked);
+      const error = block.querySelector('[data-bundle-error]');
+
+      if (required && checkedInputs.length === 0) {
+        isValid = false;
+        if (error) error.classList.remove('hidden');
+      } else if (error) {
+        error.classList.add('hidden');
+      }
+
+      checkedInputs.forEach((input) => {
+        if (input instanceof HTMLInputElement && input.value) {
+          variantIds.push(input.value);
+        }
+      });
+    });
+
+    return { isValid, variantIds };
+  }
+
+  /**
+   * @param {FormData} formData
+   * @param {string[]} variantIds
+   */
+  #applyBundleItems(formData, variantIds) {
+    if (!variantIds.length) return;
+
+    const baseId = formData.get('id');
+    if (!baseId) return;
+
+    const quantityInput = /** @type {HTMLInputElement | null} */ (this.querySelector('input[name="quantity"]'));
+    const quantity = Number(quantityInput?.value) || Number(this.dataset.quantityDefault) || 1;
+    const sellingPlan = formData.get('selling_plan');
+
+    const propertyEntries = [];
+    const keysToDelete = [];
+
+    for (const key of formData.keys()) {
+      if (key.startsWith('properties[')) {
+        keysToDelete.push(key);
+      }
+    }
+
+    for (const key of keysToDelete) {
+      const value = formData.get(key);
+      const propertyKey = key.slice('properties['.length, -1);
+      if (value != null) {
+        propertyEntries.push([propertyKey, value]);
+      }
+      formData.delete(key);
+    }
+
+    formData.delete('id');
+    formData.delete('quantity');
+    if (sellingPlan) formData.delete('selling_plan');
+
+    const baseIndex = 0;
+    formData.append(`items[${baseIndex}][id]`, baseId.toString());
+    formData.append(`items[${baseIndex}][quantity]`, quantity.toString());
+
+    if (sellingPlan) {
+      formData.append(`items[${baseIndex}][selling_plan]`, sellingPlan.toString());
+    }
+
+    propertyEntries.forEach(([propertyKey, value]) => {
+      formData.append(`items[${baseIndex}][properties][${propertyKey}]`, value);
+    });
+
+    variantIds.forEach((variantId, index) => {
+      const itemIndex = index + 1;
+      formData.append(`items[${itemIndex}][id]`, variantId);
+      formData.append(`items[${itemIndex}][quantity]`, quantity.toString());
+    });
+  }
+
+  /**
    * Handles the submit event for the product form.
    *
    * @param {Event} event - The submit event.
@@ -282,7 +375,11 @@ class ProductFormComponent extends Component {
       }
     }
 
+    const bundleSelections = this.#getBundleSelections();
+    if (!bundleSelections.isValid) return;
+
     const formData = new FormData(form);
+    this.#applyBundleItems(formData, bundleSelections.variantIds);
 
     const cartItemsComponents = document.querySelectorAll('cart-items-component');
     let cartItemComponentsSectionIds = [];

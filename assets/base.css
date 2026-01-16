@@ -1357,7 +1357,7 @@ button.shopify-payment-button__button--unbranded {
   text-align: var(--text-align);
   color: var(--button-color);
   appearance: none;
-  background-color: var(--button-background-color);
+  background: var(--button-background-color);
   border: none;
   font-family: var(--font-paragraph--family);
   font-style: var(--font-paragraph--style);
@@ -1462,7 +1462,7 @@ button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
 
 /* Needed to override the default Shopify styles */
 button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
-  background-color: var(--button-background-color);
+  background: var(--button-background-color);
 }
 
 .button-unstyled {
@@ -2255,6 +2255,30 @@ deferred-media[class]
 
 product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   margin-block: 0;
+}
+
+product-price > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+
+  span {
+    line-height: 1;
+  }
+
+  .amount-to-text,
+  .price-tax {
+    font-size: min(0.85em, var(--font-paragraph--size));
+    font-weight: var(--font-paragraph--weight);
+    line-height: 1;
+    flex: 0 0 100%;
+  }
+
+  .tax-included {
+    font-size: min(1em, var(--font-paragraph--size));
+    font-weight: var(--font-paragraph--weight);
+  }
 }
 
 .compare-at-price {

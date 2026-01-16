@@ -105,6 +105,9 @@
     "open": "Abrir"
   },
   "content": {
+    "price_tax": "+ IVA",
+    "price_to": "Desde",
+    "amount_tax": "{{ amount }} IVA incluído.",
     "reviews": "reseñas",
     "language": "Idioma",
     "localization_region_and_language": "Región e idioma",

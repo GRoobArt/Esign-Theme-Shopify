@@ -50,7 +50,8 @@
   {% render 'price',
     show_unit_price: true,
     product_resource: product_resource,
-    show_sale_price_first: block_settings.show_sale_price_first
+    show_sale_price_first: block_settings.show_sale_price_first,
+    settings: block_settings
   %}
 
   {% if block_settings.show_tax_info %}
@@ -131,6 +132,18 @@
       "type": "checkbox",
       "id": "show_tax_info",
       "label": "t:settings.show_tax_info",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_to_text",
+      "label": "t:settings.show_to_text",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tax_amount",
+      "label": "t:settings.show_tax_amount",
       "default": false
     },
     {

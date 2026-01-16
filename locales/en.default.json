@@ -144,6 +144,9 @@
     }
   },
   "content": {
+    "price_tax": "+ Tax",
+    "price_to": "To",
+    "amount_tax": "{{ amount }} Tax Incluyed",
     "discount": "Discount",
     "account_title": "Account",
     "terms_and_policies": "Terms and Policies",

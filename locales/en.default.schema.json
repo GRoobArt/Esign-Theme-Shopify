@@ -728,6 +728,8 @@
     "youtube": "YouTube"
   },
   "settings": {
+    "show_to_text": "Show To Text",
+    "show_tax_amount": "Show Tax Amount",
     "background_gradient": "Background Gradient",
     "text_color": "Color",
     "accordion": "Accordion",

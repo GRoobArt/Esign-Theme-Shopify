@@ -1,0 +1,244 @@
+
+{% liquid
+  assign block_settings = block.settings
+  assign product_resource = closest.product
+  if request.visual_preview_mode and product_resource == blank
+    assign product_resource = collections.all.products.first
+  endif
+
+  assign bundle_product = block_settings.product
+  if bundle_product == blank
+    assign bundle_product = product_resource.metafields.product.bundle.value
+  endif
+  assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id
+  assign bundle_variants = bundle_product.variants
+
+  assign error_text = block_settings.error_text
+  if error_text == blank
+    assign error_text = 'products.product.add_to_cart_error' | t
+  endif
+%}
+
+{% if bundle_product != blank and bundle_variants != blank %}
+  <div
+    class="metafields-bundle spacing-style"
+    data-bundle-block
+    data-product-id="{{ product_resource.id }}"
+    data-bundle-required="{{ block_settings.required }}"
+    style="{% render 'spacing-style', settings: block_settings %}"
+    {{ block.shopify_attributes }}
+  >
+    <div class="metafields-bundle__header">
+      {% content_for 'blocks', closest.product: bundle_product %}
+    </div>
+    <div class="metafields-bundle__options" role="list">
+      {%- assign input_type = block_settings.input_type | default: 'radio' -%}
+      {%- for bundle_variant in bundle_variants -%}
+        {%- assign input_id = 'BundleOption-' | append: block.id | append: '-' | append: forloop.index -%}
+        {%- assign input_name = 'bundle-' | append: block.id -%}
+        {%- assign is_checked = false -%}
+        {%- if forloop.first -%}
+          {%- if block_settings.required -%}
+            {%- assign is_checked = true -%}
+          {%- elsif input_type == 'radio' -%}
+            {%- assign is_checked = true -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if input_type == 'checkbox' -%}
+          {%- assign input_name = input_name | append: '[]' -%}
+        {%- endif -%}
+        <div class="metafields-bundle__option">
+          <input
+            type="{{ input_type }}"
+            id="{{ input_id }}"
+            name="{{ input_name }}"
+            value="{{ bundle_variant.id }}"
+            data-bundle-input
+            form="{{ product_form_id }}"
+            {% if is_checked %}checked{% endif %}
+            {% if input_type == 'radio' and block_settings.required %}required{% endif %}
+          >
+          <label for="{{ input_id }}">
+            <span class="metafields-bundle__label">{{ bundle_variant.title }}</span>
+            {% if bundle_variant.price > 0 %}
+              <span role="group">
+                  <span class="metafields-bundle__price">{{ bundle_variant.price | money }}</span>
+                  <span>{{ 'content.price_tax' | t }}</span>
+              </span>
+              <span>
+                {%- liquid
+                    # selected_variant.price esta en centavos
+                    assign price_with_tax_cents = bundle_variant.price | times: 1.19 | round
+                    assign price_with_tax = price_with_tax_cents | money
+                -%}
+                (<span class="price-tax">{{ 'content.amount_tax' | t: amount: price_with_tax }}</span>)
+              </span>
+            {% endif %}
+          </label>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="metafields-bundle__error hidden" role="alert" aria-live="assertive" data-bundle-error>
+      {{ error_text }}
+    </div>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .metafields-bundle {
+    display: block;
+  }
+
+  .metafields-bundle__header{
+    display: grid;
+    gap: var(--gap-xs);
+  }
+
+  .metafields-bundle__title {
+    margin: 0 0 var(--padding-sm);
+  }
+
+  .metafields-bundle__description {
+    margin-bottom: var(--padding-md);
+  }
+
+  .metafields-bundle__options {
+    display: grid;
+    gap: var(--padding-xs);
+    font-size: calc(var(--font-size--h4) - 4px);
+  }
+
+  .metafields-bundle__option {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--padding-sm);
+    align-items: center;
+    padding: var(--padding-lg);
+  }
+
+  .metafields-bundle__option input {
+    margin: 0;
+  }
+
+  .metafields-bundle__option label {
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+    flex-wrap: wrap;
+    line-height: 1;
+  }
+
+  .metafields-bundle__label {
+    flex: 0 0 100%;
+    font-weight: var(--font-heading--weight);
+  }
+
+  .metafields-bundle__price {
+  }
+
+  .metafields-bundle__error {
+    margin-top: var(--padding-sm);
+    color: var(--color-error);
+  }
+  
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Metafields bundle",
+  "tag": null,
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "select",
+      "id": "input_type",
+      "label": "Input type",
+      "options": [
+        {
+          "value": "radio",
+          "label": "Radio"
+        },
+        {
+          "value": "checkbox",
+          "label": "Checkbox"
+        }
+      ],
+      "default": "radio"
+    },
+    {
+      "type": "checkbox",
+      "id": "required",
+      "label": "Required",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "error_text",
+      "label": "Error text"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Metafields bundle",
+      "category": "t:categories.product",
+      "settings": {
+        "product": "{{ closest.product }}"
+      }
+    }
+  ]
+}
+{% endschema %}

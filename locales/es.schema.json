@@ -188,6 +188,8 @@
     "policies_and_links": "Políticas y enlaces"
   },
   "settings": {
+    "show_to_text": "Mostrar Desde",
+    "show_tax_amount": "Mostrar Monto con Impuestos",
     "background_gradient": "Fondo Gradiente",
     "text_color": "Color",
     "alignment": "Alineación",

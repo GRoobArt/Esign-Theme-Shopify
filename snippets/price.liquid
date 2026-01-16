@@ -5,6 +5,7 @@
   @param {product} product_resource - The product to render
   @param {boolean} [show_unit_price] - Whether to show the unit price
   @param {boolean} [show_sale_price_first] - Whether to show the sale price first
+  @param {object} [settings] - Block Settings
 {%- enddoc -%}
 
 {%- liquid
@@ -41,7 +42,11 @@
   endif
 -%}
 
-<div ref="priceContainer">
+<div ref="priceContainer" class="justify-{{ settings.alignment }} ">
+  {% if settings.show_to_text %}
+    <span class="amount-to-text">{{ 'content.price_to' | t }}</span>
+  {% endif %}
+
   {% if show_sale_price_first == false and show_compare_price %}
     <span role="group">
       <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
@@ -57,6 +62,7 @@
   {% else %}
     <span class="price">{{ price | default: '&nbsp;' }}</span>
   {% endif %}
+  <span class="tax-included">{{ 'content.price_tax' | t }}</span>
 
   {% if show_sale_price_first == true and show_compare_price %}
     <span role="group">
@@ -64,6 +70,17 @@
       <span class="compare-at-price">{{- compare_at_price -}}</span>
     </span>
   {% endif %}
+
+  {% if settings.show_tax_amount %}
+    {%- liquid
+      # selected_variant.price esta en centavos
+      assign price_with_tax_cents = selected_variant.price | times: 1.19 | round
+      assign price_with_tax = price_with_tax_cents | money
+    -%}
+
+    <span class="price-tax">{{ 'content.amount_tax' | t: amount: price_with_tax }}</span>
+  {% endif %}
+
   {%- if selected_variant.unit_price and show_unit_price %}
     {%- liquid
       if product.handle == closest.product.handle and settings.currency_code_enabled_product_pages
