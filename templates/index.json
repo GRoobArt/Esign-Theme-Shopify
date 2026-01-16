@@ -2233,7 +2233,7 @@
                   "name": "t:names.product_card",
                   "settings": {
                     "product": "opciones-de-firmado",
-                    "product_card_gap": 4,
+                    "product_card_gap": 48,
                     "inherit_color_scheme": false,
                     "color_scheme": "scheme-6",
                     "border": "none",
