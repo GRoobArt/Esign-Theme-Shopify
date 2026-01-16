@@ -441,7 +441,7 @@
                   "type": "text",
                   "name": "Title",
                   "settings": {
-                    "text": "<h2>Identidad Digital</h2>",
+                    "text": "<h2>IDENTIDAD DIFITAL</h2>",
                     "hidden": "none",
                     "width": "fit-content",
                     "max_width": "normal",
@@ -2128,7 +2128,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h2>Obtén tu Token criptográfico</h2>",
+                    "text": "<h2>OBTÉN TU TOKEN CRIPTOGRÁFICO</h2>",
                     "hidden": "none",
                     "width": "100%",
                     "max_width": "normal",
@@ -2232,7 +2232,7 @@
                   "type": "product-card",
                   "name": "t:names.product_card",
                   "settings": {
-                    "product": "",
+                    "product": "firma-tributaria-certificado-digital-sii",
                     "product_card_gap": 4,
                     "inherit_color_scheme": false,
                     "color_scheme": "scheme-6",
@@ -2246,10 +2246,18 @@
                     "padding-inline-end": 24
                   },
                   "blocks": {
-                    "product_card_gallery_hpjFhN": {
-                      "type": "_product-card-gallery",
+                    "image_Xaxxtc": {
+                      "type": "image",
+                      "name": "t:names.image",
                       "settings": {
+                        "image": "{{ closest.product.featured_image }}",
+                        "link": "",
                         "image_ratio": "adapt",
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
                         "border": "none",
                         "border_width": 1,
                         "border_opacity": 100,
@@ -2358,7 +2366,7 @@
                     }
                   },
                   "block_order": [
-                    "product_card_gallery_hpjFhN",
+                    "image_Xaxxtc",
                     "product_card_group_qHKV9B"
                   ]
                 }
