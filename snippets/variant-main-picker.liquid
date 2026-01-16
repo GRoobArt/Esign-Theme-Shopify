@@ -15,6 +15,8 @@
     else
       assign strikethrough_color_mix = '#fff'
     endif
+
+    assign label_options = product_resource.metafields.option.description.value
   %}
   <variant-picker
     class="variant-picker spacing-style variant-picker--{{ block_settings.alignment }}"
@@ -34,6 +36,8 @@
   >
     <form class="variant-picker__form">
       {%- for product_option in product_resource.options_with_values -%}
+        {% assign label = label_options[forloop.index0] %}
+
         {%- liquid
           assign swatch_count = product_option.values | map: 'swatch' | compact | size
           assign variant_style = block_settings.variant_style
@@ -148,7 +152,12 @@
           %}
 
           <div class="variant-option variant-option--dropdowns">
-            <label for="Option-{{ block.id }}-{{ forloop.index0 }}">{{ product_option.name | escape }}</label>
+            <div class="variant-picker__header">
+              <label for="Option-{{ block.id }}-{{ forloop.index0 }}" class="h4" style="
+                --color: var(--color-foreground-heading);
+              ">{{ product_option.name | escape }}</label>
+              {% render 'text', fallback_text: label %}
+            </div>
             <div
               class="variant-option__select-wrapper"
               style="
@@ -216,6 +225,11 @@
   .variant-picker[data-shopify-visual-preview] {
     min-width: 300px;
     padding-inline-start: max(4px, var(--padding-inline-start));
+  }
+
+  .variant-picker__header{
+    display: grid;
+    gap: var(--gap-xs);
   }
 
   .variant-option {

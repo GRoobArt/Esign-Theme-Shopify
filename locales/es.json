@@ -291,7 +291,8 @@
       "quantity_minimum": "Mínimo de {{ minimum }}",
       "quantity_maximum": "Máximo de {{ maximum }}",
       "in_cart": "en el carrito"
-    }
+    },
+    "add_product": "Agregar {{ product }}"
   },
   "fields": {
     "separator": "a"

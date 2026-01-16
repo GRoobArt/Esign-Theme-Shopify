@@ -40,13 +40,25 @@
         --color-shadow: rgb({{ scheme.settings.shadow.rgba }});
         --color-shadow-rgb: {{ scheme.settings.shadow.rgb }};
         --color-primary-button-text: rgb({{ scheme.settings.primary_button_text.rgba }});
-        --color-primary-button-background: rgb({{ scheme.settings.primary_button_background.rgba }});
+
+        {%  if scheme.settings.primary_button_background_gradient != blank %} 
+            --color-primary-button-background: {{ scheme.settings.primary_button_background_gradient }};
+        {% else %}
+            --color-primary-button-background: rgb({{ scheme.settings.primary_button_background.rgba }});
+        {% endif %}
+        
         --color-primary-button-border: rgb({{ scheme.settings.primary_button_border.rgba }});
         --color-primary-button-hover-text: rgb({{ scheme.settings.primary_button_hover_text.rgba }});
         --color-primary-button-hover-background: rgb({{ scheme.settings.primary_button_hover_background.rgba }});
         --color-primary-button-hover-border: rgb({{ scheme.settings.primary_button_hover_border.rgba }});
         --color-secondary-button-text: rgb({{ scheme.settings.secondary_button_text.rgba }});
-        --color-secondary-button-background: rgb({{ scheme.settings.secondary_button_background.rgba }});
+
+        {%  if scheme.settings.secondary_button_background_gradient  != blank %} 
+            --color-secondary-button-background: {{ scheme.settings.secondary_button_background_gradient }}; 
+        {% else %}
+            --color-secondary-button-background: rgb({{ scheme.settings.secondary_button_background.rgba }});
+        {% endif %}
+
         --color-secondary-button-border: rgb({{ scheme.settings.secondary_button_border.rgba }});
         --color-secondary-button-hover-text: rgb({{ scheme.settings.secondary_button_hover_text.rgba }});
         --color-secondary-button-hover-background: rgb({{ scheme.settings.secondary_button_hover_background.rgba }});
@@ -90,18 +102,6 @@
           --shadow-popover: 0px 4px 20px rgb(var(--color-shadow-rgb) / var(--opacity-15));
         {% endif %}
       }
-
-      {%  if scheme.settings.primary_button_background_gradient != blank %} 
-        .color-{{ scheme.id }} .button{
-          --color-primary-button-background: {{ scheme.settings.primary_button_background_gradient }};
-        }
-      {% endif %}
-      
-      {%  if scheme.settings.secondary_button_background_gradient  != blank %} 
-        .color-{{ scheme.id }} .button-secondary{
-          --color-secondary-button-background: {{ scheme.settings.secondary_button_background_gradient }}; 
-        }
-      {% endif %}
 
       {%  if scheme.settings.background_gradient != blank  %}
         .color-{{ scheme.id }} {

@@ -327,6 +327,7 @@
       "quantity_minimum": "Minimum of {{ minimum }}",
       "quantity_maximum": "Maximum of {{ maximum }}",
       "in_cart": "in cart"
-    }
+    },
+    "add_product": "Agregar {{ product }}"
   }
 }

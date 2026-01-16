@@ -25,6 +25,8 @@
     data-bundle-block
     data-product-id="{{ product_resource.id }}"
     data-bundle-required="{{ block_settings.required }}"
+    data-bundle-add-property="{{ block_settings.add_property }}"
+    data-bundle-title="{{ bundle_product.title | escape }}"
     style="{% render 'spacing-style', settings: block_settings %}"
     {{ block.shopify_attributes }}
   >
@@ -34,19 +36,21 @@
     <div class="metafields-bundle__options" role="list">
       {%- assign input_type = block_settings.input_type | default: 'radio' -%}
       {%- for bundle_variant in bundle_variants -%}
-        {%- assign input_id = 'BundleOption-' | append: block.id | append: '-' | append: forloop.index -%}
-        {%- assign input_name = 'bundle-' | append: block.id -%}
-        {%- assign is_checked = false -%}
-        {%- if forloop.first -%}
-          {%- if block_settings.required -%}
-            {%- assign is_checked = true -%}
-          {%- elsif input_type == 'radio' -%}
-            {%- assign is_checked = true -%}
-          {%- endif -%}
-        {%- endif -%}
-        {%- if input_type == 'checkbox' -%}
-          {%- assign input_name = input_name | append: '[]' -%}
-        {%- endif -%}
+        {% liquid
+           assign input_id = 'BundleOption-' | append: block.id | append: '-' | append: forloop.index
+           assign input_name = 'bundle-' | append: block.id
+           assign is_checked = block_settings.checked
+           if block_settings.required and forloop.first
+            assign is_checked = true
+           endif
+           if input_type == 'checkbox'
+            assign input_name = input_name | append: '[]'
+           endif
+           assign title = bundle_variant.title 
+           if title == 'Default Title'
+             assign title = 'products.add_product' | t: product: bundle_product.title
+           endif
+        %}
         <div class="metafields-bundle__option">
           <input
             type="{{ input_type }}"
@@ -54,12 +58,13 @@
             name="{{ input_name }}"
             value="{{ bundle_variant.id }}"
             data-bundle-input
+            data-bundle-option-label="{{ title | escape }}"
             form="{{ product_form_id }}"
             {% if is_checked %}checked{% endif %}
             {% if input_type == 'radio' and block_settings.required %}required{% endif %}
           >
           <label for="{{ input_id }}">
-            <span class="metafields-bundle__label">{{ bundle_variant.title }}</span>
+            <span class="metafields-bundle__label">{{ title }}</span>
             {% if bundle_variant.price > 0 %}
               <span role="group">
                   <span class="metafields-bundle__price">{{ bundle_variant.price | money }}</span>
@@ -177,6 +182,18 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "checked",
+      "label": "checked",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "add_property",
+      "label": "Add selection as property",
+      "default": false
+    },
+    {
       "type": "text",
       "id": "error_text",
       "label": "Error text"
@@ -229,6 +246,9 @@
   "blocks": [
     {
       "type": "text"
+    },
+    {
+      "type": "text-inline"
     }
   ],
   "presets": [
