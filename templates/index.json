@@ -689,8 +689,8 @@
                             "text_color": true,
                             "text_color_foreground": "#986d00",
                             "corner_radius": 16,
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
+                            "padding-block-start": 4,
+                            "padding-block-end": 4,
                             "padding-inline-start": 16,
                             "padding-inline-end": 16
                           },
