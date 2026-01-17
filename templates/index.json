@@ -2529,7 +2529,7 @@
                     "inherit_color_scheme": false,
                     "color_scheme": "scheme-6",
                     "content_direction": "row",
-                    "product_card_gap": 48,
+                    "product_card_gap": 24,
                     "border": "none",
                     "border_width": 1,
                     "border_opacity": 100,
