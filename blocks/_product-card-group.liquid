@@ -535,41 +535,15 @@
         "vertical_on_mobile": false,
         "inherit_color_scheme": false,
         "color_scheme": "scheme-1",
-        "padding-block-start": 24,
-        "padding-block-end": 24,
-        "padding-inline-start": 24,
-        "padding-inline-end": 24,
-        "border_radius": 16,
         "width": "fit-content"
       },
       "blocks": {
-        "group": {
-          "type": "_product-card-group",
-          "name": "t:names.group",
+        "text":{
+          "type": "text-inline",
+          "name": "t:names.text",
           "settings": {
-            "content_direction": "column",
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "width": "fill",
-            "gap": 0
-          },
-          "blocks": {
-            "text-1":{
-              "type": "text-inline",
-              "name": "t:names.text",
-              "settings": {
-                "width": "100%",
-              }
-            },
-            "text-2": {
-              "type": "text-inline",
-              "name": "t:names.text",
-              "settings": {
-                "width": "100%",
-              }
-            }
-          },
-          "block_order": ["text-1", "text-2"]
+            "width": "100%",
+          }
         },
         "icon": {
           "type": "icon",
@@ -579,7 +553,7 @@
           }
         }
       },
-      "block_order": ["icon", "group"]
+      "block_order": ["icon", "text"]
     }
   ]
 }
