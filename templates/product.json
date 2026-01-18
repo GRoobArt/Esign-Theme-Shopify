@@ -674,7 +674,7 @@
                 "required": true,
                 "checked": true,
                 "add_property": false,
-                "error_text": "{{ closest.product.title }}",
+                "error_text": "Seleccione un {{ closest.product.title }}",
                 "inherit_color_scheme": false,
                 "color_scheme": "",
                 "border_radius": 8,
