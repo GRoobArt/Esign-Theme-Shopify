@@ -5,22 +5,36 @@
 
   @param {string} [settings.popover_color_scheme] - The color scheme for the popover panel.
 {%- enddoc -%}
-<anchored-popover-component
-  data-close-on-resize="true"
-  class="account-popover mobile:hidden"
->
-  {% render 'account-button' with 'account-popover' as popover_id %}
-  <div
-    class="account-popover__panel details-content color-{{ settings.popover_color_scheme }}"
-    id="account-popover"
-    popover="auto"
-    ref="popover"
-  >
-    {% render 'account-actions' %}
-  </div>
-</anchored-popover-component>
+
+
+<a class="mobile:hidden account-anchor" href="{% if request.design_mode %}{{ routes.account_url }}{% else %}{{ routes.storefront_login_url }}{% endif %}">
+  <span class="button size-sm button-left">
+    Crea tu Cuenta
+  </span>
+  <span class="button-secondary size-sm button-right">
+    Entrar
+  </span>
+</a>
 
 {% stylesheet %}
+  .account-anchor{
+    display: flex;
+    align-items: center;
+  }
+
+  .button-left,.button-right{
+    border-radius: 0;
+    font-size: var(--font-size--h5);
+  }
+
+  .button-left{
+    border-radius: var(--style-border-radius-buttons-primary) 0 0 var(--style-border-radius-buttons-primary);
+  }
+
+  .button-right{
+    border-radius: 0 var(--style-border-radius-buttons-primary) var(--style-border-radius-buttons-primary) 0;
+  }
+
   .account-popover {
     --account-popover-min-width: 22rem;
     --account-actions-max-width: 22rem;
