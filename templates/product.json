@@ -752,7 +752,7 @@
               "type": "metafields-bundle",
               "name": "Metafields bundle",
               "settings": {
-                "product": "garantia-extendida",
+                "product": "{{ closest.product.metafields.product.warranty.value }}",
                 "input_type": "checkbox",
                 "required": false,
                 "checked": false,
