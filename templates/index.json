@@ -1188,10 +1188,49 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {}
+                    },
+                    "buy_buttons_WDinhd": {
+                      "type": "buy-buttons",
+                      "name": "t:names.product_buy_buttons",
+                      "settings": {
+                        "stacking": false,
+                        "show_pickup_availability": true,
+                        "gift_card_form": true,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "quantity": {
+                          "type": "quantity",
+                          "disabled": true,
+                          "static": true,
+                          "settings": {},
+                          "blocks": {}
+                        },
+                        "add-to-cart": {
+                          "type": "add-to-cart",
+                          "static": true,
+                          "settings": {
+                            "style_class": "button-secondary"
+                          },
+                          "blocks": {}
+                        },
+                        "accelerated-checkout": {
+                          "type": "accelerated-checkout",
+                          "disabled": true,
+                          "static": true,
+                          "settings": {},
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": []
                     }
                   },
                   "block_order": [
-                    "price_f3WGex"
+                    "price_f3WGex",
+                    "buy_buttons_WDinhd"
                   ]
                 }
               },
@@ -1200,15 +1239,15 @@
                 "product_card_group_jdHtdF"
               ]
             },
-            "product_card_tXELYn": {
+            "product_card_ECQxWN": {
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "",
+                "product": "firma-tributaria-certificado-digital-sii",
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-1",
                 "content_direction": "column",
-                "product_card_gap": 4,
+                "product_card_gap": 24,
                 "border": "solid",
                 "border_width": 0,
                 "border_opacity": 100,
@@ -1219,7 +1258,7 @@
                 "padding-inline-end": 2
               },
               "blocks": {
-                "product_card_group_wK8KNU": {
+                "product_card_group_AbmgE3": {
                   "type": "_product-card-group",
                   "name": "Header",
                   "settings": {
@@ -1258,12 +1297,12 @@
                     "padding-inline-end": 22
                   },
                   "blocks": {
-                    "product_card_group_n8cq3M": {
+                    "product_card_group_VgydLE": {
                       "type": "_product-card-group",
                       "name": "Images",
                       "settings": {
                         "content_direction": "row",
-                        "vertical_on_mobile": true,
+                        "vertical_on_mobile": false,
                         "horizontal_alignment": "space-between",
                         "vertical_alignment": "flex-start",
                         "align_baseline": false,
@@ -1297,16 +1336,17 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {
-                        "image_hBNLnK": {
+                        "image_axzyrJ": {
                           "type": "image",
                           "name": "t:names.image",
                           "settings": {
+                            "image": "shopify://shop_images/Logo_de_Servicio_de_Impuestos_Internos_1.svg",
                             "link": "",
                             "image_ratio": "adapt",
                             "width": "custom",
-                            "custom_width": 45,
+                            "custom_width": 17,
                             "width_mobile": "custom",
-                            "custom_width_mobile": 45,
+                            "custom_width_mobile": 17,
                             "height": "fit",
                             "border": "none",
                             "border_width": 1,
@@ -1318,18 +1358,49 @@
                             "padding-inline-end": 0
                           },
                           "blocks": {}
+                        },
+                        "text_4rX4D9": {
+                          "type": "text",
+                          "name": "t:names.text",
+                          "disabled": true,
+                          "settings": {
+                            "text": "<p>Destacado</p>",
+                            "hidden": "none",
+                            "width": "fit-content",
+                            "max_width": "none",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": true,
+                            "background_color": "#f6dd00",
+                            "text_color": true,
+                            "text_color_foreground": "#986d00",
+                            "corner_radius": 16,
+                            "padding-block-start": 4,
+                            "padding-block-end": 4,
+                            "padding-inline-start": 16,
+                            "padding-inline-end": 16
+                          },
+                          "blocks": {}
                         }
                       },
                       "block_order": [
-                        "image_hBNLnK"
+                        "image_axzyrJ",
+                        "text_4rX4D9"
                       ]
                     },
-                    "product_title_XxL3J3": {
+                    "product_title_jbVGxQ": {
                       "type": "product-title",
                       "name": "t:names.product_title",
                       "settings": {
                         "width": "100%",
-                        "max_width": "normal",
+                        "max_width": "none",
                         "alignment": "left",
                         "type_preset": "h4",
                         "font": "var(--font-body--family)",
@@ -1349,7 +1420,7 @@
                       },
                       "blocks": {}
                     },
-                    "product_card_group_AzWkak": {
+                    "product_card_group_ddfmjh": {
                       "type": "_product-card-group",
                       "name": "Tags",
                       "settings": {
@@ -1388,108 +1459,366 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {
-                        "text_ph3t3x": {
-                          "type": "text",
-                          "name": "t:names.text",
+                        "product_card_group_fiaTWw": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
                           "settings": {
-                            "text": "<p>Compra 100% online, rápida, segura y fácil de habilitar.</p>",
-                            "hidden": "none",
-                            "width": "100%",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 0,
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
                             "padding-inline-start": 0,
                             "padding-inline-end": 0
                           },
-                          "blocks": {}
+                          "blocks": {
+                            "icon_6RDGWA": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_Ct6FWd": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Compra 100% online, rápida, segura y fácil de habilitar.",
+                                "hidden": "none",
+                                "width": "fit-content",
+                                "max_width": "none",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_6RDGWA",
+                            "text_inline_Ct6FWd"
+                          ]
                         },
-                        "text_gYC3gH": {
-                          "type": "text",
-                          "name": "t:names.text",
+                        "product_card_group_H4wpXx": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
                           "settings": {
-                            "text": "<p>Compra 100% online, rápida, segura y fácil de habilitar.</p>",
-                            "hidden": "none",
-                            "width": "100%",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 0,
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fill",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
                             "padding-inline-start": 0,
                             "padding-inline-end": 0
                           },
-                          "blocks": {}
+                          "blocks": {
+                            "icon_DTqC4a": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_UFGjh9": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Permite facturar en el Servicio de Impuestos Internos o en cualquier facturador del mercado.",
+                                "hidden": "none",
+                                "width": "100%",
+                                "max_width": "normal",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_DTqC4a",
+                            "text_inline_UFGjh9"
+                          ]
                         },
-                        "text_4C64x8": {
-                          "type": "text",
-                          "name": "t:names.text",
+                        "product_card_group_y7VjHm": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
                           "settings": {
-                            "text": "<p>Compra 100% online, rápida, segura y fácil de habilitar.</p>",
-                            "hidden": "none",
-                            "width": "100%",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 0,
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
                             "padding-inline-start": 0,
                             "padding-inline-end": 0
                           },
-                          "blocks": {}
+                          "blocks": {
+                            "icon_DnMYyB": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_tMdLJa": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Certificado digital listo para centralizar en el Servicio de Impuestos Internos.",
+                                "hidden": "none",
+                                "width": "100%",
+                                "max_width": "normal",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_DnMYyB",
+                            "text_inline_tMdLJa"
+                          ]
+                        },
+                        "product_card_group_BetyhG": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
+                          "settings": {
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {
+                            "icon_AgG7mY": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_4eTyyi": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Permite autenticar la identidad del firmante para firmar documentos tributarios electrónicos",
+                                "hidden": "none",
+                                "width": "100%",
+                                "max_width": "normal",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_AgG7mY",
+                            "text_inline_4eTyyi"
+                          ]
                         }
                       },
                       "block_order": [
-                        "text_ph3t3x",
-                        "text_gYC3gH",
-                        "text_4C64x8"
+                        "product_card_group_fiaTWw",
+                        "product_card_group_H4wpXx",
+                        "product_card_group_y7VjHm",
+                        "product_card_group_BetyhG"
                       ]
                     }
                   },
                   "block_order": [
-                    "product_card_group_n8cq3M",
-                    "product_title_XxL3J3",
-                    "product_card_group_AzWkak"
+                    "product_card_group_VgydLE",
+                    "product_title_jbVGxQ",
+                    "product_card_group_ddfmjh"
                   ]
                 },
-                "product_card_group_tEikAM": {
+                "product_card_group_x9CkHH": {
                   "type": "_product-card-group",
                   "name": "Content",
                   "settings": {
@@ -1500,7 +1829,7 @@
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
                     "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
+                    "gap": 16,
                     "width": "fill",
                     "custom_width": 100,
                     "width_mobile": "fill",
@@ -1528,15 +1857,15 @@
                     "padding-inline-end": 24
                   },
                   "blocks": {
-                    "price_EJBdCC": {
+                    "price_ymUbtL": {
                       "type": "price",
                       "name": "t:names.product_price",
                       "settings": {
                         "show_sale_price_first": true,
                         "show_installments": false,
                         "show_tax_info": false,
-                        "show_to_text": false,
-                        "show_tax_amount": false,
+                        "show_to_text": true,
+                        "show_tax_amount": true,
                         "type_preset": "h3",
                         "width": "100%",
                         "alignment": "left",
@@ -1552,27 +1881,66 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {}
+                    },
+                    "buy_buttons_xCMktr": {
+                      "type": "buy-buttons",
+                      "name": "t:names.product_buy_buttons",
+                      "settings": {
+                        "stacking": false,
+                        "show_pickup_availability": true,
+                        "gift_card_form": true,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "quantity": {
+                          "type": "quantity",
+                          "disabled": true,
+                          "static": true,
+                          "settings": {},
+                          "blocks": {}
+                        },
+                        "add-to-cart": {
+                          "type": "add-to-cart",
+                          "static": true,
+                          "settings": {
+                            "style_class": "button-secondary"
+                          },
+                          "blocks": {}
+                        },
+                        "accelerated-checkout": {
+                          "type": "accelerated-checkout",
+                          "disabled": true,
+                          "static": true,
+                          "settings": {},
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": []
                     }
                   },
                   "block_order": [
-                    "price_EJBdCC"
+                    "price_ymUbtL",
+                    "buy_buttons_xCMktr"
                   ]
                 }
               },
               "block_order": [
-                "product_card_group_wK8KNU",
-                "product_card_group_tEikAM"
+                "product_card_group_AbmgE3",
+                "product_card_group_x9CkHH"
               ]
             },
-            "product_card_hgxwc6": {
+            "product_card_gGmFxF": {
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "",
+                "product": "firma-tributaria-certificado-digital-sii",
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-1",
                 "content_direction": "column",
-                "product_card_gap": 4,
+                "product_card_gap": 24,
                 "border": "solid",
                 "border_width": 0,
                 "border_opacity": 100,
@@ -1583,7 +1951,7 @@
                 "padding-inline-end": 2
               },
               "blocks": {
-                "product_card_group_m6mcdB": {
+                "product_card_group_FCaWqq": {
                   "type": "_product-card-group",
                   "name": "Header",
                   "settings": {
@@ -1622,12 +1990,12 @@
                     "padding-inline-end": 22
                   },
                   "blocks": {
-                    "product_card_group_AVBQaa": {
+                    "product_card_group_7FtaeX": {
                       "type": "_product-card-group",
                       "name": "Images",
                       "settings": {
                         "content_direction": "row",
-                        "vertical_on_mobile": true,
+                        "vertical_on_mobile": false,
                         "horizontal_alignment": "space-between",
                         "vertical_alignment": "flex-start",
                         "align_baseline": false,
@@ -1661,16 +2029,17 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {
-                        "image_Ez8ig9": {
+                        "image_NgdjpM": {
                           "type": "image",
                           "name": "t:names.image",
                           "settings": {
+                            "image": "shopify://shop_images/Logo_de_Servicio_de_Impuestos_Internos_1.svg",
                             "link": "",
                             "image_ratio": "adapt",
                             "width": "custom",
-                            "custom_width": 45,
+                            "custom_width": 17,
                             "width_mobile": "custom",
-                            "custom_width_mobile": 45,
+                            "custom_width_mobile": 17,
                             "height": "fit",
                             "border": "none",
                             "border_width": 1,
@@ -1682,18 +2051,49 @@
                             "padding-inline-end": 0
                           },
                           "blocks": {}
+                        },
+                        "text_UHHaMK": {
+                          "type": "text",
+                          "name": "t:names.text",
+                          "disabled": true,
+                          "settings": {
+                            "text": "<p>Destacado</p>",
+                            "hidden": "none",
+                            "width": "fit-content",
+                            "max_width": "none",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": true,
+                            "background_color": "#f6dd00",
+                            "text_color": true,
+                            "text_color_foreground": "#986d00",
+                            "corner_radius": 16,
+                            "padding-block-start": 4,
+                            "padding-block-end": 4,
+                            "padding-inline-start": 16,
+                            "padding-inline-end": 16
+                          },
+                          "blocks": {}
                         }
                       },
                       "block_order": [
-                        "image_Ez8ig9"
+                        "image_NgdjpM",
+                        "text_UHHaMK"
                       ]
                     },
-                    "product_title_ebqpid": {
+                    "product_title_8K6jQa": {
                       "type": "product-title",
                       "name": "t:names.product_title",
                       "settings": {
                         "width": "100%",
-                        "max_width": "normal",
+                        "max_width": "none",
                         "alignment": "left",
                         "type_preset": "h4",
                         "font": "var(--font-body--family)",
@@ -1713,7 +2113,7 @@
                       },
                       "blocks": {}
                     },
-                    "product_card_group_gn6hyQ": {
+                    "product_card_group_WixtAe": {
                       "type": "_product-card-group",
                       "name": "Tags",
                       "settings": {
@@ -1752,108 +2152,366 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {
-                        "text_YrFJdt": {
-                          "type": "text",
-                          "name": "t:names.text",
+                        "product_card_group_LHCQ3P": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
                           "settings": {
-                            "text": "<p>Compra 100% online, rápida, segura y fácil de habilitar.</p>",
-                            "hidden": "none",
-                            "width": "100%",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 0,
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
                             "padding-inline-start": 0,
                             "padding-inline-end": 0
                           },
-                          "blocks": {}
+                          "blocks": {
+                            "icon_YDF3CX": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_ANa6mL": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Compra 100% online, rápida, segura y fácil de habilitar.",
+                                "hidden": "none",
+                                "width": "fit-content",
+                                "max_width": "none",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_YDF3CX",
+                            "text_inline_ANa6mL"
+                          ]
                         },
-                        "text_JDC6m6": {
-                          "type": "text",
-                          "name": "t:names.text",
+                        "product_card_group_f4Bwdh": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
                           "settings": {
-                            "text": "<p>Compra 100% online, rápida, segura y fácil de habilitar.</p>",
-                            "hidden": "none",
-                            "width": "100%",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 0,
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fill",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
                             "padding-inline-start": 0,
                             "padding-inline-end": 0
                           },
-                          "blocks": {}
+                          "blocks": {
+                            "icon_YKT9q3": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_Cj98FB": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Permite facturar en el Servicio de Impuestos Internos o en cualquier facturador del mercado.",
+                                "hidden": "none",
+                                "width": "100%",
+                                "max_width": "normal",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_YKT9q3",
+                            "text_inline_Cj98FB"
+                          ]
                         },
-                        "text_fGx4Mx": {
-                          "type": "text",
-                          "name": "t:names.text",
+                        "product_card_group_wdcfrJ": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
                           "settings": {
-                            "text": "<p>Compra 100% online, rápida, segura y fácil de habilitar.</p>",
-                            "hidden": "none",
-                            "width": "100%",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 0,
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
                             "padding-inline-start": 0,
                             "padding-inline-end": 0
                           },
-                          "blocks": {}
+                          "blocks": {
+                            "icon_EhXi3D": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_R3YxD9": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Certificado digital listo para centralizar en el Servicio de Impuestos Internos.",
+                                "hidden": "none",
+                                "width": "100%",
+                                "max_width": "normal",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_EhXi3D",
+                            "text_inline_R3YxD9"
+                          ]
+                        },
+                        "product_card_group_YH6P3Y": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
+                          "settings": {
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {
+                            "icon_3YENV7": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_7BMULk": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Permite autenticar la identidad del firmante para firmar documentos tributarios electrónicos",
+                                "hidden": "none",
+                                "width": "100%",
+                                "max_width": "normal",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_3YENV7",
+                            "text_inline_7BMULk"
+                          ]
                         }
                       },
                       "block_order": [
-                        "text_YrFJdt",
-                        "text_JDC6m6",
-                        "text_fGx4Mx"
+                        "product_card_group_LHCQ3P",
+                        "product_card_group_f4Bwdh",
+                        "product_card_group_wdcfrJ",
+                        "product_card_group_YH6P3Y"
                       ]
                     }
                   },
                   "block_order": [
-                    "product_card_group_AVBQaa",
-                    "product_title_ebqpid",
-                    "product_card_group_gn6hyQ"
+                    "product_card_group_7FtaeX",
+                    "product_title_8K6jQa",
+                    "product_card_group_WixtAe"
                   ]
                 },
-                "product_card_group_nWgyXD": {
+                "product_card_group_aCGpBL": {
                   "type": "_product-card-group",
                   "name": "Content",
                   "settings": {
@@ -1864,7 +2522,7 @@
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
                     "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
+                    "gap": 16,
                     "width": "fill",
                     "custom_width": 100,
                     "width_mobile": "fill",
@@ -1892,15 +2550,15 @@
                     "padding-inline-end": 24
                   },
                   "blocks": {
-                    "price_gUtLAh": {
+                    "price_a4dm4y": {
                       "type": "price",
                       "name": "t:names.product_price",
                       "settings": {
                         "show_sale_price_first": true,
                         "show_installments": false,
                         "show_tax_info": false,
-                        "show_to_text": false,
-                        "show_tax_amount": false,
+                        "show_to_text": true,
+                        "show_tax_amount": true,
                         "type_preset": "h3",
                         "width": "100%",
                         "alignment": "left",
@@ -1916,27 +2574,66 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {}
+                    },
+                    "buy_buttons_3Ye98P": {
+                      "type": "buy-buttons",
+                      "name": "t:names.product_buy_buttons",
+                      "settings": {
+                        "stacking": false,
+                        "show_pickup_availability": true,
+                        "gift_card_form": true,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "quantity": {
+                          "type": "quantity",
+                          "disabled": true,
+                          "static": true,
+                          "settings": {},
+                          "blocks": {}
+                        },
+                        "add-to-cart": {
+                          "type": "add-to-cart",
+                          "static": true,
+                          "settings": {
+                            "style_class": "button-secondary"
+                          },
+                          "blocks": {}
+                        },
+                        "accelerated-checkout": {
+                          "type": "accelerated-checkout",
+                          "disabled": true,
+                          "static": true,
+                          "settings": {},
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": []
                     }
                   },
                   "block_order": [
-                    "price_gUtLAh"
+                    "price_a4dm4y",
+                    "buy_buttons_3Ye98P"
                   ]
                 }
               },
               "block_order": [
-                "product_card_group_m6mcdB",
-                "product_card_group_nWgyXD"
+                "product_card_group_FCaWqq",
+                "product_card_group_aCGpBL"
               ]
             },
-            "product_card_67AWTt": {
+            "product_card_tk9Chz": {
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "",
+                "product": "firma-tributaria-certificado-digital-sii",
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-1",
                 "content_direction": "column",
-                "product_card_gap": 4,
+                "product_card_gap": 24,
                 "border": "solid",
                 "border_width": 0,
                 "border_opacity": 100,
@@ -1947,7 +2644,7 @@
                 "padding-inline-end": 2
               },
               "blocks": {
-                "product_card_group_FNexjp": {
+                "product_card_group_m8yJnh": {
                   "type": "_product-card-group",
                   "name": "Header",
                   "settings": {
@@ -1986,12 +2683,12 @@
                     "padding-inline-end": 22
                   },
                   "blocks": {
-                    "product_card_group_m8cwe6": {
+                    "product_card_group_XH4irA": {
                       "type": "_product-card-group",
                       "name": "Images",
                       "settings": {
                         "content_direction": "row",
-                        "vertical_on_mobile": true,
+                        "vertical_on_mobile": false,
                         "horizontal_alignment": "space-between",
                         "vertical_alignment": "flex-start",
                         "align_baseline": false,
@@ -2025,16 +2722,17 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {
-                        "image_ycztGJ": {
+                        "image_nQfjC4": {
                           "type": "image",
                           "name": "t:names.image",
                           "settings": {
+                            "image": "shopify://shop_images/Logo_de_Servicio_de_Impuestos_Internos_1.svg",
                             "link": "",
                             "image_ratio": "adapt",
                             "width": "custom",
-                            "custom_width": 45,
+                            "custom_width": 17,
                             "width_mobile": "custom",
-                            "custom_width_mobile": 45,
+                            "custom_width_mobile": 17,
                             "height": "fit",
                             "border": "none",
                             "border_width": 1,
@@ -2046,18 +2744,49 @@
                             "padding-inline-end": 0
                           },
                           "blocks": {}
+                        },
+                        "text_W7kTYk": {
+                          "type": "text",
+                          "name": "t:names.text",
+                          "disabled": true,
+                          "settings": {
+                            "text": "<p>Destacado</p>",
+                            "hidden": "none",
+                            "width": "fit-content",
+                            "max_width": "none",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": true,
+                            "background_color": "#f6dd00",
+                            "text_color": true,
+                            "text_color_foreground": "#986d00",
+                            "corner_radius": 16,
+                            "padding-block-start": 4,
+                            "padding-block-end": 4,
+                            "padding-inline-start": 16,
+                            "padding-inline-end": 16
+                          },
+                          "blocks": {}
                         }
                       },
                       "block_order": [
-                        "image_ycztGJ"
+                        "image_nQfjC4",
+                        "text_W7kTYk"
                       ]
                     },
-                    "product_title_r6wiT6": {
+                    "product_title_PFcHe7": {
                       "type": "product-title",
                       "name": "t:names.product_title",
                       "settings": {
                         "width": "100%",
-                        "max_width": "normal",
+                        "max_width": "none",
                         "alignment": "left",
                         "type_preset": "h4",
                         "font": "var(--font-body--family)",
@@ -2077,7 +2806,7 @@
                       },
                       "blocks": {}
                     },
-                    "product_card_group_dC6Kdm": {
+                    "product_card_group_3FAAmM": {
                       "type": "_product-card-group",
                       "name": "Tags",
                       "settings": {
@@ -2116,108 +2845,366 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {
-                        "text_kUeXcC": {
-                          "type": "text",
-                          "name": "t:names.text",
+                        "product_card_group_hVjNV4": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
                           "settings": {
-                            "text": "<p>Compra 100% online, rápida, segura y fácil de habilitar.</p>",
-                            "hidden": "none",
-                            "width": "100%",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 0,
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
                             "padding-inline-start": 0,
                             "padding-inline-end": 0
                           },
-                          "blocks": {}
+                          "blocks": {
+                            "icon_6gTaGU": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_7D3YjU": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Compra 100% online, rápida, segura y fácil de habilitar.",
+                                "hidden": "none",
+                                "width": "fit-content",
+                                "max_width": "none",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_6gTaGU",
+                            "text_inline_7D3YjU"
+                          ]
                         },
-                        "text_eWccne": {
-                          "type": "text",
-                          "name": "t:names.text",
+                        "product_card_group_fc6h38": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
                           "settings": {
-                            "text": "<p>Compra 100% online, rápida, segura y fácil de habilitar.</p>",
-                            "hidden": "none",
-                            "width": "100%",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 0,
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fill",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
                             "padding-inline-start": 0,
                             "padding-inline-end": 0
                           },
-                          "blocks": {}
+                          "blocks": {
+                            "icon_HcJeq4": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_YBnNXL": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Permite facturar en el Servicio de Impuestos Internos o en cualquier facturador del mercado.",
+                                "hidden": "none",
+                                "width": "100%",
+                                "max_width": "normal",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_HcJeq4",
+                            "text_inline_YBnNXL"
+                          ]
                         },
-                        "text_NT7gUt": {
-                          "type": "text",
-                          "name": "t:names.text",
+                        "product_card_group_qaGnHA": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
                           "settings": {
-                            "text": "<p>Compra 100% online, rápida, segura y fácil de habilitar.</p>",
-                            "hidden": "none",
-                            "width": "100%",
-                            "max_width": "none",
-                            "alignment": "left",
-                            "type_preset": "h6",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "text_color": false,
-                            "text_color_foreground": "#00000026",
-                            "corner_radius": 0,
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
                             "padding-inline-start": 0,
                             "padding-inline-end": 0
                           },
-                          "blocks": {}
+                          "blocks": {
+                            "icon_aTYtUT": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_R7Jmbf": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Certificado digital listo para centralizar en el Servicio de Impuestos Internos.",
+                                "hidden": "none",
+                                "width": "100%",
+                                "max_width": "normal",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_aTYtUT",
+                            "text_inline_R7Jmbf"
+                          ]
+                        },
+                        "product_card_group_bhzqPP": {
+                          "type": "_product-card-group",
+                          "name": "t:names.bullet",
+                          "settings": {
+                            "content_direction": "row",
+                            "vertical_on_mobile": false,
+                            "horizontal_alignment": "flex-start",
+                            "vertical_alignment": "flex-start",
+                            "align_baseline": false,
+                            "horizontal_alignment_flex_direction_column": "flex-start",
+                            "vertical_alignment_flex_direction_column": "center",
+                            "gap": 12,
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fill",
+                            "custom_width_mobile": 100,
+                            "height": "fit",
+                            "custom_height": 100,
+                            "inherit_color_scheme": false,
+                            "color_scheme": "scheme-1",
+                            "background_media": "none",
+                            "video_position": "cover",
+                            "background_image_position": "cover",
+                            "border": "none",
+                            "border_width": 1,
+                            "border_opacity": 100,
+                            "border_radius": 0,
+                            "toggle_overlay": false,
+                            "overlay_color": "#00000026",
+                            "overlay_style": "solid",
+                            "gradient_direction": "to top",
+                            "link": "",
+                            "open_in_new_tab": false,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {
+                            "icon_e8FmFD": {
+                              "type": "icon",
+                              "name": "t:names.icon",
+                              "settings": {
+                                "icon": "apple",
+                                "image_upload": "shopify://shop_images/checkbox-circle-red.svg",
+                                "width": 24,
+                                "link": "",
+                                "open_in_new_tab": false
+                              },
+                              "blocks": {}
+                            },
+                            "text_inline_kXVhMB": {
+                              "type": "text-inline",
+                              "name": "t:names.text",
+                              "settings": {
+                                "text": "Permite autenticar la identidad del firmante para firmar documentos tributarios electrónicos",
+                                "hidden": "none",
+                                "width": "100%",
+                                "max_width": "normal",
+                                "alignment": "left",
+                                "type_preset": "rte",
+                                "font": "var(--font-body--family)",
+                                "font_size": "1rem",
+                                "line_height": "normal",
+                                "letter_spacing": "normal",
+                                "case": "none",
+                                "wrap": "pretty",
+                                "color": "var(--color-foreground)",
+                                "background": false,
+                                "background_color": "#00000026",
+                                "text_color": false,
+                                "text_color_foreground": "#00000026",
+                                "corner_radius": 0,
+                                "padding-block-start": 0,
+                                "padding-block-end": 0,
+                                "padding-inline-start": 0,
+                                "padding-inline-end": 0
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "icon_e8FmFD",
+                            "text_inline_kXVhMB"
+                          ]
                         }
                       },
                       "block_order": [
-                        "text_kUeXcC",
-                        "text_eWccne",
-                        "text_NT7gUt"
+                        "product_card_group_hVjNV4",
+                        "product_card_group_fc6h38",
+                        "product_card_group_qaGnHA",
+                        "product_card_group_bhzqPP"
                       ]
                     }
                   },
                   "block_order": [
-                    "product_card_group_m8cwe6",
-                    "product_title_r6wiT6",
-                    "product_card_group_dC6Kdm"
+                    "product_card_group_XH4irA",
+                    "product_title_PFcHe7",
+                    "product_card_group_3FAAmM"
                   ]
                 },
-                "product_card_group_aDKbyH": {
+                "product_card_group_3fnQLz": {
                   "type": "_product-card-group",
                   "name": "Content",
                   "settings": {
@@ -2228,7 +3215,7 @@
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
                     "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
+                    "gap": 16,
                     "width": "fill",
                     "custom_width": 100,
                     "width_mobile": "fill",
@@ -2256,15 +3243,15 @@
                     "padding-inline-end": 24
                   },
                   "blocks": {
-                    "price_gnUadt": {
+                    "price_xhWRVx": {
                       "type": "price",
                       "name": "t:names.product_price",
                       "settings": {
                         "show_sale_price_first": true,
                         "show_installments": false,
                         "show_tax_info": false,
-                        "show_to_text": false,
-                        "show_tax_amount": false,
+                        "show_to_text": true,
+                        "show_tax_amount": true,
                         "type_preset": "h3",
                         "width": "100%",
                         "alignment": "left",
@@ -2280,24 +3267,63 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {}
+                    },
+                    "buy_buttons_zFhRqw": {
+                      "type": "buy-buttons",
+                      "name": "t:names.product_buy_buttons",
+                      "settings": {
+                        "stacking": false,
+                        "show_pickup_availability": true,
+                        "gift_card_form": true,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "quantity": {
+                          "type": "quantity",
+                          "disabled": true,
+                          "static": true,
+                          "settings": {},
+                          "blocks": {}
+                        },
+                        "add-to-cart": {
+                          "type": "add-to-cart",
+                          "static": true,
+                          "settings": {
+                            "style_class": "button-secondary"
+                          },
+                          "blocks": {}
+                        },
+                        "accelerated-checkout": {
+                          "type": "accelerated-checkout",
+                          "disabled": true,
+                          "static": true,
+                          "settings": {},
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": []
                     }
                   },
                   "block_order": [
-                    "price_gnUadt"
+                    "price_xhWRVx",
+                    "buy_buttons_zFhRqw"
                   ]
                 }
               },
               "block_order": [
-                "product_card_group_FNexjp",
-                "product_card_group_aDKbyH"
+                "product_card_group_m8yJnh",
+                "product_card_group_3fnQLz"
               ]
             }
           },
           "block_order": [
             "product_card_nMVt89",
-            "product_card_tXELYn",
-            "product_card_hgxwc6",
-            "product_card_67AWTt"
+            "product_card_ECQxWN",
+            "product_card_gGmFxF",
+            "product_card_tk9Chz"
           ]
         }
       },
