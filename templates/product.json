@@ -690,8 +690,8 @@
                   "settings": {
                     "text": "<p>Modo de firmado</p>",
                     "hidden": "none",
-                    "width": "fit-content",
-                    "max_width": "normal",
+                    "width": "100%",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "h4",
                     "font": "var(--font-body--family)",
@@ -719,8 +719,8 @@
                   "settings": {
                     "text": "{{ closest.product.metafields.option.description | metafield_text }}",
                     "hidden": "none",
-                    "width": "fit-content",
-                    "max_width": "normal",
+                    "width": "100%",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
