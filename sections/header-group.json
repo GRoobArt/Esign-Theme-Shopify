@@ -25,7 +25,7 @@
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
+            "gap": 32,
             "width": "fit-content",
             "custom_width": 100,
             "width_mobile": "fit-content",
@@ -99,6 +99,7 @@
                   "name": "t:names.icon",
                   "settings": {
                     "icon": "price_tag",
+                    "image_upload": "shopify://shop_images/phone.svg",
                     "width": 24,
                     "link": "",
                     "open_in_new_tab": false
@@ -185,6 +186,7 @@
                   "name": "t:names.icon",
                   "settings": {
                     "icon": "price_tag",
+                    "image_upload": "shopify://shop_images/center.svg",
                     "width": 24,
                     "link": "",
                     "open_in_new_tab": false
