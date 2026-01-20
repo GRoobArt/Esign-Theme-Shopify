@@ -551,7 +551,7 @@
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "firma-tributaria-certificado-digital-sii",
+                "product": "certificado-digital-avanzado-clave-unica",
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-6",
                 "content_direction": "column",
@@ -1243,7 +1243,7 @@
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "firma-tributaria-certificado-digital-sii",
+                "product": "certificado-digital-avanzado-clave-unica",
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-1",
                 "content_direction": "column",
@@ -1936,7 +1936,7 @@
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "firma-tributaria-certificado-digital-sii",
+                "product": "certificado-digital-avanzado-clave-unica",
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-1",
                 "content_direction": "column",
@@ -2629,7 +2629,7 @@
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "firma-tributaria-certificado-digital-sii",
+                "product": "certificado-digital-avanzado-clave-unica",
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-1",
                 "content_direction": "column",
