@@ -57,7 +57,7 @@
           "type": "tabs",
           "name": "t:names.tabs",
           "settings": {
-            "variant": "solid",
+            "variant": "underline",
             "alignment": "flex-start",
             "tab_width": "fit-content",
             "gap": 16,
@@ -147,7 +147,7 @@
                 "text_GK8dLc": {
                   "type": "text",
                   "settings": {
-                    "text": "<h3>Our goal is for every customer.</h3>",
+                    "text": "{{ closest.collection.description }}",
                     "hidden": "none",
                     "width": "100%",
                     "max_width": "normal",
