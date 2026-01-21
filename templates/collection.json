@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "section": {
       "type": "section",
@@ -16,6 +17,7 @@
           "name": "Title",
           "settings": {
             "text": "<h1>{{ closest.collection.title }}</h1>",
+            "hidden": "none",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -29,6 +31,8 @@
             "color": "",
             "background": false,
             "background_color": "#00000026",
+            "text_color": false,
+            "text_color_foreground": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -42,6 +46,7 @@
           "name": "Description",
           "settings": {
             "text": "{{ closest.collection.description }}",
+            "hidden": "none",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -55,6 +60,8 @@
             "color": "",
             "background": false,
             "background_color": "#00000026",
+            "text_color": false,
+            "text_color_foreground": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -127,9 +134,10 @@
           "type": "_product-card",
           "static": true,
           "settings": {
-            "product_card_gap": 4,
             "inherit_color_scheme": true,
             "color_scheme": "",
+            "content_direction": "column",
+            "product_card_gap": 4,
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
@@ -186,6 +194,8 @@
                 "show_sale_price_first": true,
                 "show_installments": false,
                 "show_tax_info": false,
+                "show_to_text": false,
+                "show_tax_amount": false,
                 "type_preset": "h6",
                 "width": "100%",
                 "alignment": "left",
@@ -212,8 +222,10 @@
       },
       "settings": {
         "layout_type": "grid",
-        "product_card_size": "medium",
+        "product_card_size": "large",
         "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
         "product_grid_width": "centered",
         "full_width_on_mobile": true,
         "columns_gap_horizontal": 16,
