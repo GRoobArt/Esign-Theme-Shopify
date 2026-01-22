@@ -20,9 +20,9 @@
         Entrar
       </span>
     </a>
-
+  {%  else %}
+    {% render 'account-button' with 'account-popover' as popover_id %}
   {% endunless %}
-  {% render 'account-button' with 'account-popover' as popover_id %}
   <div
     class="account-popover__panel details-content color-{{ settings.popover_color_scheme }}"
     id="account-popover"
