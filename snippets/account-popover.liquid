@@ -6,20 +6,22 @@
   @param {string} [settings.popover_color_scheme] - The color scheme for the popover panel.
 {%- enddoc -%}
 
-<a class="mobile:hidden account-anchor" 
-    href="{% if request.design_mode %}{{ routes.account_url }}{% else %}{{ routes.storefront_login_url }}{% endif %}">
-  <span class="button size-sm button-left">
-    Crea tu Cuenta
-  </span>
-  <span class="button-secondary size-sm button-right">
-    Entrar
-  </span>
-</a>
-
 <anchored-popover-component
   data-close-on-resize="true"
   class="account-popover mobile:hidden"
 >
+  {%  unless customer %}
+    <a class="mobile:hidden account-anchor" 
+        href="{% if request.design_mode %}{{ routes.account_url }}{% else %}{{ routes.storefront_login_url }}{% endif %}">
+      <span class="button size-sm button-left">
+        Crea tu Cuenta
+      </span>
+      <span class="button-secondary size-sm button-right">
+        Entrar
+      </span>
+    </a>
+
+  {% endunless %}
   {% render 'account-button' with 'account-popover' as popover_id %}
   <div
     class="account-popover__panel details-content color-{{ settings.popover_color_scheme }}"
