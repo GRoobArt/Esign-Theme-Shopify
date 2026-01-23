@@ -360,7 +360,7 @@
         "announcement_AGffVC": {
           "type": "_announcement",
           "settings": {
-            "text": "Estimado cliente, nuestro horario de atención presencial es de lunes a jueves de 9:00 a 17:00 hrs. Viernes sin atención presencial. Para ventas escríbenos a <strong>ventas@firma.cl</strong> o contáctanos por WhatsApp al<strong> +56 9 7862 2993</strong>",
+            "text": "Si necesitas soporte agenda una hora en <strong>Calendly</strong>. Para una mejor atención y venta personalizada escríbenos a<strong> ventas@firma.cl.</strong>",
             "link": "",
             "font": "var(--font-body--family)",
             "font_size": "0.75rem",
