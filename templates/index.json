@@ -1514,7 +1514,7 @@
                               "type": "text-inline",
                               "name": "t:names.text",
                               "settings": {
-                                "text": "Compra 100% online, rápida, segura y fácil de habilitar.",
+                                "text": "Compra 100% online con Clave Única <strong>¡sin validación presencial ni uso de token!</strong>",
                                 "hidden": "none",
                                 "width": "fit-content",
                                 "max_width": "none",
@@ -1600,7 +1600,7 @@
                               "type": "text-inline",
                               "name": "t:names.text",
                               "settings": {
-                                "text": "Permite facturar en el Servicio de Impuestos Internos o en cualquier facturador del mercado.",
+                                "text": "Firma tus documentos electrónicos desde tu celular, computador, o tablet en modo web.",
                                 "hidden": "none",
                                 "width": "100%",
                                 "max_width": "normal",
@@ -1686,7 +1686,7 @@
                               "type": "text-inline",
                               "name": "t:names.text",
                               "settings": {
-                                "text": "Certificado digital listo para centralizar en el Servicio de Impuestos Internos.",
+                                "text": "Con validez legal como la firma de puño y letra de la persona.",
                                 "hidden": "none",
                                 "width": "100%",
                                 "max_width": "normal",
@@ -1772,7 +1772,7 @@
                               "type": "text-inline",
                               "name": "t:names.text",
                               "settings": {
-                                "text": "Permite autenticar la identidad del firmante para firmar documentos tributarios electrónicos",
+                                "text": "Permite firmar todo tipo de documentos electrónicos.",
                                 "hidden": "none",
                                 "width": "100%",
                                 "max_width": "normal",
