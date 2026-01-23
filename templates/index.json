@@ -2323,7 +2323,7 @@
                               "type": "text-inline",
                               "name": "t:names.text",
                               "settings": {
-                                "text": "Crea y firma tu constitución de empresa con Clave Única y un código SMS.",
+                                "text": "Compra 100% online sin uso de token, descarga ni instalación.",
                                 "hidden": "none",
                                 "width": "fit-content",
                                 "max_width": "none",
@@ -2410,7 +2410,7 @@
                               "type": "text-inline",
                               "name": "t:names.text",
                               "settings": {
-                                "text": "Crea y firma tu constitución de empresa con Clave Única y un código SMS.",
+                                "text": "Continúa firmando ilimitadamente tus documentos electrónicos por 60 días.",
                                 "hidden": "none",
                                 "width": "fit-content",
                                 "max_width": "none",
@@ -2497,7 +2497,7 @@
                               "type": "text-inline",
                               "name": "t:names.text",
                               "settings": {
-                                "text": "Crea y firma tu constitución de empresa con Clave Única y un código SMS.",
+                                "text": "Esta firma es necesaria para usar en el <strong>Registro de Empresas y Sociedades.</strong>",
                                 "hidden": "none",
                                 "width": "fit-content",
                                 "max_width": "none",
