@@ -4159,31 +4159,6 @@
                   },
                   "blocks": {}
                 },
-                "price_KRifRt": {
-                  "type": "price",
-                  "name": "t:names.product_price",
-                  "settings": {
-                    "show_sale_price_first": true,
-                    "show_installments": false,
-                    "show_tax_info": false,
-                    "show_to_text": true,
-                    "show_tax_amount": true,
-                    "type_preset": "paragraph",
-                    "width": "100%",
-                    "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "color": "var(--color-foreground)",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
                 "product_card_group_JfzCDc": {
                   "type": "_product-card-group",
                   "name": "t:names.group",
@@ -4223,6 +4198,31 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
+                    "price_wLNyRG": {
+                      "type": "price",
+                      "name": "t:names.product_price",
+                      "settings": {
+                        "show_sale_price_first": true,
+                        "show_installments": false,
+                        "show_tax_info": false,
+                        "show_to_text": true,
+                        "show_tax_amount": true,
+                        "type_preset": "paragraph",
+                        "width": "100%",
+                        "alignment": "left",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "color": "var(--color-foreground)",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
                     "button_TJCUiH": {
                       "type": "button",
                       "name": "t:names.button",
@@ -4242,13 +4242,13 @@
                     }
                   },
                   "block_order": [
+                    "price_wLNyRG",
                     "button_TJCUiH"
                   ]
                 }
               },
               "block_order": [
                 "product_title_XaU8Db",
-                "price_KRifRt",
                 "product_card_group_JfzCDc"
               ]
             }
