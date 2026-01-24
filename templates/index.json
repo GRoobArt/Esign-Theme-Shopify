@@ -1228,11 +1228,29 @@
                         }
                       },
                       "block_order": []
+                    },
+                    "button_mcwCrn": {
+                      "type": "button",
+                      "name": "t:names.button",
+                      "settings": {
+                        "label": "Ver Más Información",
+                        "link": "{{ closest.product.url }}",
+                        "open_in_new_tab": false,
+                        "hidden": "none",
+                        "style_class": "link",
+                        "size_class": "none",
+                        "width": "custom",
+                        "custom_width": 100,
+                        "width_mobile": "custom",
+                        "custom_width_mobile": 100
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
                     "price_f3WGex",
-                    "buy_buttons_WDinhd"
+                    "buy_buttons_WDinhd",
+                    "button_mcwCrn"
                   ]
                 }
               },
@@ -1923,11 +1941,29 @@
                         }
                       },
                       "block_order": []
+                    },
+                    "button_8QHmJY": {
+                      "type": "button",
+                      "name": "t:names.button",
+                      "settings": {
+                        "label": "Ver Más Información",
+                        "link": "{{ closest.product.url }}",
+                        "open_in_new_tab": false,
+                        "hidden": "none",
+                        "style_class": "link",
+                        "size_class": "none",
+                        "width": "custom",
+                        "custom_width": 100,
+                        "width_mobile": "custom",
+                        "custom_width_mobile": 100
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
                     "price_ymUbtL",
-                    "buy_buttons_xCMktr"
+                    "buy_buttons_xCMktr",
+                    "button_8QHmJY"
                   ]
                 }
               },
@@ -2814,11 +2850,29 @@
                         "custom_width_mobile": 100
                       },
                       "blocks": {}
+                    },
+                    "button_ygdkzx": {
+                      "type": "button",
+                      "name": "t:names.button",
+                      "settings": {
+                        "label": "Ver Más Información",
+                        "link": "{{ closest.product.url }}",
+                        "open_in_new_tab": false,
+                        "hidden": "none",
+                        "style_class": "link",
+                        "size_class": "none",
+                        "width": "custom",
+                        "custom_width": 100,
+                        "width_mobile": "custom",
+                        "custom_width_mobile": 100
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
                     "group_pzzybd",
-                    "button_qR38EX"
+                    "button_qR38EX",
+                    "button_ygdkzx"
                   ]
                 }
               },
@@ -3509,11 +3563,29 @@
                         }
                       },
                       "block_order": []
+                    },
+                    "button_TdJyit": {
+                      "type": "button",
+                      "name": "t:names.button",
+                      "settings": {
+                        "label": "Ver Más Información",
+                        "link": "{{ closest.product.url }}",
+                        "open_in_new_tab": false,
+                        "hidden": "none",
+                        "style_class": "link",
+                        "size_class": "none",
+                        "width": "custom",
+                        "custom_width": 100,
+                        "width_mobile": "custom",
+                        "custom_width_mobile": 100
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
                     "price_xhWRVx",
-                    "buy_buttons_zFhRqw"
+                    "buy_buttons_zFhRqw",
+                    "button_TdJyit"
                   ]
                 }
               },
