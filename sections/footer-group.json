@@ -101,6 +101,8 @@
                     "thickness": 5,
                     "corner_radius": "square",
                     "width_percent": 100,
+                    "custom_border_color": false,
+                    "border_color": "",
                     "padding-block-start": 0,
                     "padding-block-end": 0
                   },
@@ -177,6 +179,8 @@
                 "thickness": 1,
                 "corner_radius": "square",
                 "width_percent": 100,
+                "custom_border_color": true,
+                "border_color": "#ffffff",
                 "padding-block-start": 0,
                 "padding-block-end": 0
               },
@@ -336,6 +340,8 @@
                     "thickness": 5,
                     "corner_radius": "square",
                     "width_percent": 100,
+                    "custom_border_color": false,
+                    "border_color": "",
                     "padding-block-start": 0,
                     "padding-block-end": 0
                   },
@@ -558,6 +564,8 @@
                     "thickness": 5,
                     "corner_radius": "square",
                     "width_percent": 100,
+                    "custom_border_color": false,
+                    "border_color": "",
                     "padding-block-start": 0,
                     "padding-block-end": 0
                   },
@@ -645,6 +653,8 @@
                     "thickness": 5,
                     "corner_radius": "square",
                     "width_percent": 100,
+                    "custom_border_color": false,
+                    "border_color": "",
                     "padding-block-start": 0,
                     "padding-block-end": 0
                   },
@@ -732,6 +742,8 @@
                     "thickness": 5,
                     "corner_radius": "square",
                     "width_percent": 100,
+                    "custom_border_color": false,
+                    "border_color": "",
                     "padding-block-start": 0,
                     "padding-block-end": 0
                   },
@@ -819,6 +831,8 @@
                     "thickness": 5,
                     "corner_radius": "square",
                     "width_percent": 100,
+                    "custom_border_color": false,
+                    "border_color": "",
                     "padding-block-start": 0,
                     "padding-block-end": 0
                   },
