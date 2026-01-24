@@ -20,12 +20,19 @@
 
 {% capture class %}
   image-block image-block--{{ block.id }} image-block--height-{{ block_settings.height }} spacing-style size-style
+  {% if block_settings.hidden != 'none' %}
+      {% echo ' ' %}
+      {% echo block_settings.hidden %}
+  {% endif %}
 {% endcapture %}
 
 {% capture style %}
   --ratio: {{ ratio }};
   {% render 'size-style', settings: block_settings %}
   {% render 'spacing-style', settings: block_settings %}
+  {% if block_settings.height == 'max-height' %}
+    --max-height: {{ block_settings.custom_height}}px;
+  {% endif %}
 {% endcapture %}
 
 {% capture image_border_style %}
@@ -99,6 +106,13 @@
     justify-content: var(--horizontal-alignment, 'inline-start');
   }
 
+  .image-block--height-max-height{
+    max-height: var(--max-height);
+    img {
+      object-fit: contain;
+    }
+  }
+
   .image-block--height-fill .image-block__image {
     height: 100%;
   }
@@ -123,6 +137,26 @@
       "type": "url",
       "id": "link",
       "label": "t:settings.link"
+    },
+    {
+      "type": "select",
+      "id": "hidden",
+      "label": "t:names.display",
+      "options": [
+        {
+          "value": "hidden--desktop",
+          "label": "t:options.hidden_desktop"
+        },
+        {
+          "value": "hidden--mobile",
+          "label": "t:options.hidden_mobile"
+        },
+        {
+          "value": "none",
+          "label": "t:options.none"
+        }
+      ],
+      "default": "none"
     },
     {
       "type": "header",
@@ -220,16 +254,31 @@
       "label": "t:settings.height",
       "options": [
         {
-          "value": "fit",
+          "value": "fit-content",
           "label": "t:options.fit_content"
         },
         {
           "value": "fill",
           "label": "t:options.fill"
+        },
+        {
+          "value": "max-height",
+          "label": "t:options.max-height"
         }
       ],
-      "default": "fit",
+      "default": "fit-content",
       "visible_if": "{{ block.settings.image_ratio == 'adapt' }}"
+    },
+    {
+      "type": "range",
+      "id": "custom_height",
+      "label": "t:settings.custom_height",
+      "min": 32,
+      "max": 432,
+      "step": 4,
+      "unit": "px",
+      "default": 96,
+      "visible_if": "{{ block.settings.height == 'max-height' }}"
     },
     {
       "type": "header",

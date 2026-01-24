@@ -18,6 +18,8 @@
     assign product_grid_class = product_grid_class | append: ' product-information--media-none'
   elsif section.settings.desktop_media_position == 'right'
     assign product_grid_class = product_grid_class | append: ' product-information--media-right'
+  elsif section.settings.desktop_media_position == 'top'
+    assign product_grid_class = product_grid_class | append: ' product-information--media-top'
   else
     assign product_grid_class = product_grid_class | append: ' product-information--media-left'
   endif
@@ -99,6 +101,7 @@
     display: grid;
     grid-template-columns: subgrid;
     grid-column: 1 / -1;
+    gap: var(--gap);
 
     product-price > div:first-child  {
       .price-tax{
@@ -183,6 +186,10 @@
         &:has(.media-gallery--extend) {
           grid-column: 2 / -1;
         }
+      }
+      
+      &.product-information--media-top{
+        gap: var(--gap);
       }
 
       /* Equal width columns */
@@ -332,6 +339,10 @@
         {
           "value": "left",
           "label": "t:options.left"
+        },
+        {
+          "value": "top",
+          "label": "t:options.top"
         },
         {
           "value": "right",

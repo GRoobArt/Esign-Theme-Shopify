@@ -225,6 +225,7 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    "file": "File",
     "bullet": "Bullet",
     "text_inline": "Text Inline",
     "visuality": "Visual",
@@ -419,6 +420,7 @@
     "pills": "Pills"
   },
   "options": {
+    "max-height": "Max Height",
     "hidden_desktop": "Hidden Desktop",
     "hidden_mobile": "Hidden Mobile",
     "above_carousel": "Above carousel",

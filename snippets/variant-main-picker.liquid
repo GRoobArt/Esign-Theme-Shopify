@@ -19,8 +19,8 @@
     assign label_options = product_resource.metafields.option.description.value
   %}
   <variant-picker
-    class="variant-picker spacing-style variant-picker--{{ block_settings.alignment }}"
-    style="--color-strikethrough-mix: {{ strikethrough_color_mix }}; {% render 'spacing-style', settings: block_settings %}"
+    class="variant-picker variant-picker--{{ block_settings.alignment }}"
+    style="--color-strikethrough-mix: {{ strikethrough_color_mix }};"
     data-section-id="{{ section.id }}"
     data-product-id="{{ product_resource.id }}"
     data-block-id="{{ block.id }}"
@@ -34,7 +34,11 @@
       data-shopify-visual-preview
     {% endif %}
   >
-    <form class="variant-picker__form">
+    <form class="
+      layout-panel-flex
+      layout-panel-flex--{{ block_settings.content_direction | default: 'column' }}
+      {% if block_settings.vertical_on_mobile %} mobile-column{% endif %}
+    " style="{% render 'layout-panel-style', settings: block_settings %}">
       {%- for product_option in product_resource.options_with_values -%}
         {% assign label = label_options[forloop.index0] %}
 
@@ -151,12 +155,19 @@
             endif
           %}
 
-          <div class="variant-option variant-option--dropdowns">
+          <div class="variant-option variant-option--dropdowns spacing-style border-style
+                {% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}
+              " 
+               style="
+               {% render 'spacing-style', settings: block_settings %} 
+               {% render 'border-override', settings: block_settings %}">
             <div class="variant-picker__header">
               <label for="Option-{{ block.id }}-{{ forloop.index0 }}" class="h4" style="
                 --color: var(--color-foreground-heading);
               ">{{ product_option.name | escape }}</label>
-              {% render 'text', fallback_text: label %}
+              <div class="text-block">
+                {{ label }}
+              </div>
             </div>
             <div
               class="variant-option__select-wrapper"
@@ -211,14 +222,16 @@
 {% endunless %}
 
 {% stylesheet %}
+  /* 
   .variant-picker {
     width: 100%;
-  }
+  } 
+  */
 
   .variant-picker__form {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-lg);
+    gap: var(--gap);
     width: 100%;
   }
 
@@ -236,6 +249,7 @@
     --options-border-radius: var(--variant-picker-button-radius);
     --options-border-width: var(--variant-picker-button-border-width);
     --variant-option-padding-inline: var(--padding-md);
+    flex: 1;
   }
 
   .variant-option--swatches {
