@@ -222,11 +222,11 @@
 {% endunless %}
 
 {% stylesheet %}
-  /* 
   .variant-picker {
-    width: 100%;
+    @media (max-width: 749px) {
+        width: 100%;
+    }
   } 
-  */
 
   .variant-picker__form {
     display: flex;
