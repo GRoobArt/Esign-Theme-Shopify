@@ -678,7 +678,7 @@
                         "size_class": "size-sm",
                         "width": "fit-content",
                         "custom_width": 100,
-                        "width_mobile": "fit-content",
+                        "width_mobile": "custom",
                         "custom_width_mobile": 100
                       },
                       "blocks": {}
