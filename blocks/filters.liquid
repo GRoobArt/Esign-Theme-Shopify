@@ -1,4 +1,3 @@
-
 {%- doc -%}
   Renders the facet filtering component
 
@@ -158,38 +157,54 @@
 
               {% capture rendered_filters %}
                 {%- for filter in filters -%}
-                  {% case filter.type %}
-                    {% when 'price_range' %}
-                      {%- liquid
-                        if filter.min_value.value != null or filter.max_value.value != null
-                          assign total_active_values = total_active_values | plus: 1
-                          assign is_active = true
-                        endif
-
-                        if block_settings.filter_style != 'vertical'
-                          assign should_render_clear = true
-                        else
-                          assign should_render_clear = false
-                        endif
-
-                        render 'price-filter', filter: filter, filter_style: block_settings.filter_style, should_render_clear: should_render_clear
-                      -%}
+                    {% if filters.size == 1 and filter.label == 'Tipos' %}
+                        {% liquid
+                          if filter.active_values.size > 0
+                            assign is_active = true
+                          endif
+                          assign active_value_count = filter.active_values | size
+                          assign total_active_values = total_active_values | plus: active_value_count
+                          if block_settings.filter_style != 'vertical'
+                            assign should_render_clear = true
+                          else
+                            assign should_render_clear = false
+                          endif
+                          render 'pills-filter', filter: filter, filter_style: block_settings.filter_style, active_value_count: active_value_count, should_render_clear: should_render_clear, show_swatch_label: block_settings.show_swatch_label, sectionId: section.id
+                        %}
                     {% else %}
-                      {% liquid
-                        if filter.active_values.size > 0
-                          assign is_active = true
-                        endif
+                    {% case filter.type %}
+                      {% when 'price_range' %}
+                        {%- liquid
+                          if filter.min_value.value != null or filter.max_value.value != null
+                            assign total_active_values = total_active_values | plus: 1
+                            assign is_active = true
+                          endif
 
-                        assign active_value_count = filter.active_values | size
-                        assign total_active_values = total_active_values | plus: active_value_count
-                        if block_settings.filter_style != 'vertical'
-                          assign should_render_clear = true
-                        else
-                          assign should_render_clear = false
-                        endif
-                        render 'list-filter', filter: filter, filter_style: block_settings.filter_style, active_value_count: active_value_count, should_render_clear: should_render_clear, show_swatch_label: block_settings.show_swatch_label, sectionId: section.id
-                      %}
-                  {% endcase %}
+                          if block_settings.filter_style != 'vertical'
+                            assign should_render_clear = true
+                          else
+                            assign should_render_clear = false
+                          endif
+
+                          render 'price-filter', filter: filter, filter_style: block_settings.filter_style, should_render_clear: should_render_clear
+                        -%}
+                      {% else %}
+                        {% liquid
+                          if filter.active_values.size > 0
+                            assign is_active = true
+                          endif
+
+                          assign active_value_count = filter.active_values | size
+                          assign total_active_values = total_active_values | plus: active_value_count
+                          if block_settings.filter_style != 'vertical'
+                            assign should_render_clear = true
+                          else
+                            assign should_render_clear = false
+                          endif
+                          render 'list-filter', filter: filter, filter_style: block_settings.filter_style, active_value_count: active_value_count, should_render_clear: should_render_clear, show_swatch_label: block_settings.show_swatch_label, sectionId: section.id
+                        %}
+                    {% endcase %}
+                  {% endif %}
                 {%- endfor -%}
               {% endcapture %}
 
@@ -628,6 +643,10 @@
     flex-direction: column;
     color: var(--color-foreground-muted);
     width: 100%;
+
+    > .facets__form{
+      justify-content: center;
+    }
   }
 
   .facets--horizontal .facets__form-wrapper {
@@ -822,6 +841,10 @@
     }
   }
 
+  .facets__inputs-wrapper.facets__inputs-wrapper--row {
+    padding: 0;
+  }
+
   .facets__inputs-wrapper--row:not(:has(.facets__inputs-list)),
   .facets__inputs-wrapper--row .facets__inputs-list {
     flex-wrap: wrap;
@@ -963,7 +986,6 @@
   .facets--horizontal .products-count-wrapper {
     @media screen and (min-width: 750px) {
       display: flex;
-      margin-left: auto;
       flex-shrink: 0;
       align-items: center;
       height: var(--minimum-touch-target);

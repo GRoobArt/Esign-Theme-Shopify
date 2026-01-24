@@ -31,7 +31,7 @@
   {% render 'size-style', settings: block_settings %}
   {% render 'spacing-style', settings: block_settings %}
   {% if block_settings.height == 'max-height' %}
-    --max-height: {{ block_settings.custom_height}}px;
+    --max-height: {{ block_settings.custom_height }}px;
   {% endif %}
 {% endcapture %}
 
@@ -266,8 +266,7 @@
           "label": "t:options.max-height"
         }
       ],
-      "default": "fit-content",
-      "visible_if": "{{ block.settings.image_ratio == 'adapt' }}"
+      "default": "fit-content"    
     },
     {
       "type": "range",

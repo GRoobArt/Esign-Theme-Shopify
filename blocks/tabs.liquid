@@ -67,7 +67,6 @@
     min-height: var(--minimum-touch-target, 44px);
     padding-inline: var(--tabs-trigger-padding, 1rem);
     padding-block: 0.35rem;
-    padding-bottom: 1rem;
     font: inherit;
     cursor: pointer;
     border: 1px solid transparent;
@@ -104,13 +103,14 @@
   }
 
   tabs-component[data-tabs-variant='outline'] .tabs__summary[aria-selected='true'] {
-    border-color: var(--color-foreground);
+    border-color: var(--color-border);
   }
 
   tabs-component[data-tabs-variant='underline'] .tabs__summary {
     border-radius: 0;
     border: none;
     position: relative;
+    padding-bottom: 1rem;
   }
 
   tabs-component[data-tabs-variant='underline'] .tabs__summary::after {
