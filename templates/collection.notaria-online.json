@@ -478,7 +478,7 @@
                 "hidden": "none",
                 "image_ratio": "square",
                 "width": "custom",
-                "custom_width": 35,
+                "custom_width": 20,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100,
                 "height": "fit-content",
