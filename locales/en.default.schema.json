@@ -768,6 +768,7 @@
     "blur": "Shadow blur",
     "blurred_reflection": "Blurred reflection",
     "border": "Border",
+    "border_color": "Border color",
     "border_opacity": "Border opacity",
     "border_radius": "Corner radius",
     "border_style": "Border style",
@@ -815,6 +816,9 @@
     "cover_image_size": "Cover image size",
     "currency_code": "Currency code",
     "custom_height": "Custom height",
+    "custom_border_color": "Custom border color",
+    "custom_variant": "Custom variant",
+    "custom_variant_index": "Variant index",
     "custom_minimum_height": "Custom minimum height",
     // Checkbox to enable separate size settings for mobile devices
     "custom_mobile_size": "Custom mobile size",

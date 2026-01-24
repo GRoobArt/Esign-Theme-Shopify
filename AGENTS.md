@@ -26,6 +26,17 @@ Guia breve para agentes en este repositorio (Shopify theme).
 - La logica de UI vive en Liquid + JSON de schema; evita mover logica a JS si se puede resolver en Liquid.
 - JS en `assets/` debe ser modular y no acoplado a una sola plantilla; prioriza eventos y data-atributos.
 - CSS debe mantenerse cohesivo; prefiere estilos existentes antes de crear nuevos.
+- Punto de entrada: `layout/theme.liquid` carga `header-group`, `footer-group`, `content_for_layout`, y snippets globales (meta-tags, stylesheets, fonts, scripts, theme-styles-variables, color-schemes).
+- Seccion generica: `sections/section.liquid` captura `content_for 'blocks'` y delega el wrapper a `snippets/section.liquid`.
+- Bloque grupo: `blocks/group.liquid` captura hijos y delega a `snippets/group.liquid` (layout, background, overlay, link).
+- Rendering dinamico: `assets/section-renderer.js` + `assets/section-hydration.js` re-renderizan secciones con Section Rendering API y morph del DOM.
+
+## Patrones base (reutilizar)
+
+- Layout/spacing/tamano se manejan con snippets: `snippets/layout-panel-style.liquid`, `snippets/spacing-style.liquid`, `snippets/size-style.liquid`.
+- Colores por esquema: clases `color-{{ ... }}` y `snippets/color-schemes.liquid`.
+- Bordes y overlays via `snippets/border-override.liquid` y `snippets/overlay.liquid`.
+- Imagenes: bloque `blocks/image.liquid` calcula ratio, sizes, y usa `snippets/size-style.liquid`; el helper general es `snippets/image.liquid`.
 
 ## Convenciones
 
@@ -46,6 +57,7 @@ Guia breve para agentes en este repositorio (Shopify theme).
 - Evita efectos colaterales globales; usa alcances por seccion o componente.
 - Prefiere funciones pequenas y nombres descriptivos.
 - No agregues dependencias externas sin permiso.
+- Si necesitas re-render de seccion, usa el flujo del Section Rendering API ya existente.
 
 ## Traducciones
 

@@ -12,6 +12,7 @@
 
   @param {boolean} [full_width] - When `true`, the divider spans the full width of its container.
   @param {boolean} [attributes] - When `true`, render block.shopify_attributes on the divider container.
+  @param {string} [shopify_attributes] - String with Shopify attributes for the editor.
 {%- enddoc -%}
 
 <div
@@ -20,14 +21,17 @@
     --divider-justify-content: {{ settings.alignment_horizontal | default: 'center' }};
     {% render 'spacing-style', settings: settings %}
   "
-  {% if attributes %}
-    {{- block.shopify_attributes -}}
+  {% if attributes and shopify_attributes %}
+    {{- shopify_attributes -}}
   {% endif %}
 >
   <span
     class="divider__line"
     style="
       --divider-border-thickness: {{ settings.thickness }}px;
+      {% if settings.custom_border_color and settings.border_color != blank %}
+        --divider-border-color: {{ settings.border_color }};
+      {% endif %}
       {% unless full_width %}
         --divider-border-rounded: {% if settings.corner_radius == 'rounded' %}1{% else %}0{% endif %};
       {% endunless %}
@@ -45,8 +49,8 @@
   }
 
   .divider__line {
-    border-bottom: var(--divider-border-thickness) solid var(--color-border);
-    border-right: var(--divider-border-thickness) solid var(--color-border);
+    border-bottom: var(--divider-border-thickness) solid var(--divider-border-color, var(--color-border));
+    border-right: var(--divider-border-thickness) solid var(--divider-border-color, var(--color-border));
     border-radius: calc(var(--style-border-radius-sm) * var(--divider-border-rounded));
     flex-basis: var(--divider-flex-basis);
     min-height: var(--divider-flex-basis);

@@ -1,6 +1,6 @@
 
 
-{% render 'divider', id: block.id, settings: block.settings, attributes: true %}
+{% render 'divider', id: block.id, settings: block.settings, attributes: true, shopify_attributes: block.shopify_attributes %}
 
 {% schema %}
 {
@@ -43,6 +43,18 @@
       "step": 1,
       "unit": "%",
       "default": 100
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_border_color",
+      "label": "t:settings.custom_border_color",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "t:settings.border_color",
+      "visible_if": "{{ block.settings.custom_border_color }}"
     },
     {
       "type": "header",
