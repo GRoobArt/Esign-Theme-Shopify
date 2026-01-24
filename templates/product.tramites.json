@@ -299,7 +299,7 @@
               "settings": {
                 "content_direction": "row",
                 "vertical_on_mobile": true,
-                "gap": 12,
+                "gap": 24,
                 "inherit_color_scheme": false,
                 "color_scheme": "",
                 "border_radius": 16,
