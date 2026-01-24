@@ -4228,7 +4228,7 @@
                       "name": "t:names.button",
                       "settings": {
                         "label": "Ver trámite",
-                        "link": "shopify://collections/all",
+                        "link": "{{ closest.product.url }}",
                         "open_in_new_tab": false,
                         "hidden": "none",
                         "style_class": "button-secondary",
