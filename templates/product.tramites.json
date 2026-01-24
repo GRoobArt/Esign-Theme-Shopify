@@ -59,7 +59,7 @@
               "settings": {
                 "image": "{{ closest.product.featured_image }}",
                 "link": "",
-                "hidden": "none",
+                "hidden": "hidden--mobile",
                 "image_ratio": "adapt",
                 "width": "custom",
                 "custom_width": 28,
