@@ -670,8 +670,8 @@
                       "type": "button",
                       "name": "t:names.button",
                       "settings": {
-                        "label": "Comprar",
-                        "link": "shopify://collections/all",
+                        "label": "Ver trámite",
+                        "link": "{{ closest.product.url }}",
                         "open_in_new_tab": false,
                         "hidden": "none",
                         "style_class": "button-secondary",
