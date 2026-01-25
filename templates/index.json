@@ -2831,7 +2831,7 @@
                               "settings": {
                                 "text": "<p>+ IVA</p>",
                                 "hidden": "none",
-                                "width": "100%",
+                                "width": "fit-content",
                                 "max_width": "normal",
                                 "alignment": "left",
                                 "type_preset": "paragraph",
