@@ -2864,7 +2864,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>$929 IVA Incluido</p>",
+                            "text": "<p>$929 IVA Incluido.</p>",
                             "hidden": "none",
                             "width": "fit-content",
                             "max_width": "normal",
