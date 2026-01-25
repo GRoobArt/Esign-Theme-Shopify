@@ -646,10 +646,12 @@
 
     > .facets__form{
       justify-content: center;
+      align-items: center;
     }
   }
 
   .facets--horizontal .facets__form-wrapper {
+    height: fit-content;
     @media screen and (min-width: 750px) {
       flex-direction: row;
       height: auto;
@@ -673,6 +675,7 @@
   .facets:not(.facets--drawer) .facets__filters-wrapper {
     @media screen and (min-width: 750px) {
       margin-inline-end: var(--margin-md);
+      height: fit-content;
     }
   }
 
