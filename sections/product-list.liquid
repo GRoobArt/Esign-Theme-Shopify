@@ -33,7 +33,7 @@
               class="resource-list__item"
             >
               {% # theme-check-disable UniqueStaticBlockId %}
-               {% content_for 'block', type: 'group', id: "static-group-last", closest.collection: section.settings.collection %}
+               {% content_for 'block', type: 'group', id: "static-group", closest.collection: section.settings.collection %}
               {% # theme-check-enable UniqueStaticBlockId %}
             </div>
 
@@ -527,6 +527,14 @@
             }
           },
           "block_order": ["product-card-gallery", "product_title", "price"]
+        },
+        "static-group":{
+          "static": true,
+          "type": "group",
+          "settings": {
+            "link": "{{ closest.collection.url }}",
+            "width": "fill"
+          }
         }
       },
       "block_order": []
@@ -704,6 +712,14 @@
             }
           },
           "block_order": ["product-card-gallery", "product_title", "price"]
+        },
+        "static-group":{
+          "static": true,
+          "type": "group",
+          "settings": {
+            "link": "{{ closest.collection.url }}",
+            "width": "fill"
+          }
         }
       },
       "block_order": []
@@ -886,6 +902,14 @@
             }
           },
           "block_order": ["product-card-gallery", "product_title", "price"]
+        },
+        "static-group":{
+          "static": true,
+          "type": "group",
+          "settings": {
+            "link": "{{ closest.collection.url }}",
+            "width": "fill"
+          }
         }
       },
       "block_order": []
