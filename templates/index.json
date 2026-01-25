@@ -2712,7 +2712,7 @@
                             "horizontal_alignment_flex_direction_column": "flex-start",
                             "vertical_alignment_flex_direction_column": "center",
                             "gap": 0,
-                            "width": "fill",
+                            "width": "fit-content",
                             "custom_width": 100,
                             "width_mobile": "fill",
                             "custom_width_mobile": 100,
@@ -2747,7 +2747,7 @@
                                 "text": "<p>$781</p>",
                                 "hidden": "none",
                                 "width": "fit-content",
-                                "max_width": "normal",
+                                "max_width": "narrow",
                                 "alignment": "left",
                                 "type_preset": "h3",
                                 "font": "var(--font-body--family)",
@@ -2775,7 +2775,7 @@
                               "settings": {
                                 "text": "<p>+ IVA</p>",
                                 "hidden": "none",
-                                "width": "fit-content",
+                                "width": "100%",
                                 "max_width": "normal",
                                 "alignment": "left",
                                 "type_preset": "paragraph",
@@ -4229,8 +4229,8 @@
             "border_radius": 4,
             "padding-block-start": 12,
             "padding-block-end": 12,
-            "padding-inline-start": 16,
-            "padding-inline-end": 16
+            "padding-inline-start": 12,
+            "padding-inline-end": 12
           },
           "blocks": {
             "image_bCJ8QD": {
