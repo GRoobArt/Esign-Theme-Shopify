@@ -4135,6 +4135,82 @@
             "text_68UwpQ"
           ]
         },
+        "static-group": {
+          "type": "group",
+          "name": "All View",
+          "static": true,
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fill",
+            "custom_height": 100,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-6",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 4,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "{{ closest.collection.url }}",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 24,
+            "padding-inline-end": 24
+          },
+          "blocks": {
+            "icon_6hERCg": {
+              "type": "icon",
+              "name": "t:names.icon",
+              "settings": {
+                "icon": "price_tag",
+                "image_upload": "shopify://shop_images/ArrowRight.svg",
+                "width": 48,
+                "link": "",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            },
+            "button_qMb4zN": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Ver todos los trámites",
+                "link": "{{ closest.collection.url }}",
+                "open_in_new_tab": false,
+                "hidden": "none",
+                "style_class": "button-secondary",
+                "size_class": "none",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon_6hERCg",
+            "button_qMb4zN"
+          ]
+        },
         "static-product-card": {
           "type": "_product-card",
           "name": "t:names.product_card",
@@ -4150,7 +4226,7 @@
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
-            "border_radius": 5,
+            "border_radius": 4,
             "padding-block-start": 12,
             "padding-block-end": 12,
             "padding-inline-start": 16,
