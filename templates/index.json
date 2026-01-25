@@ -2165,7 +2165,7 @@
                             "width": "custom",
                             "custom_width": 35,
                             "width_mobile": "custom",
-                            "custom_width_mobile": 2,
+                            "custom_width_mobile": 38,
                             "height": "max-height",
                             "custom_height": 72,
                             "border": "none",
@@ -2908,7 +2908,7 @@
                         "size_class": "none",
                         "width": "custom",
                         "custom_width": 100,
-                        "width_mobile": "fit-content",
+                        "width_mobile": "custom",
                         "custom_width_mobile": 100
                       },
                       "blocks": {}
@@ -2916,6 +2916,7 @@
                     "button_ygdkzx": {
                       "type": "button",
                       "name": "t:names.button",
+                      "disabled": true,
                       "settings": {
                         "label": "Ver Más Información",
                         "link": "{{ closest.product.url }}",
