@@ -51,10 +51,16 @@
   {% endif %}
 
   {%- liquid
+    assign price_tax = cart.total_price | times: 1.19 | round
+    assign total_tax = price_tax | minus: cart.total_price
     if settings.currency_code_enabled_cart_total
       assign total_price = cart.total_price | money_with_currency
+      assign total_price_tax = price_tax | money_with_currency
+      assign total_tax = total_tax | money_with_currency
     else
       assign total_price = cart.total_price | money
+      assign total_price_tax = price_tax | money
+      assign total_tax = total_tax | money
     endif
   -%}
 
@@ -74,42 +80,62 @@
         {{ total_price }}
       </text-component>
     </span>
-    {% if settings.show_installments %}
-      <span class="cart__summary-item cart__installments">
-        {% form 'cart', cart %}
-          {{ form | payment_terms }}
-        {% endform %}
-      </span>
-    {% endif %}
-    <div class="cart__summary-item tax-note cart-primary-typography">
-      {% render 'tax-info', has_discounts_enabled: settings.show_add_discount_code %}
-    </div>
+     <span
+      class="cart__summary-item cart__total"
+      role="status"
+    >
+      <span class="cart__total-label cart-primary-typography">{{ 'content.cart_tax' | t }}</span>
+      <text-component
+        ref="cartTotal"
+        value="{{ total_price | strip_html }}"
+        class="cart__total-value cart-secondary-typography"
+        {% comment %} Used by payment_terms web component {% endcomment %}
+        data-cart-subtotal
+      >
+        {{ total_tax }}
+      </text-component>
+    </span>
+    <span
+      class="cart__summary-item cart__total"
+      role="status"
+    >
+      <span class="cart__total-label cart-primary-typography">{{ 'content.cart_estimated_tax' | t }}</span>
+      <text-component
+        ref="cartTotal"
+        value="{{ total_price | strip_html }}"
+        class="cart__total-value cart-secondary-typography"
+        {% comment %} Used by payment_terms web component {% endcomment %}
+        data-cart-subtotal
+      >
+        {{ total_price_tax }}
+      </text-component>
+    </span>
   </div>
 </div>
 
 <div class="cart__ctas">
-  <button
-    type="submit"
-    id="checkout"
-    class="cart__checkout-button button"
-    name="checkout"
-    {% if cart == empty %}
-      disabled
-    {% endif %}
-    form="cart-form"
-  >
-    {{ 'content.checkout' | t }}
-  </button>
-
-  {% if additional_checkout_buttons and settings.show_accelerated_checkout_buttons %}
-    <div
-      class="
-        additional-checkout-buttons
-        {% if accelerated_checkout_buttons_layout == 'vertical' %}additional-checkout-buttons--vertical{% endif %}
-      "
+  {% if request.page_type == 'cart' %}
+    <button
+      type="submit"
+      id="checkout"
+      class="cart__checkout-button button"
+      name="checkout"
+      {% if cart == empty %}
+        disabled
+      {% endif %}
+      form="cart-form"
     >
-      {{ content_for_additional_checkout_buttons }}
-    </div>
+      {{ 'content.checkout' | t }}
+    </button>
+  {% else %}
+    <a  href="{{ routes.cart_url }}"
+      class="button"
+      aria-label="{{ 'accessibility.cart' | t }}"
+      aria-describedby="cart-bubble-text"
+      style="width: 100%;"
+      >
+    {{ 'accessibility.cart' | t }}
+  </a>
   {% endif %}
 </div>
 

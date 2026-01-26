@@ -592,6 +592,12 @@
     &:has(.cart__installments) {
       row-gap: var(--gap-xs);
     }
+
+    > span:not(:last-child){
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--padding-sm);
+      margin-bottom: var(--padding-sm);
+    }
   }
 
   .cart__original-total-container:empty {

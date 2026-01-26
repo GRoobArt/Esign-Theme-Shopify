@@ -182,7 +182,7 @@ class ProductFormComponent extends Component {
     target?.addEventListener(
       ThemeEvents.variantSelected,
       this.#onVariantSelected,
-      { signal }
+      { signal },
     )
 
     // Listen for cart updates to sync data-cart-quantity
@@ -213,7 +213,8 @@ class ProductFormComponent extends Component {
 
       const cartItem = cart.items.find(
         /** @param {any} item */
-        (item) => item.variant_id.toString() === variantIdInput.value.toString()
+        (item) =>
+          item.variant_id.toString() === variantIdInput.value.toString(),
       )
       const cartQty = cartItem ? cartItem.quantity : 0
 
@@ -282,7 +283,7 @@ class ProductFormComponent extends Component {
         const errorTemplate = this.dataset.quantityErrorMax || ''
         const errorMessage = errorTemplate.replace(
           '{{ maximum }}',
-          validation.maxQuantity.toString()
+          validation.maxQuantity.toString(),
         )
         if (addToCartTextError) {
           addToCartTextError.classList.remove('hidden')
@@ -316,7 +317,7 @@ class ProductFormComponent extends Component {
     const formData = new FormData(form)
 
     const cartItemsComponents = document.querySelectorAll(
-      'cart-items-component'
+      'cart-items-component',
     )
     let cartItemComponentsSectionIds = []
     cartItemsComponents.forEach((item) => {
@@ -326,7 +327,20 @@ class ProductFormComponent extends Component {
       formData.append('sections', cartItemComponentsSectionIds.join(','))
     })
 
+    const bundle = formData.getAll('bundle')
+
+    if (bundle.length) {
+      bundle.forEach((item, index) => {
+        formData.append(`items[${index}][id]`, item)
+        formData.append(`items[${index}][quantity]`, '1')
+      })
+    }
+
     const fetchCfg = fetchConfig('javascript', { body: formData })
+
+    /*
+      Cart Add To Cart
+    */
 
     fetch(Theme.routes.cart_add_url, {
       ...fetchCfg,
@@ -343,8 +357,8 @@ class ProductFormComponent extends Component {
               form.getAttribute('id') || '',
               response.message,
               response.description,
-              response.errors
-            )
+              response.errors,
+            ),
           )
 
           if (!addToCartTextError) return
@@ -380,7 +394,7 @@ class ProductFormComponent extends Component {
                 Number(formData.get('quantity')) ||
                 Number(this.dataset.quantityDefault),
               productId: this.dataset.productId,
-            })
+            }),
           )
 
           return
@@ -399,7 +413,7 @@ class ProductFormComponent extends Component {
             const addToCartButton =
               this.refs.addToCartButtonContainer.refs.addToCartButton
             const addedTextElement = addToCartButton.querySelector(
-              '.add-to-cart-text--added'
+              '.add-to-cart-text--added',
             )
             const addedText =
               addedTextElement?.textContent?.trim() || Theme.translations.added
@@ -422,7 +436,7 @@ class ProductFormComponent extends Component {
                 Number(this.dataset.quantityDefault),
               productId: this.dataset.productId,
               sections: response.sections,
-            })
+            }),
           )
         }
       })
@@ -473,7 +487,7 @@ class ProductFormComponent extends Component {
   #morphOrUpdateElement(
     currentElement,
     newElement,
-    insertReferenceElement = null
+    insertReferenceElement = null,
   ) {
     if (currentElement && newElement) {
       morph(currentElement, newElement)
@@ -482,7 +496,7 @@ class ProductFormComponent extends Component {
     } else if (!currentElement && newElement && insertReferenceElement) {
       insertReferenceElement.insertAdjacentElement(
         'beforebegin',
-        /** @type {Element} */ (newElement.cloneNode(true))
+        /** @type {Element} */ (newElement.cloneNode(true)),
       )
     }
   }
@@ -502,7 +516,7 @@ class ProductFormComponent extends Component {
     const currentAddToCartButton =
       addToCartButtonContainer?.refs.addToCartButton
     const newAddToCartButton = event.detail.data.html.querySelector(
-      '[ref="addToCartButton"]'
+      '[ref="addToCartButton"]',
     )
 
     // Update the variant ID
@@ -538,7 +552,7 @@ class ProductFormComponent extends Component {
       ) {
         this.refs.acceleratedCheckoutButtonContainer?.setAttribute(
           'hidden',
-          'true'
+          'true',
         )
       } else {
         this.refs.acceleratedCheckoutButtonContainer?.removeAttribute('hidden')
@@ -552,7 +566,7 @@ class ProductFormComponent extends Component {
       productVariantMedia &&
         addToCartButtonContainer?.setAttribute(
           'data-product-variant-media',
-          productVariantMedia + '&width=100'
+          productVariantMedia + '&width=100',
         )
     }
 
@@ -562,7 +576,7 @@ class ProductFormComponent extends Component {
     )
     const newQuantityInput = /** @type {HTMLInputElement | null} */ (
       event.detail.data.html.querySelector(
-        'quantity-selector-component input[ref="quantityInput"]'
+        'quantity-selector-component input[ref="quantityInput"]',
       )
     )
 
@@ -570,7 +584,7 @@ class ProductFormComponent extends Component {
       quantitySelector.updateConstraints(
         newQuantityInput.min,
         newQuantityInput.max || null,
-        newQuantityInput.step
+        newQuantityInput.step,
       )
     }
 
@@ -586,7 +600,7 @@ class ProductFormComponent extends Component {
 
       const currentProductFormButtons = this.refs.productFormButtons
       const newProductFormButtons = event.detail.data.html.querySelector(
-        '.product-form-buttons'
+        '.product-form-buttons',
       )
 
       if (currentProductFormButtons && newProductFormButtons) {
@@ -598,7 +612,7 @@ class ProductFormComponent extends Component {
         )
         const newQuantityInputElement = /** @type {HTMLInputElement | null} */ (
           event.detail.data.html.querySelector(
-            'quantity-selector-component input[ref="quantityInput"]'
+            'quantity-selector-component input[ref="quantityInput"]',
           )
         )
 
@@ -613,7 +627,7 @@ class ProductFormComponent extends Component {
           newQuantitySelector.updateConstraints(
             newQuantityInputElement.min,
             newQuantityInputElement.max || null,
-            newQuantityInputElement.step
+            newQuantityInputElement.step,
           )
         }
       }
@@ -625,16 +639,16 @@ class ProductFormComponent extends Component {
       this.#morphOrUpdateElement(
         quantityLabel,
         newQuantityLabel,
-        quantitySelector
+        quantitySelector,
       )
 
       const addToCartButton = this.querySelector(
-        '[ref="addToCartButtonContainer"]'
+        '[ref="addToCartButtonContainer"]',
       )
       this.#morphOrUpdateElement(
         quantityRules,
         newQuantityRules,
-        addToCartButton
+        addToCartButton,
       )
     }
 
@@ -713,7 +727,7 @@ class FlyToCart extends HTMLElement {
         startPoint,
         controlPoint1,
         controlPoint2,
-        endPoint
+        endPoint,
       )
 
       //Update the position of the flying thingy

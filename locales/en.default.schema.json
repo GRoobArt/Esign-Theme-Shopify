@@ -353,6 +353,7 @@
     "predictive_search": "Search popover",
     "predictive_search_empty": "Predictive search empty",
     "price": "Price",
+    "price_custom": "Custom price",
     "prices": "Prices",
     "primary_button": "Primary button",
     "product": "Product",
@@ -734,6 +735,7 @@
   "settings": {
     "show_to_text": "Show To Text",
     "show_tax_amount": "Show Tax Amount",
+    "price_custom": "Custom price",
     "background_gradient": "Background Gradient",
     "text_color": "Color",
     "accordion": "Accordion",

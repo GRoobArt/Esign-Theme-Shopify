@@ -9,144 +9,143 @@
   assign bundle_product = block_settings.product
   if bundle_product == blank
     assign bundle_product = product_resource.metafields.product.bundle.value
-  endif
-  assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id
-  assign bundle_variants = bundle_product.variants
+  endif  
 
-  assign error_text = block_settings.error_text
-  if error_text == blank
-    assign error_text = 'products.product.add_to_cart_error' | t
-  endif
+  assign property_name = 'properties[custom-property]' | replace: 'custom-property', block_settings.property_key
+
+  assign product_form_id = 'BuyButtons-ProductForm-section.id' | replace: 'section.id', section.id
 %}
 
-{% if bundle_product != blank and bundle_variants != blank %}
-  <div
-    class="metafields-bundle spacing-style {% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}"
-    data-bundle-block
-    data-product-id="{{ product_resource.id }}"
-    data-bundle-required="{{ block_settings.required }}"
-    data-bundle-add-property="{{ block_settings.add_property }}"
-    data-bundle-title="{{ bundle_product.title | escape }}"
-    style="{% render 'spacing-style', settings: block_settings %}"
+{% if bundle_product != blank %}
+  <metafield-bundle
+    class="metafields-bundle spacing-style border-style{% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}"
+    data-product-id="{{ product.id }}"
+    data-bundle-id="{{ bundle_product.id }}"
+    style="
+        {% render 'spacing-style', settings: block_settings %}
+        {% render 'border-override', settings: block_settings %}"
+    {% if request.visual_preview_mode %}
+      data-shopify-visual-preview
+    {% endif %}
     {{ block.shopify_attributes }}
   >
     <div class="metafields-bundle__header">
       {% content_for 'blocks', closest.product: bundle_product %}
     </div>
-    <div class="metafields-bundle__options" role="list">
-      {%- assign input_type = block_settings.input_type | default: 'radio' -%}
-      {%- for bundle_variant in bundle_variants -%}
-        {% liquid
-           assign input_id = 'BundleOption-' | append: block.id | append: '-' | append: forloop.index
-           assign input_name = 'bundle-' | append: block.id
-           assign is_checked = block_settings.checked
-           if block_settings.required and forloop.first
-            assign is_checked = true
-           endif
-           if input_type == 'checkbox'
-            assign input_name = input_name | append: '[]'
-           endif
-           assign title = bundle_variant.title 
-           if title == 'Default Title'
-             assign title = 'products.add_product' | t: product: bundle_product.title
-           endif
-        %}
-        <div class="metafields-bundle__option">
-          <input
-            type="{{ input_type }}"
-            id="{{ input_id }}"
-            name="{{ input_name }}"
-            value="{{ bundle_variant.id }}"
-            data-bundle-input
-            data-bundle-option-label="{{ title | escape }}"
-            form="{{ product_form_id }}"
-            {% if is_checked %}checked{% endif %}
-            {% if input_type == 'radio' and block_settings.required %}required{% endif %}
-          >
-          <label for="{{ input_id }}">
-            <span class="metafields-bundle__label">{{ title }}</span>
-            {% if bundle_variant.price > 0 %}
-              <span role="group">
-                  <span class="metafields-bundle__price">{{ bundle_variant.price | money }}</span>
-                  <span>{{ 'content.price_tax' | t }}</span>
-              </span>
-              <span>
-                {%- liquid
-                    # selected_variant.price esta en centavos
-                    assign price_with_tax_cents = bundle_variant.price | times: 1.19 | round
-                    assign price_with_tax = price_with_tax_cents | money
-                -%}
-                (<span class="price-tax">{{ 'content.amount_tax' | t: amount: price_with_tax }}</span>)
-              </span>
-            {% endif %}
-          </label>
-        </div>
-      {%- endfor -%}
-    </div>
 
-    <div class="metafields-bundle__error hidden" role="alert" aria-live="assertive" data-bundle-error>
-      {{ error_text }}
+    <div class="metafields-bundle__options __field" role="list">
+      {%- assign input_type = block_settings.input_type | default: 'radio' -%}      
+        <input type="hidden" name="bundle" ref="metafield-bundle[{{ block_settings.property_key }}]" value="{{ bundle_product.selected_or_first_available_variant.id }}" form="{{ product_form_id }}">
+        {% for option in bundle_product.options_with_values %}
+            {% for product_option_value in option.values %}
+                {% liquid
+                  assign input_id = 'BundleOption-' | append: block.id | append: '-' | append: forloop.index
+                  assign bundle_variant = product_option_value.variant
+                  assign value = product_option_value.variant.title
+                  if input_type == 'checkbox'
+                    assign value = bundle_product.title
+                  endif
+                %}
+                <div
+                  class="{{ input_type }}"
+                >
+                  <input 
+                    {% if block_settings.required %}
+                      required
+                    {% endif %}
+                    {% if block_settings.checked and forloop.first %}
+                      checked
+                    {% endif %}
+                    type="{{ input_type }}"
+                    name="{{ property_name }}"
+                    value="{{ value }}"
+                    id="{{ input_id }}"
+                    class="{{ input_type }}__input"
+                    data-label="{{ product_option_value }}"
+                    form="{{ product_form_id }}"
+                    data-variant-id="{{ product_option_value.variant.id }}"
+                  >
+                <label for="{{ input_id }}" class="{{ input_type }}__label" role="{{ input_type }}">
+                    {% if input_type == 'checkbox' %}
+                      {{ 'icon-checkmark.svg' | inline_asset_content }}
+                    {% endif %} 
+                   <span class="{{ input_type }}__label-text">
+                    {% if product_option_value == 'Default Title' %}
+                        {{ 'products.add_product' | t: product: bundle_product.title }}
+                      {% else %}
+                        {{ product_option_value }}
+                    {% endif %}
+                   </span>
+                   {% if bundle_variant.price > 0 %}
+                      <span class="">
+                        <span role="group">
+                            <span class="metafields-bundle__price">{{ bundle_variant.price | money }}</span>
+                            <span>{{ 'content.price_tax' | t }}</span>
+                        </span>
+                        <span role="group">
+                          {%- liquid
+                              # selected_variant.price esta en centavos
+                              assign price_with_tax_cents = bundle_variant.price | times: 1.19 | round
+                              assign price_with_tax = price_with_tax_cents | money
+                          -%}
+                          (<span class="price-tax">{{ 'content.amount_tax' | t: amount: price_with_tax }}</span>)
+                        </span>
+                      </span>
+                    {% endif %}
+                </label>
+                </div>
+            {% endfor %}
+        {% endfor %}
     </div>
-  </div>
+  </metafield-bundle>
 {% endif %}
 
 {% stylesheet %}
-  .metafields-bundle {
-    display: block;
-  }
+  metafield-bundle{
+      .radio{
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: start;
+        gap: var(--gap-2xs);
+      }
 
-  .metafields-bundle__header{
-    display: grid;
-    gap: var(--gap-xs);
-  }
+      .radio__label,
+      .checkbox__label{
+        line-height: 1;
+        display: grid;
+        gap: var(--gap-2xs);
+        grid-template-columns: auto 1fr;
+        width: 100%;
+      }
 
-  .metafields-bundle__title {
-    margin: 0 0 var(--padding-sm);
-  }
+      .checkbox__label{
+        grid-template-columns: 16px 1fr;
 
-  .metafields-bundle__description {
-    margin-bottom: var(--padding-md);
-  }
+        > span:last-child{
+           grid-column: 2 / -1;
+        }
+      }
 
-  .metafields-bundle__options {
-    display: grid;
-    gap: var(--padding-xs);
-    font-size: calc(var(--font-size--h4) - 4px);
-  }
+      .radio__label-text,
+      .checkbox__label-text{
+        padding: 0;
+        font-weight: var(--font-heading--weight);
+      }
 
-  .metafields-bundle__option {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--padding-sm);
-    align-items: center;
-    padding: var(--padding-lg);
-  }
+      .radio__label-text{
+        padding: 0;
+        grid-column: 1 / -1;
+      }
 
-  .metafields-bundle__option input {
-    margin: 0;
-  }
+      .metafields-bundle__options{
+        display: grid;
+      }
 
-  .metafields-bundle__option label {
-    display: flex;
-    gap: 4px;
-    cursor: pointer;
-    flex-wrap: wrap;
-    line-height: 1;
+      .metafields-bundle__options div{
+        padding: var(--padding-lg);
+        padding-left: 0;
+      }
   }
-
-  .metafields-bundle__label {
-    flex: 0 0 100%;
-    font-weight: var(--font-heading--weight);
-  }
-
-  .metafields-bundle__price {
-  }
-
-  .metafields-bundle__error {
-    margin-top: var(--padding-sm);
-    color: var(--color-error);
-  }
-  
 {% endstylesheet %}
 
 {% schema %}
@@ -195,12 +194,20 @@
     },
     {
       "type": "text",
+      "id": "property_key",
+      "label": "t:settings.product_custom_property.key",
+      "default": "t:settings.product_custom_property.default_property_key",
+      "info": "t:settings.product_custom_property.key_info",
+      "visible_if": "{{ block.settings.add_property }}"
+    },
+    {
+      "type": "text",
       "id": "error_text",
       "label": "Error text"
     },
     {
       "type": "header",
-      "content": "t:names.layout"
+      "content": "t:content.appearance"
     },
     {
       "type": "checkbox",

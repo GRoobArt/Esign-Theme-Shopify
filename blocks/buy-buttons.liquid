@@ -35,7 +35,20 @@
       assign add_to_cart_text = 'products.product.unavailable' | t
     endif
   endif
+
+
+  assign variant_selected = product.selected_or_first_available_variant.id
+  if block_settings.custom_variant
+    assign variant_selected =  product.variants[block_settings.variant_selected].id
+    unless variant_selected
+      assign variant_selected = product.variants | last
+      assign variant_selected = variant_selected.id
+    endunless
+  endif
+
 %}
+
+{{ variant_selected }}
 
 <span
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
@@ -63,7 +76,7 @@
           type="hidden"
           name="id"
           ref="variantId"
-          value="{{ product.selected_or_first_available_variant.id }}"
+          value="{{ variant_selected }}"
         >
         {%- if block_settings.gift_card_form and product.gift_card? -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section, block: block -%}
@@ -516,6 +529,23 @@
       "id": "gift_card_form",
       "label": "t:settings.gift_card_form",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_variant",
+      "label": "t:names.variant_pickers",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "variant_selected",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "V",
+      "label": "t:names.product_variant_picker",
+      "default": 0,
+      "visible_if": "{{ block.settings.custom_variant }}"
     },
     {
       "type": "paragraph",

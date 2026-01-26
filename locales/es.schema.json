@@ -23,6 +23,7 @@
     "product_buy_buttons": "Botones de compra",
     "product_description": "Descripción",
     "product_price": "Precio",
+    "price_custom": "Precio personalizado",
     "product_variant_picker": "Selector de variante",
     "slideshow": "Diapositivas",
     "typography": "Tipografía",
@@ -190,6 +191,7 @@
   "settings": {
     "show_to_text": "Mostrar Desde",
     "show_tax_amount": "Mostrar Monto con Impuestos",
+    "price_custom": "Precio personalizado",
     "background_gradient": "Fondo Gradiente",
     "text_color": "Color",
     "alignment": "Alineación",

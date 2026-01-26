@@ -114,6 +114,8 @@
     "open": "Abrir"
   },
   "content": {
+    "cart_tax": "IVA",
+    "cart_estimated_tax": "IVA Incluido",
     "price_tax": "+ IVA",
     "price_to": "Desde",
     "amount_tax": "{{ amount }} IVA incluído.",

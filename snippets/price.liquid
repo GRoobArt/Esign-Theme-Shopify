@@ -3,6 +3,7 @@
   It is used in the product block,featured product block, and the product card block.
 
   @param {product} product_resource - The product to render
+  @param {variant} variant - The variant to render
   @param {boolean} [show_unit_price] - Whether to show the unit price
   @param {boolean} [show_sale_price_first] - Whether to show the sale price first
   @param {object} [settings] - Block Settings
@@ -11,7 +12,7 @@
 {%- liquid
   assign show_unit_price = show_unit_price | default: false
   assign show_sale_price_first = show_sale_price_first | default: false
-  assign selected_variant = product_resource.selected_or_first_available_variant
+  assign selected_variant =  variant | default: product_resource.selected_or_first_available_variant
   assign price = selected_variant.price
   assign compare_at_price = selected_variant.compare_at_price
 
@@ -23,7 +24,7 @@
   if product_resource == blank
     assign price = 1999
   endif
-
+ 
   # Checks if product handle matches the closest product's handle (i.e. product page)
   # and if the currency code is enabled for product pages
   if product.handle == closest.product.handle and settings.currency_code_enabled_product_pages

@@ -2513,6 +2513,7 @@ product-price > div:first-child {
     flex-flow: column nowrap;
     align-items: var(--horizontal-alignment);
     justify-content: var(--vertical-alignment-mobile);
+    height: fit-content;
   }
 
   .layout-panel-flex--row:not(.mobile-column) {

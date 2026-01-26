@@ -144,6 +144,8 @@
     }
   },
   "content": {
+    "cart_tax": "IVA",
+    "cart_estimated_tax": "IVA Incluido",
     "price_tax": "+ Tax",
     "price_to": "To",
     "amount_tax": "{{ amount }} Tax Incluyed",

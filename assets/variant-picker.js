@@ -157,7 +157,9 @@ export default class VariantPicker extends Component {
           }
         }
       }
-      target.checked = true;
+      if (target.type !== 'checkbox') {
+        target.checked = true;
+      }
     }
 
     if (target instanceof HTMLSelectElement) {
@@ -210,6 +212,52 @@ export default class VariantPicker extends Component {
       return `${productUrl}?section_id=section-rendering-product-card&${params.join('&')}`;
     }
     return `${productUrl}?${params.join('&')}`;
+  }
+
+  /**
+   * Handles checkbox option changes for special dropdown replacements.
+   * @param {Event} event
+   */
+  handleOptionCheckboxChange(event) {
+    if (!(event.target instanceof HTMLInputElement)) return;
+    if (event.target.type !== 'checkbox') return;
+
+    const checkbox = event.target;
+    const optionValueId = checkbox.checked
+      ? checkbox.dataset.checkedOptionValueId
+      : checkbox.dataset.uncheckedOptionValueId;
+    const variantId = checkbox.checked
+      ? checkbox.dataset.checkedVariantId
+      : checkbox.dataset.uncheckedVariantId;
+    const connectedProductUrl = checkbox.checked
+      ? checkbox.dataset.checkedConnectedProductUrl
+      : checkbox.dataset.uncheckedConnectedProductUrl;
+
+    if (optionValueId) {
+      checkbox.dataset.optionValueId = optionValueId;
+    }
+    if (variantId) {
+      checkbox.dataset.variantId = variantId;
+    }
+    if (connectedProductUrl) {
+      checkbox.dataset.connectedProductUrl = connectedProductUrl;
+    }
+
+    const selectId = checkbox.dataset.selectId;
+    if (!selectId) return;
+
+    const select = this.querySelector(`#${selectId}`);
+    if (!(select instanceof HTMLSelectElement)) return;
+
+    const optionToSelect = select.querySelector(`[data-option-value-id="${optionValueId}"]`);
+    if (!(optionToSelect instanceof HTMLOptionElement)) return;
+
+    for (const option of select.options) {
+      option.removeAttribute('selected');
+    }
+
+    optionToSelect.setAttribute('selected', 'selected');
+    select.value = optionToSelect.value;
   }
 
   /**
