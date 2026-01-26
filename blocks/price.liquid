@@ -14,9 +14,6 @@
   endif
 
 -%}
-
-<p>Price: {{ selected_variant.id }}</p>
-
 {% liquid
   if block_settings.type_preset == 'rte' or block_settings.type_preset == 'paragraph'
     assign is_rte = true
