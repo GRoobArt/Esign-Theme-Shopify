@@ -167,8 +167,10 @@
                 {% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}
               " 
                style="
-               {% render 'spacing-style', settings: block_settings %} 
-               {% render 'border-override', settings: block_settings %}">
+                  {% render 'spacing-style', settings: block_settings %} 
+                  {% render 'border-override', settings: block_settings %}
+                  overflow: initial;
+               ">
             <div class="variant-picker__header">
               <label for="Option-{{ block.id }}-{{ forloop.index0 }}" class="h4" style="
                 --color: var(--color-foreground-heading);
@@ -260,10 +262,58 @@
                   {%- endfor -%}
                 </select>
               {%- else -%}
+                {%- assign select_id = 'Option-' | append: block.id | append: '-' | append: forloop.index0 -%}
+                {%- assign selected_option_value = product_option.values | where: 'selected', true | first -%}
+                {%- assign selected_option_value = selected_option_value | default: product_option.values.first -%}
+                {%- assign selected_price = selected_option_value.variant.price | default: product_resource.selected_or_first_available_variant.price -%}
+
+                <details class="variant-option__dropdown">
+                  <summary class="variant-option__dropdown-summary" aria-haspopup="listbox">
+                    <span class="variant-option__dropdown-label" data-selected-label>
+                      {{ selected_option_value | escape }}
+                    </span>
+                    <span class="variant-option__dropdown-price" data-selected-price>
+                      {{ selected_price | money }} + IVA
+                    </span>
+                    <span class="svg-wrapper icon-caret">
+                      {{ 'icon-caret.svg' | inline_asset_content }}
+                    </span>
+                  </summary>
+                  <div class="variant-option__dropdown-list" role="listbox">
+                    {%- for product_option_value in product_option.values -%}
+                      <button
+                        type="button"
+                        class="variant-option__dropdown-option"
+                        role="option"
+                        aria-selected="{% if product_option_value.selected %}true{% else %}false{% endif %}"
+                        {% if product_option_value.available == false %}
+                          aria-disabled="true"
+                          disabled
+                        {% endif %}
+                        data-select-id="{{ select_id }}"
+                        data-option-value-id="{{ product_option_value.id }}"
+                        data-variant-id="{{ product_option_value.variant.id }}"
+                        data-connected-product-url="{{ product_option_value.product_url }}"
+                        data-label="{{ product_option_value | escape }}"
+                        data-price="{{ product_option_value.variant.price | money }}"
+                        data-input-id="{{ product_option.position }}-{{ forloop.index0 }}"
+                        on:click="/handleCustomDropdownSelect"
+                      >
+                        {% if product_option_value.available == false %}
+                          {{ product_option_value | escape }} - {{ 'content.unavailable' | t }}
+                        {% else %}
+                         <span> {{ product_option_value | escape }} </span>
+                         <span class="variant-option__dropdown-price">{{ product_option_value.variant.price | money }} + IVA</span>
+                        {% endif %}
+                      </button>
+                    {%- endfor -%}
+                  </div>
+                </details>
+
                 <select
-                  id="Option-{{ block.id }}-{{ forloop.index0 }}"
+                  id="{{ select_id }}"
                   name="options[{{ product_option.name | escape }}]"
-                  class="variant-option__select"
+                  class="variant-option__select visually-hidden"
                 >
                   {%- for product_option_value in product_option.values -%}
                     <option
@@ -284,14 +334,6 @@
                     </option>
                   {%- endfor -%}
                 </select>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  class="icon icon-caret"
-                  viewBox="0 0 10 6"
-                >
-                  {%- render 'icon', icon: 'caret' -%}
-                </svg>
               {%- endif -%}
             </div>
           </div>
@@ -307,9 +349,7 @@
 
 {% stylesheet %}
   .variant-picker {
-    @media (max-width: 749px) {
-        width: 100%;
-    }
+    width: 100%;
   } 
 
   .variant-picker__form {
@@ -711,11 +751,8 @@
   .variant-option__select-wrapper:not(.variant-option__checkbox) {
     display: flex;
     position: relative;
-    border: var(--style-border-width-inputs) solid var(--color-border);
-    border-radius: var(--style-border-radius-inputs);
     align-items: center;
     margin-top: var(--margin-2xs);
-    overflow: clip;
   }
 
   .variant-option__select-wrapper:is(.variant-option__checkbox) {
@@ -739,6 +776,68 @@
 
   .variant-option__select-wrapper:hover {
     border-color: var(--color-variant-hover-border);
+  }
+
+  .variant-option__dropdown {
+    width: 100%;
+    position: relative;
+  }
+
+  .variant-option__dropdown-summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+    padding: var(--padding-md) var(--padding-lg);
+    border: var(--style-border-width-inputs) solid var(--color-border);
+    border-radius: var(--style-border-radius-inputs);
+  }
+
+  .variant-option__dropdown-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .variant-option__dropdown-list {
+    display: grid;
+    position: absolute;
+    top: calc(100% - 1px);
+    background-color: var(--color-variant-background);
+    width: 100%;
+    border: var(--style-border-width-inputs) solid var(--color-border);
+    border-top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 var(--style-border-radius-inputs) var(--style-border-radius-inputs);
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 10;
+  }
+
+  .variant-option__dropdown-price{
+    flex: 1;
+    text-align: right;
+  }
+
+  .variant-option__dropdown-option {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    padding: var(--padding-lg);
+    cursor: pointer;
+    display: flex;
+    border-top: var(--style-border-width-inputs) solid var(--color-border);
+  }
+
+  .variant-option__dropdown-option[aria-selected='true'] {
+    font-weight: var(--font-heading--weight);
+  }
+
+  .variant-option__dropdown-option[disabled] {
+    cursor: not-allowed;
+    opacity: var(--opacity-60);
   }
 
   .variant-option__select:focus-visible {

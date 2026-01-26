@@ -352,6 +352,7 @@
     "empty_state_collection_info": "Mostrar antes de ingresar la búsqueda",
     "empty_state_collection": "Colección en estado vacío",
     "enable_filtering": "Filtros",
+    "enable_search_filter": "Filtro de búsqueda",
     "enable_grid_density": "Control del diseño de la cuadrícula",
     "enable_sorting": "Ordenación",
     "enable_zoom": "Activar zoom",

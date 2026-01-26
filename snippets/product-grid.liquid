@@ -111,6 +111,19 @@
         </p>
       </div>
     {% else %}
+      <div
+        class="main-collection-grid__empty hidden"
+        data-collection-empty-state
+      >
+        <h2 class="main-collection-grid__empty-title h2">
+          {{ 'content.no_products_found' | t }}
+        </h2>
+        {% if collection and collection.url %}
+          <p>
+            {{ 'content.use_fewer_filters_html' | t: link: collection.url, class: 'main-collection-grid__empty-link' }}
+          </p>
+        {% endif %}
+      </div>
       {% if enable_infinite_scroll %}
         <span ref="viewMorePrevious"></span>
       {% endif %}

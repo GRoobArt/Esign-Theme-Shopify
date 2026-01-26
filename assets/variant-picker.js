@@ -261,6 +261,57 @@ export default class VariantPicker extends Component {
   }
 
   /**
+   * Handles custom dropdown option selection.
+   * @param {Event} event
+   */
+  handleCustomDropdownSelect(event) {
+    if (!(event.target instanceof HTMLElement)) return;
+
+    const optionButton = event.target.closest(
+      '.variant-option__dropdown-option[data-option-value-id][data-select-id]'
+    );
+    if (!(optionButton instanceof HTMLElement)) return;
+
+    const selectId = optionButton.dataset.selectId;
+    const optionValueId = optionButton.dataset.optionValueId;
+    if (!selectId || !optionValueId) return;
+
+    const select = this.querySelector(`#${CSS.escape(selectId)}`);
+    if (!(select instanceof HTMLSelectElement)) return;
+
+    const optionToSelect = select.querySelector(`[data-option-value-id="${optionValueId}"]`);
+    if (!(optionToSelect instanceof HTMLOptionElement)) return;
+
+    for (const option of select.options) {
+      option.removeAttribute('selected');
+    }
+
+    optionToSelect.setAttribute('selected', 'selected');
+    select.value = optionToSelect.value;
+
+    const dropdown = optionButton.closest('.variant-option__dropdown');
+    const labelEl = dropdown?.querySelector('[data-selected-label]');
+    if (labelEl && optionButton.dataset.label) {
+      labelEl.textContent = optionButton.dataset.label;
+    }
+    const priceEl = dropdown?.querySelector('[data-selected-price]');
+    if (priceEl && optionButton.dataset.price) {
+      priceEl.textContent = optionButton.dataset.price;
+    }
+
+    const options = dropdown?.querySelectorAll('.variant-option__dropdown-option[role="option"]') || [];
+    options.forEach((option) => {
+      option.setAttribute('aria-selected', option === optionButton ? 'true' : 'false');
+    });
+
+    if (dropdown instanceof HTMLDetailsElement) {
+      dropdown.open = false;
+    }
+
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  /**
    * Fetches the updated section.
    * @param {string} requestUrl - The request URL.
    * @param {boolean} shouldMorphMain - If the entire main content should be morphed. By default, only the variant picker is morphed.

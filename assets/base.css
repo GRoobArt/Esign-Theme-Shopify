@@ -4308,6 +4308,10 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
   }
 }
 
+.resource-list--grid .group-block--height-fill {
+  height: var(--size-style-height);
+}
+
 /* Flex behavior for height variants */
 .layout-panel-flex--column > .group-block--height-fit {
   flex: 0 1 auto;

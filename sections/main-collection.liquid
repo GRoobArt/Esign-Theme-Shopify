@@ -41,7 +41,6 @@
       results: collection,
       results_size: collection.products_count
     %}
-
     {% assign products_per_page = 24 %}
 
     {% if section.settings.enable_infinite_scroll == false %}
@@ -56,6 +55,7 @@
             class="product-grid__item product-grid__item--{{ forloop.index0 }}"
             data-page="{{ paginate.current_page }}"
             data-product-id="{{ product.id }}"
+            data-product-title="{{ product.title | escape | downcase }}"
             ref="cards[]"
           >
             {% # theme-check-disable %}

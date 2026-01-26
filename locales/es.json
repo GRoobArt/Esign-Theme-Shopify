@@ -161,7 +161,7 @@
       "zoom_out": "Alejar"
     },
     "search_input_label": "Buscar",
-    "search_input_placeholder": "Buscar",
+    "search_input_placeholder": "Buscar trámite...",
     "search_results": "Resultados de la búsqueda",
     "search_results_label": "Resultados de la búsqueda",
     "search_results_no_results": "No se encontró ningún resultado para \"{{ terms }}\". Prueba con otra búsqueda.",

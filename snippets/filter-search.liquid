@@ -1,0 +1,36 @@
+{%- doc -%}
+  Renders a search input used to filter product cards by title.
+
+  @param {string} input_id - The ID for the search input element
+  @param {string} [class] - Additional classes for the wrapper
+{%- enddoc -%}
+
+{% assign input_id = input_id | default: 'FilterSearch' %}
+
+<div class="facets-search{% if class != blank %} {{ class | strip }}{% endif %}" data-filter-search>
+  <label class="visually-hidden" for="{{ input_id }}">
+    {{- 'content.search_input_label' | t -}}
+  </label>
+  <div class="field facets-search__field">
+    <input
+      id="{{ input_id }}"
+      type="search"
+      class="field__input facets-search__input"
+      placeholder="{{ 'content.search_input_placeholder' | t }}"
+      aria-label="{{ 'content.search_input_label' | t }}"
+      data-filter-search-input
+      autocomplete="off"
+    >
+    <button
+      type="button"
+      class="button-unstyled facets-search__reset"
+      data-filter-search-reset
+      aria-label="{{ 'actions.reset' | t }}"
+      hidden
+    >
+      <span class="svg-wrapper">
+        {{ 'icon-close.svg' | inline_asset_content }}
+      </span>
+    </button>
+  </div>
+</div>
