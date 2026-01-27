@@ -567,6 +567,7 @@
     "media_type_2": "Tipo de multimedia 2"
   },
   "options": {
+    "ratio": "Ratio",
     "hidden_desktop": "Ocultar Desktop",
     "hidden_mobile": "Ocultar Mobile",
     "adapt_to_image": "Adaptar a la imagen",

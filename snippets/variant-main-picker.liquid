@@ -46,7 +46,7 @@
           assign swatch_count = product_option.values | map: 'swatch' | compact | size
           assign variant_style = block_settings.variant_style
 
-          if swatch_count > 0 and block_settings.show_swatches
+          if swatch_count > 0 and block_settings.show_swatches and block_settings.variant_style != 'radio'
             if block_settings.variant_style == 'dropdown'
               assign variant_style = 'swatch_dropdown'
             else
@@ -139,6 +139,85 @@
                 }
               {% endstyle %}
             {% endif %}
+          </fieldset>
+        {%- elsif block_settings.variant_style == 'radio' -%}
+          {%- assign fieldset_index = forloop.index0 -%}
+          <fieldset
+            class="variant-option variant-option--radios spacing-style border-style
+            {% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}"
+            data-fieldset-index="{{ fieldset_index }}"
+            ref="fieldsets[]"
+            style="
+              {% render 'spacing-style', settings: block_settings %} 
+              {% render 'border-override', settings: block_settings %}
+              overflow: initial;
+            "
+          >
+            <div class="variant-picker__header">
+              <label for="Option-{{ block.id }}-{{ forloop.index0 }}" class="h4" style="
+                --color: var(--color-foreground-heading);
+              ">{{ product_option.name | escape }}</label>
+              <div class="text-block">
+                {{ label }}
+              </div>
+            </div>
+            <div  class="variant-option__select-wrapper variant-option__select-ratio"
+              style="">
+              {%- for product_option_value in product_option.values -%}
+              {% liquid
+                assign input_id = 'Option-' | append: block.id | append: '-' | append: product_option.position | append: '-' | append: forloop.index0
+              %}
+              <div class="radio">
+                <input
+                  type="radio"
+                  id="{{ input_id }}"
+                  name="{{ product_option.name | escape }}-{{ block.id }}-{{ product_resource.id }}"
+                  value="{{ product_option_value | escape }}"
+                  class="radio__input"
+                  aria-label="{{ product_option_value.name }}"
+                  {% if product_option_value.available == false %}
+                    aria-disabled="true"
+                  {% endif %}
+                  data-previous-checked="false"
+                  data-fieldset-index="{{ fieldset_index }}"
+                  data-input-index="{{ forloop.index0 }}"
+                  data-input-id="{{ product_option.position }}-{{ forloop.index0 }}"
+                  data-option-value-id="{{ product_option_value.id }}"
+                  data-option-available="{{ product_option_value.available }}"
+                  data-connected-product-url="{{ product_option_value.product_url }}"
+                  {% if product_option_value.variant.id %}
+                    data-variant-id="{{ product_option_value.variant.id }}"
+                  {% endif %}
+                  {% if product_option_value.selected %}
+                    data-current-checked="true"
+                    checked
+                  {% else %}
+                    data-current-checked="false"
+                  {% endif %}
+                >
+                <label for="{{ input_id }}" class="radio__label" role="radio">
+                  <span class="radio__label-text">{{ product_option_value | escape }}</span>
+                  {% render 'strikethrough-variant', product_option: product_option_value %}
+                  {% if product_option_value.variant.price > 0 %}
+                      <span class="">
+                        <span role="group">
+                            <span class="metafields-bundle__price">{{ product_option_value.variant.price | money }}</span>
+                            <span>{{ 'content.price_tax' | t }}</span>
+                        </span>
+                        <span role="group">
+                          {%- liquid
+                              # selected_variant.price esta en centavos
+                              assign price_with_tax_cents = product_option_value.variant.price | times: 1.19 | round
+                              assign price_with_tax = price_with_tax_cents | money
+                          -%}
+                          (<span class="price-tax">{{ 'content.amount_tax' | t: amount: price_with_tax }}</span>)
+                        </span>
+                      </span>
+                    {% endif %}
+                </label>
+              </div>
+            {%- endfor -%}
+            </div>
           </fieldset>
         {%- elsif block_settings.variant_style == 'dropdowns' -%}
           {%
@@ -748,7 +827,7 @@
     }
   }
 
-  .variant-option__select-wrapper:not(.variant-option__checkbox) {
+  .variant-option__select-wrapper:not(.variant-option__checkbox, .variant-option__select-ratio) {
     display: flex;
     position: relative;
     align-items: center;
@@ -766,6 +845,29 @@
       > span:first-child{
         font-weight: var(--font-heading--weight);
       }
+    }
+  }
+
+  .variant-option__select-ratio{
+    margin-top: var(--margin-2xs);
+    display: grid;
+
+    > .radio {
+      padding: var(--padding-lg);
+      padding-left: 0;
+      display: flex; 
+      align-items: start;
+      gap: var(--gap-2xs);
+    }
+
+    .radio__label-text{
+      font-weight: var(--font-heading--weight);
+    }
+
+    .radio__label{
+      line-height: 1;
+      display: grid;
+      gap: var(--gap-2xs);
     }
   }
 
