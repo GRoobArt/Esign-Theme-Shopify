@@ -75,8 +75,6 @@ select {
   transition:
     transform var(--hover-transition-duration) var(--hover-transition-timing),
     box-shadow var(--hover-transition-duration) var(--hover-transition-timing);
-  will-change: transform, box-shadow;
-  z-index: var(--layer-flat);
 }
 
 .product-card__link {
@@ -1089,7 +1087,6 @@ body:has(.header[transparent]) #header-group > *:not(.header-section) {
   color: var(--color, var(--color-foreground));
   padding-block: var(--padding-block-start) var(--padding-block-end);
   padding-inline: var(--padding-inline-start) var(--padding-inline-end);
-  overflow: hidden;
   justify-content: space-between;
 }
 

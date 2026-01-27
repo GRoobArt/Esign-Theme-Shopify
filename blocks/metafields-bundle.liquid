@@ -9,11 +9,12 @@
   assign bundle_product = block_settings.product
   if bundle_product == blank
     assign bundle_product = product_resource.metafields.product.bundle.value
-  endif  
+  endif
 
   assign property_name = 'properties[custom-property]' | replace: 'custom-property', block_settings.property_key
 
-  assign product_form_id = 'BuyButtons-ProductForm-section.id' | replace: 'section.id', section.id
+  assign default_form_id = 'BuyButtons-ProductForm-' | append: section.id
+  assign product_form_id = bundle_form_id | default: default_form_id
 %}
 
 {% if bundle_product != blank %}
@@ -190,7 +191,7 @@
       "type": "checkbox",
       "id": "checked",
       "label": "checked",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",
@@ -296,7 +297,7 @@
       "name": "Metafields bundle",
       "category": "t:categories.product",
       "settings": {
-        "product": "{{ closest.product }}"
+        "product": "{{ closest.product.metafields.product.bundle.value }}"
       }
     }
   ]

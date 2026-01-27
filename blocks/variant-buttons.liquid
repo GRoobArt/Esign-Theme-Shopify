@@ -1,0 +1,283 @@
+{%- doc -%}
+  Renders a product-card variant dropdown that adds the selected variant to cart.
+
+  @param {object} closest.product - The product object
+{%- enddoc -%}
+
+<script
+  src="{{ 'product-card-variant-buttons.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% liquid
+  assign product_resource = closest.product
+  if request.visual_preview_mode and product_resource == blank
+    assign product_resource = collections.all.products.first
+  endif
+
+  assign button_label = block.settings.button_label
+  if button_label == blank
+    assign button_label = 'actions.add' | t
+  endif
+
+  assign selected_variant = product_resource.selected_or_first_available_variant
+  assign form_id = 'ProductCardVariantButtons-' | append: product_resource.id | append: '-' | append: block.id
+  assign bundle_product = product_resource.metafields.product.bundle.value
+  assign has_bundle = false
+  if bundle_product != blank
+    assign has_bundle = true
+  endif
+  assign dialog_id = 'variant-bundle-dialog-' | append: block.id | append: '-' | append: product_resource.id
+  assign bundle_block_id = 'metafields-bundle-' | append: block.id | append: '-' | append: product_resource.id
+  assign add_to_cart_block_id = 'bundle-add-to-cart-' | append: block.id | append: '-' | append: product_resource.id
+
+  if selected_variant and selected_variant.available
+    assign can_add_to_cart = true
+    assign add_to_cart_text = 'products.product.add_to_cart' | t
+  else
+    assign can_add_to_cart = false
+    assign add_to_cart_text = 'products.product.sold_out' | t
+  endif
+%}
+
+{% if product_resource %}
+  <product-card-variant-buttons
+    class="product-card-variant-buttons"
+    data-product-id="{{ product_resource.id }}"
+    data-product-url="{{ product_resource.url }}"
+    data-default-label="{{ button_label | escape }}"
+    data-loading-label="{{ 'actions.loading' | t | escape }}"
+    {% if has_bundle %}
+      data-has-bundle="true"
+      data-bundle-dialog-id="{{ dialog_id }}"
+    {% endif %}
+    data-prevent-card-navigation
+  >
+    <product-form-component
+      data-section-id="{{ section.id }}"
+      data-product-id="{{ product_resource.id }}"
+      on:submit="/handleSubmit"
+      class="product-card-variant-buttons__form"
+    >
+      {%- form 'product', product_resource, id: form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+        <input
+          type="hidden"
+          name="id"
+          ref="variantId"
+          value="{{ selected_variant.id }}"
+          {% if selected_variant.available == false %}
+            disabled
+          {% endif %}
+        >
+        <input
+          type="hidden"
+          name="quantity"
+          value="1"
+        >
+        <details class="product-card-variant-buttons__dropdown" data-variant-dropdown>
+          <summary class="button button-summary" aria-haspopup="listbox">
+            <span class="product-card-variant-buttons__label" data-variant-label>
+              {{ button_label }}
+            </span>
+            <span class="svg-wrapper icon-caret">
+              {{ 'icon-caret.svg' | inline_asset_content }}
+            </span>
+          </summary>
+          <div class="product-card-variant-buttons__list color-scheme-1" role="listbox">
+            {%- for variant in product_resource.variants -%}
+              <button
+                type="button"
+                class="product-card-variant-buttons__option"
+                role="option"
+                aria-selected="false"
+                {% if variant.available == false %}
+                  aria-disabled="true"
+                  disabled
+                {% endif %}
+                data-variant-option
+                data-variant-id="{{ variant.id }}"
+                data-variant-label="{{ variant.title | escape }}"
+              >
+                <span class="product-card-variant-buttons__option-title">
+                  {{ variant.title | escape }}
+                </span>
+                <span class="product-card-variant-buttons__option-price">
+                  {{ variant.price | money }}
+                </span>
+              </button>
+            {%- endfor -%}
+          </div>
+        </details>
+
+        {% if has_bundle %}
+          <dialog-component
+            id="{{ dialog_id }}"
+            class="product-card-variant-bundle"
+          >
+            <dialog
+              ref="dialog"
+              class="product-card-variant-bundle__dialog dialog-modal color-{{ settings.popover_color_scheme }}"
+              aria-labelledby="{{ dialog_id }}-title"
+            >
+              <div class="product-card-variant-bundle__body">
+                {% content_for 'block',
+                  type: 'metafields-bundle',
+                  id: 'static-bundle',
+                  closest.product: product_resource,
+                  bundle_form_id: form_id
+                %}
+                <div class="product-card-variant-bundle__footer">
+                  {% content_for 'block',
+                    type: 'add-to-cart',
+                    id: 'static-add-to-cart',
+                    can_add_to_cart: can_add_to_cart,
+                    add_to_cart_text: add_to_cart_text,
+                    closest.product: product_resource
+                  %}
+                </div>
+              </div>
+            </dialog>
+          </dialog-component>
+        {% endif %}
+      {%- endform -%}
+    </product-form-component>
+  </product-card-variant-buttons>
+{% endif %}
+
+{% stylesheet %}
+  .product-card-variant-buttons__dropdown,
+  .product-card-variant-buttons__form,
+  .product-card-variant-buttons  {
+    width: 100%;
+    position: relative;
+
+    .button-summary{
+      width: 100%;
+      align-items: center;
+      display: flex;
+    }
+  }
+
+  .product-card-variant-buttons.is-loading .button-summary {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .product-card-variant-buttons.is-loading .product-card-variant-buttons__list {
+    pointer-events: none;
+  }
+
+  .product-card-variant-buttons__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .product-card-variant-buttons__list {
+    margin-top: var(--margin-xs);
+    border: var(--style-border-width) solid var(--color-border);
+    background-color: var(--color-background);
+    display: grid;
+    gap: var(--gap-2xs);
+    max-height: 240px;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 10;
+    border-radius:var(--border-radius);
+  }
+
+  .product-card-variant-buttons__option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-xs);
+    width: 100%;
+    text-align: left;
+    padding: var(--padding-lg) var(--padding-md);
+    border-radius: var(--style-border-radius-inputs);
+    border: 0;
+    background: transparent;
+    color: var(--color-foreground);
+    cursor: pointer;
+  }
+
+  .product-card-variant-buttons__option:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .product-card-variant-buttons__option:not(:disabled):hover {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .product-card-variant-bundle__dialog {
+    border-radius: var(--style-border-radius-popover);
+    border: var(--style-border-popover);
+    box-shadow: var(--shadow-popover);
+    padding: var(--padding-lg);
+    transform: translateY(-50%);
+    top: 50%;
+  }
+
+  .product-card-variant-bundle__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+    margin-block-end: var(--margin-sm);
+  }
+
+  .product-card-variant-bundle__body {
+    display: grid;
+    gap: var(--gap-md);
+  }
+
+  .product-card-variant-bundle__footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    > * {
+      width: 100%;
+    }
+  }
+
+  .product-card-variant-bundle__footer .add-to-cart-button,
+  .product-card-variant-bundle__footer .add-to-cart-button button {
+    width: 100%;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_variant_buttons",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:settings.button_label",
+      "default": "Comprar"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.product_variant_buttons",
+      "category": "t:categories.product",
+      "blocks": {
+        "static-bundle": {
+          "static": true,
+          "type": "metafields-bundle",
+          "settings": {
+            "product": "{{ closest.product.metafields.product.bundle.value }}"
+          }
+        }
+      }
+    }
+  ]
+}
+{% endschema %}
