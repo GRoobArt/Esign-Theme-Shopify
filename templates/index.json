@@ -2721,10 +2721,10 @@
                       "name": "t:names.button",
                       "settings": {
                         "label": "Ver más",
-                        "link": "shopify://collections/all",
+                        "link": "shopify://pages/resfea",
                         "open_in_new_tab": false,
                         "hidden": "none",
-                        "style_class": "button-secondary",
+                        "style_class": "button",
                         "size_class": "none",
                         "width": "custom",
                         "custom_width": 100,
