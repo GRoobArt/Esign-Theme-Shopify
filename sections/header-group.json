@@ -239,8 +239,8 @@
           "name": "t:names.button",
           "settings": {
             "label": "Firma Documentos Online",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
+            "link": "https://aqui.firma.cl/firmaCu",
+            "open_in_new_tab": true,
             "hidden": "none",
             "style_class": "button",
             "size_class": "size-sm",
