@@ -551,7 +551,7 @@
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "certificado-digital-avanzado-clave-unica",
+                "product": "certificado-digital-sii-firma-electronica-simple",
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-6",
                 "content_direction": "column",
@@ -1325,7 +1325,7 @@
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "certificado-digital-sii-firma-electronica-simple",
+                "product": "certificado-digital-avanzado-clave-unica",
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-1",
                 "content_direction": "column",
