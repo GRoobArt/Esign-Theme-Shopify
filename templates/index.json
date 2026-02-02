@@ -441,7 +441,7 @@
                   "type": "text",
                   "name": "Title",
                   "settings": {
-                    "text": "<h2>IDENTIDAD DIFITAL</h2>",
+                    "text": "<h2>IDENTIDAD DIGITAL</h2>",
                     "hidden": "none",
                     "width": "fit-content",
                     "max_width": "normal",
