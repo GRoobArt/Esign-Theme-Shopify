@@ -459,7 +459,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Soluciones con firma electrónica</p>",
+                "text": "<p><a href=\"https://www.esign-la.com/documentos-digitales/\" target=\"_blank\" title=\"https://www.esign-la.com/documentos-digitales/\">Soluciones con firma electrónica</a></p>",
                 "hidden": "none",
                 "width": "fit-content",
                 "max_width": "normal",
@@ -488,7 +488,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Soluciones de seguridad de la información</p>",
+                "text": "<p><a href=\"https://www.esign-la.com/seguridad/\" target=\"_blank\" title=\"https://www.esign-la.com/seguridad/\">Soluciones de seguridad de la información</a></p>",
                 "hidden": "none",
                 "width": "fit-content",
                 "max_width": "normal",
