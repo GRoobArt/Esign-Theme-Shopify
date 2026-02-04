@@ -17,9 +17,10 @@
           "name": "Title",
           "settings": {
             "text": "<h1>{{ closest.page.title }}</h1>",
+            "hidden": "none",
             "width": "100%",
             "max_width": "normal",
-            "alignment": "left",
+            "alignment": "center",
             "type_preset": "h2",
             "font": "var(--font-primary--family)",
             "font_size": "",
@@ -30,6 +31,8 @@
             "color": "",
             "background": false,
             "background_color": "#00000026",
+            "text_color": false,
+            "text_color_foreground": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -38,15 +41,39 @@
           },
           "blocks": {}
         },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
+        "text_jd38Wd": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "{{ closest.page.content }}",
+            "hidden": "none",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "text_color": false,
+            "text_color_foreground": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
           "blocks": {}
         }
       },
       "block_order": [
         "heading",
-        "page-content"
+        "text_jd38Wd"
       ],
       "settings": {
         "content_direction": "column",
