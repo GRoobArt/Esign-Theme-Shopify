@@ -3716,7 +3716,7 @@
                   "type": "product-card",
                   "name": "t:names.product_card",
                   "settings": {
-                    "product": "opciones-de-firmado",
+                    "product": "token-firmado",
                     "inherit_color_scheme": false,
                     "color_scheme": "scheme-6",
                     "content_direction": "row",
