@@ -36,9 +36,11 @@
 
     <div class="metafields-bundle__options __field" role="list">
       {%- assign input_type = block_settings.input_type | default: 'radio' -%}   
+      <input type="hidden" name="bundle" ref="metafield-bundle[{{ block_settings.property_key }}]" value="{{ bundle_product.selected_or_first_available_variant.id }}" 
       {% if block_settings.add_property %}
-        <input type="hidden" name="bundle" ref="metafield-bundle[{{ block_settings.property_key }}]" value="{{ bundle_product.selected_or_first_available_variant.id }}" form="{{ product_form_id }}">
+        form="{{ product_form_id }}"
       {% endif %}   
+    >
         {% for option in bundle_product.options_with_values %}
             {% for product_option_value in option.values %}
                 {% liquid
