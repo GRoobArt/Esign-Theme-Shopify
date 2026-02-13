@@ -19,6 +19,44 @@ const OPTION_SELECTOR = '[data-variant-option]'
 const DROPDOWN_SELECTOR = '[data-variant-dropdown]'
 
 /**
+ * Theme events extend Event and attach a custom "detail" field.
+ *
+ * @param {Event} event
+ * @returns {unknown}
+ */
+const getEventDetail = (event) => {
+  const eventWithDetail = /** @type {Event & { detail?: unknown }} */ (event)
+  return eventWithDetail.detail
+}
+
+/**
+ * @param {HTMLElement} component
+ * @returns {DialogComponentElement | null}
+ */
+const getBundleDialogComponent = (component) => {
+  const dialogId = component.dataset.bundleDialogId
+  if (dialogId) {
+    return /** @type {DialogComponentElement | null} */ (
+      document.getElementById(dialogId)
+    )
+  }
+
+  return /** @type {DialogComponentElement | null} */ (
+    component.querySelector('dialog-component')
+  )
+}
+
+/**
+ * @param {HTMLElement} component
+ */
+const closeBundleDialog = (component) => {
+  const dialogComponent = getBundleDialogComponent(component)
+  if (dialogComponent && typeof dialogComponent.closeDialog === 'function') {
+    dialogComponent.closeDialog()
+  }
+}
+
+/**
  * @param {HTMLButtonElement} button
  * @param {boolean} isLoading
  */
@@ -103,15 +141,7 @@ const handleOptionClick = (event) => {
   }
 
   if (component.dataset.hasBundle === 'true') {
-    const dialogId = component.dataset.bundleDialogId
-    /** @type {DialogComponentElement | null} */
-    const dialogComponent = dialogId
-      ? /** @type {DialogComponentElement | null} */ (
-          document.getElementById(dialogId)
-        )
-      : /** @type {DialogComponentElement | null} */ (
-          component.querySelector('dialog-component')
-        )
+    const dialogComponent = getBundleDialogComponent(component)
     if (dialogComponent && typeof dialogComponent.showDialog === 'function') {
       dialogComponent.showDialog()
     }
@@ -135,6 +165,10 @@ const handleFormSubmit = (event) => {
   const component = form.closest('product-card-variant-buttons')
   if (!(component instanceof HTMLElement)) return
 
+  if (component.dataset.hasBundle === 'true') {
+    closeBundleDialog(component)
+  }
+
   setLoadingState(component, true)
 }
 
@@ -142,10 +176,9 @@ const handleFormSubmit = (event) => {
  * @param {Event} event
  */
 const handleCartUpdate = (event) => {
-  const detail =
-    event instanceof CustomEvent
-      ? /** @type {CartUpdateDetail} */ (event.detail)
-      : undefined
+  const detail = /** @type {CartUpdateDetail | undefined} */ (
+    getEventDetail(event)
+  )
   const productId = detail?.data?.productId
   if (!productId) return
   const normalizedProductId = String(productId)
@@ -157,17 +190,7 @@ const handleCartUpdate = (event) => {
     .forEach((component) => {
       if (component instanceof HTMLElement) {
         setLoadingState(component, false)
-
-        /** @type {DialogComponentElement | null} */
-        const dialogComponent = /** @type {DialogComponentElement | null} */ (
-          component.querySelector('dialog-component')
-        )
-        if (
-          dialogComponent &&
-          typeof dialogComponent.closeDialog === 'function'
-        ) {
-          dialogComponent.closeDialog()
-        }
+        closeBundleDialog(component)
       }
     })
 }
@@ -176,10 +199,9 @@ const handleCartUpdate = (event) => {
  * @param {Event} event
  */
 const handleCartError = (event) => {
-  const detail =
-    event instanceof CustomEvent
-      ? /** @type {CartErrorDetail} */ (event.detail)
-      : undefined
+  const detail = /** @type {CartErrorDetail | undefined} */ (
+    getEventDetail(event)
+  )
   const sourceId = detail?.sourceId
   if (!sourceId) return
 
