@@ -57,6 +57,17 @@ const closeBundleDialog = (component) => {
 }
 
 /**
+ * @param {HTMLDetailsElement | null} [dropdownToKeepOpen]
+ */
+const closeOpenDropdowns = (dropdownToKeepOpen = null) => {
+  document.querySelectorAll(`${DROPDOWN_SELECTOR}[open]`).forEach((dropdown) => {
+    if (!(dropdown instanceof HTMLDetailsElement)) return
+    if (dropdownToKeepOpen && dropdown === dropdownToKeepOpen) return
+    dropdown.open = false
+  })
+}
+
+/**
  * @param {HTMLButtonElement} button
  * @param {boolean} isLoading
  */
@@ -212,7 +223,32 @@ const handleCartError = (event) => {
   }
 }
 
+/**
+ * @param {MouseEvent} event
+ */
+const handleClickOutsideDropdown = (event) => {
+  const target = event.target
+  if (!(target instanceof Element)) return
+
+  const clickedDropdown = target.closest(DROPDOWN_SELECTOR)
+  if (clickedDropdown instanceof HTMLDetailsElement) {
+    closeOpenDropdowns(clickedDropdown)
+    return
+  }
+
+  closeOpenDropdowns()
+}
+
+const handleScrollCloseDropdown = () => {
+  closeOpenDropdowns()
+}
+
 document.addEventListener('click', handleOptionClick)
+document.addEventListener('click', handleClickOutsideDropdown)
 document.addEventListener('submit', handleFormSubmit)
 document.addEventListener('cart:update', handleCartUpdate)
 document.addEventListener('cart:error', handleCartError)
+window.addEventListener('scroll', handleScrollCloseDropdown, {
+  passive: true,
+  capture: true,
+})
