@@ -29,8 +29,6 @@
     assign has_bundle = true
   endif
   assign dialog_id = 'variant-bundle-dialog-' | append: block.id | append: '-' | append: product_resource.id
-  assign bundle_block_id = 'metafields-bundle-' | append: block.id | append: '-' | append: product_resource.id
-  assign add_to_cart_block_id = 'bundle-add-to-cart-' | append: block.id | append: '-' | append: product_resource.id
 
   if selected_variant and selected_variant.available
     assign can_add_to_cart = true

@@ -63,7 +63,9 @@
                     id="{{ input_id }}"
                     class="{{ input_type }}__input"
                     data-label="{{ product_option_value }}"
+                    {% if block.settings.add_property %}
                     form="{{ product_form_id }}"
+                    {% endif %}
                     data-variant-id="{{ product_option_value.variant.id }}"
                   >
                 <label for="{{ input_id }}" class="{{ input_type }}__label" role="{{ input_type }}">

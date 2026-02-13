@@ -1,148 +1,196 @@
-const OPTION_SELECTOR = '[data-variant-option]';
-const DROPDOWN_SELECTOR = '[data-variant-dropdown]';
+// @ts-check
 
+/**
+ * @typedef {HTMLElement & {
+ *   showDialog?: () => void,
+ *   closeDialog?: () => void
+ * }} DialogComponentElement
+ */
+
+/**
+ * @typedef {{ data?: { productId?: string | number } }} CartUpdateDetail
+ */
+
+/**
+ * @typedef {{ sourceId?: string }} CartErrorDetail
+ */
+
+const OPTION_SELECTOR = '[data-variant-option]'
+const DROPDOWN_SELECTOR = '[data-variant-dropdown]'
+
+/**
+ * @param {HTMLButtonElement} button
+ * @param {boolean} isLoading
+ */
 const setTemporaryDisabled = (button, isLoading) => {
   if (isLoading) {
     if (button.hasAttribute('disabled')) {
-      button.dataset.wasDisabled = 'true';
+      button.dataset.wasDisabled = 'true'
     } else {
-      button.dataset.wasDisabled = 'false';
-      button.disabled = true;
+      button.dataset.wasDisabled = 'false'
+      button.disabled = true
     }
-    return;
+    return
   }
 
   if (button.dataset.wasDisabled === 'false') {
-    button.disabled = false;
+    button.disabled = false
   }
-  delete button.dataset.wasDisabled;
-};
+  delete button.dataset.wasDisabled
+}
 
+/**
+ * @param {HTMLElement} component
+ * @param {boolean} isLoading
+ */
 const setLoadingState = (component, isLoading) => {
-  const label = component.querySelector('[data-variant-label]');
-  const defaultLabel = component.dataset.defaultLabel || '';
-  const loadingLabel = component.dataset.loadingLabel || defaultLabel;
-
-  if (label) {
-    if (isLoading) {
-      if (!component.dataset.labelCache) {
-        component.dataset.labelCache = label.textContent?.trim() || defaultLabel;
-      }
-      label.textContent = loadingLabel;
-    } else {
-      label.textContent = component.dataset.labelCache || defaultLabel;
-      delete component.dataset.labelCache;
-    }
-  }
-
-  component.classList.toggle('is-loading', isLoading);
-  component.setAttribute('aria-busy', isLoading ? 'true' : 'false');
+  component.classList.toggle('is-loading', isLoading)
+  component.setAttribute('aria-busy', isLoading ? 'true' : 'false')
 
   component.querySelectorAll(OPTION_SELECTOR).forEach((button) => {
     if (button instanceof HTMLButtonElement) {
-      setTemporaryDisabled(button, isLoading);
+      setTemporaryDisabled(button, isLoading)
     }
-  });
-};
+  })
+}
 
+/**
+ * @param {Element} dropdown
+ * @param {HTMLButtonElement} selectedButton
+ */
 const updateSelectedState = (dropdown, selectedButton) => {
-  const options = dropdown.querySelectorAll(`${OPTION_SELECTOR}[role="option"]`);
+  const options = dropdown.querySelectorAll(`${OPTION_SELECTOR}[role="option"]`)
   options.forEach((option) => {
-    option.setAttribute('aria-selected', option === selectedButton ? 'true' : 'false');
-  });
+    option.setAttribute(
+      'aria-selected',
+      option === selectedButton ? 'true' : 'false',
+    )
+  })
+}
 
-  const label = dropdown.querySelector('[data-variant-label]');
-  if (label && selectedButton.dataset.variantLabel) {
-    label.textContent = selectedButton.dataset.variantLabel;
-  }
-};
-
+/**
+ * @param {MouseEvent} event
+ */
 const handleOptionClick = (event) => {
-  const optionButton = event.target.closest(OPTION_SELECTOR);
-  if (!(optionButton instanceof HTMLButtonElement)) return;
-  if (optionButton.disabled) return;
+  const target = event.target
+  if (!(target instanceof Element)) return
 
-  const component = optionButton.closest('product-card-variant-buttons');
-  if (!(component instanceof HTMLElement)) return;
+  const optionButton = target.closest(OPTION_SELECTOR)
+  if (!(optionButton instanceof HTMLButtonElement)) return
+  if (optionButton.disabled) return
 
-  const form = optionButton.closest('form');
-  if (!(form instanceof HTMLFormElement)) return;
+  const component = optionButton.closest('product-card-variant-buttons')
+  if (!(component instanceof HTMLElement)) return
 
-  const variantId = optionButton.dataset.variantId;
-  if (!variantId) return;
+  const form = optionButton.closest('form')
+  if (!(form instanceof HTMLFormElement)) return
 
-  const variantInput = form.querySelector('input[name="id"]');
+  const variantId = optionButton.dataset.variantId
+  if (!variantId) return
+
+  const variantInput = form.querySelector('input[name="id"]')
   if (variantInput instanceof HTMLInputElement) {
-    variantInput.value = variantId;
-    variantInput.removeAttribute('disabled');
+    variantInput.value = variantId
+    variantInput.removeAttribute('disabled')
   }
 
-  const dropdown = optionButton.closest(DROPDOWN_SELECTOR);
+  const dropdown = optionButton.closest(DROPDOWN_SELECTOR)
   if (dropdown) {
-    updateSelectedState(dropdown, optionButton);
+    updateSelectedState(dropdown, optionButton)
     if (dropdown instanceof HTMLDetailsElement) {
-      dropdown.open = false;
+      dropdown.open = false
     }
   }
 
   if (component.dataset.hasBundle === 'true') {
-    const dialogId = component.dataset.bundleDialogId;
+    const dialogId = component.dataset.bundleDialogId
+    /** @type {DialogComponentElement | null} */
     const dialogComponent = dialogId
-      ? document.getElementById(dialogId)
-      : component.querySelector('dialog-component');
+      ? /** @type {DialogComponentElement | null} */ (
+          document.getElementById(dialogId)
+        )
+      : /** @type {DialogComponentElement | null} */ (
+          component.querySelector('dialog-component')
+        )
     if (dialogComponent && typeof dialogComponent.showDialog === 'function') {
-      dialogComponent.showDialog();
+      dialogComponent.showDialog()
     }
-    return;
+    return
   }
 
   if (typeof form.requestSubmit === 'function') {
-    form.requestSubmit();
+    form.requestSubmit()
   } else {
-    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }))
   }
-};
+}
 
+/**
+ * @param {SubmitEvent} event
+ */
 const handleFormSubmit = (event) => {
-  const form = event.target;
-  if (!(form instanceof HTMLFormElement)) return;
+  const form = event.target
+  if (!(form instanceof HTMLFormElement)) return
 
-  const component = form.closest('product-card-variant-buttons');
-  if (!(component instanceof HTMLElement)) return;
+  const component = form.closest('product-card-variant-buttons')
+  if (!(component instanceof HTMLElement)) return
 
-  setLoadingState(component, true);
-};
+  setLoadingState(component, true)
+}
 
+/**
+ * @param {Event} event
+ */
 const handleCartUpdate = (event) => {
-  const productId = event?.detail?.data?.productId;
-  if (!productId) return;
+  const detail =
+    event instanceof CustomEvent
+      ? /** @type {CartUpdateDetail} */ (event.detail)
+      : undefined
+  const productId = detail?.data?.productId
+  if (!productId) return
+  const normalizedProductId = String(productId)
 
   document
-    .querySelectorAll(`product-card-variant-buttons[data-product-id="${productId}"]`)
+    .querySelectorAll(
+      `product-card-variant-buttons[data-product-id="${normalizedProductId}"]`,
+    )
     .forEach((component) => {
       if (component instanceof HTMLElement) {
-        setLoadingState(component, false);
+        setLoadingState(component, false)
 
-        const dialogComponent = component.querySelector('dialog-component');
-        if (dialogComponent && typeof dialogComponent.closeDialog === 'function') {
-          dialogComponent.closeDialog();
+        /** @type {DialogComponentElement | null} */
+        const dialogComponent = /** @type {DialogComponentElement | null} */ (
+          component.querySelector('dialog-component')
+        )
+        if (
+          dialogComponent &&
+          typeof dialogComponent.closeDialog === 'function'
+        ) {
+          dialogComponent.closeDialog()
         }
       }
-    });
-};
+    })
+}
 
+/**
+ * @param {Event} event
+ */
 const handleCartError = (event) => {
-  const sourceId = event?.detail?.sourceId;
-  if (!sourceId) return;
+  const detail =
+    event instanceof CustomEvent
+      ? /** @type {CartErrorDetail} */ (event.detail)
+      : undefined
+  const sourceId = detail?.sourceId
+  if (!sourceId) return
 
-  const form = document.getElementById(sourceId);
-  const component = form?.closest('product-card-variant-buttons');
+  const form = document.getElementById(sourceId)
+  const component = form?.closest('product-card-variant-buttons')
   if (component instanceof HTMLElement) {
-    setLoadingState(component, false);
+    setLoadingState(component, false)
   }
-};
+}
 
-document.addEventListener('click', handleOptionClick);
-document.addEventListener('submit', handleFormSubmit);
-document.addEventListener('cart:update', handleCartUpdate);
-document.addEventListener('cart:error', handleCartError);
+document.addEventListener('click', handleOptionClick)
+document.addEventListener('submit', handleFormSubmit)
+document.addEventListener('cart:update', handleCartUpdate)
+document.addEventListener('cart:error', handleCartError)

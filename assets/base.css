@@ -1585,7 +1585,7 @@ summary {
   padding-block: var(--padding-sm);
 }
 
-summary:hover {
+summary:not(.button):hover {
   color: var(--color-primary-hover);
 }
 
