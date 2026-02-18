@@ -321,5 +321,22 @@
       "success_moderated": "Comentario publicado y a la espera de moderación",
       "success": "Comentario publicado"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "contact": {
+        "city_label": "Comuna"
+      },
+      "field_errors": {
+        "address_city_blank": "Introduce la comuna"
+      },
+      "wallets": {
+        "errors": {
+          "missing": {
+            "city": "Introduce la Comuna"
+          }
+        }
+      }
+    }
   }
 }
