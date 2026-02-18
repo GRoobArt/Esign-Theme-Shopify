@@ -325,10 +325,13 @@
   "shopify": {
     "checkout": {
       "contact": {
-        "city_label": "Comuna"
+        "city_label": "Comuna",
+        "company_label": "RUT",
+        "optional_company_label": "RUT (Opcional)"
       },
       "field_errors": {
-        "address_city_blank": "Introduce la comuna"
+        "address_city_blank": "Introduce la comuna",
+        "address_company_blank": "Introduce el Rut"
       },
       "wallets": {
         "errors": {
