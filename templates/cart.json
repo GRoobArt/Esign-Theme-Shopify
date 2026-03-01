@@ -12,6 +12,10 @@
     "cart-section": {
       "type": "main-cart",
       "blocks": {
+        "esign_form_cart_WwAdxj": {
+          "type": "shopify://apps/esign/blocks/form-cart/019cab73-1061-78f7-8345-ff6258ea9160",
+          "settings": {}
+        },
         "cart-page-title": {
           "type": "_cart-title",
           "static": true,
@@ -57,6 +61,9 @@
           "blocks": {}
         }
       },
+      "block_order": [
+        "esign_form_cart_WwAdxj"
+      ],
       "settings": {
         "section_width": "page-width",
         "color_scheme": "",
