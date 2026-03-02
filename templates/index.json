@@ -137,6 +137,7 @@
                   "settings": {
                     "label": "Comprar ahora",
                     "link": "shopify://collections/all",
+                    "title": "",
                     "open_in_new_tab": false,
                     "hidden": "none",
                     "style_class": "button",
@@ -284,6 +285,7 @@
                   "settings": {
                     "label": "Comprar ahora",
                     "link": "shopify://collections/all",
+                    "title": "",
                     "open_in_new_tab": false,
                     "hidden": "none",
                     "style_class": "button",
@@ -1297,6 +1299,7 @@
                       "settings": {
                         "label": "Ver Más Información",
                         "link": "{{ closest.product.url }}",
+                        "title": "{{ closest.product.title }}",
                         "open_in_new_tab": false,
                         "hidden": "none",
                         "style_class": "link",
@@ -2016,6 +2019,7 @@
                       "settings": {
                         "label": "Ver Más Información",
                         "link": "{{ closest.product.url }}",
+                        "title": "{{ closest.product.title }}",
                         "open_in_new_tab": false,
                         "hidden": "none",
                         "style_class": "link",
@@ -2722,6 +2726,7 @@
                       "settings": {
                         "label": "Ver más",
                         "link": "shopify://pages/resfea",
+                        "title": "",
                         "open_in_new_tab": false,
                         "hidden": "none",
                         "style_class": "button",
@@ -2740,6 +2745,7 @@
                       "settings": {
                         "label": "Ver Más Información",
                         "link": "{{ closest.product.url }}",
+                        "title": "",
                         "open_in_new_tab": false,
                         "hidden": "none",
                         "style_class": "link",
@@ -3459,6 +3465,7 @@
                       "settings": {
                         "label": "Ver Más Información",
                         "link": "{{ closest.product.url }}",
+                        "title": "{{ closest.product.title }}",
                         "open_in_new_tab": false,
                         "hidden": "none",
                         "style_class": "link",
@@ -4078,6 +4085,7 @@
               "settings": {
                 "label": "Ver todos los trámites",
                 "link": "{{ closest.collection.url }}",
+                "title": "",
                 "open_in_new_tab": false,
                 "hidden": "none",
                 "style_class": "button-secondary",
@@ -4323,6 +4331,7 @@
                       "settings": {
                         "label": "Ver trámite",
                         "link": "{{ closest.product.url }}",
+                        "title": "",
                         "open_in_new_tab": false,
                         "hidden": "none",
                         "style_class": "button-secondary",
