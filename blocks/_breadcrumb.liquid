@@ -1,0 +1,83 @@
+{% doc %}
+  Renders a simple breadcrumb with a home link and the current page title.
+
+  @example
+  {% content_for 'block', type: '_breadcrumb', id: 'breadcrumb' %}
+{% enddoc %}
+
+{% liquid
+  assign breadcrumb_title = page_title
+
+  case request.page_type
+    when 'product'
+      if closest.product != blank
+        assign breadcrumb_title = closest.product.title
+      elsif product != blank
+        assign breadcrumb_title = product.title
+      endif
+    when 'collection'
+      if collection != blank
+        assign breadcrumb_title = collection.title
+      endif
+    when 'page'
+      if page != blank
+        assign breadcrumb_title = page.title
+      endif
+    when 'article'
+      if article != blank
+        assign breadcrumb_title = article.title
+      endif
+    when 'blog'
+      if blog != blank
+        assign breadcrumb_title = blog.title
+      endif
+    when 'cart'
+      assign breadcrumb_title = 'content.cart_title' | t
+  endcase
+%}
+
+<nav
+  class="breadcrumb"
+  {{ block.shopify_attributes }}
+>
+  <a
+    href="{{ routes.root_url }}"
+    class="breadcrumb__link"
+  >
+    {{ 'content.home' | t }}
+  </a>
+  <span class="breadcrumb__separator" aria-hidden="true">/</span>
+  <span class="breadcrumb__current">{{ breadcrumb_title }}</span>
+</nav>
+
+{% stylesheet %}
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gap-2xs);
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+  }
+
+  .breadcrumb__link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .breadcrumb__current {
+    color: var(--color-foreground);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Breadcrumb",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "Breadcrumb"
+    }
+  ]
+}
+{% endschema %}

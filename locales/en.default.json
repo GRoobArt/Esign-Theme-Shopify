@@ -145,6 +145,7 @@
     }
   },
   "content": {
+    "home": "Home",
     "cart_tax": "IVA",
     "cart_estimated_tax": "IVA Incluido",
     "price_tax": "+ Tax",

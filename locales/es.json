@@ -115,6 +115,7 @@
     "open": "Abrir"
   },
   "content": {
+    "home": "Inicio",
     "cart_estimated_subtotal": "Subtotal",
     "cart_tax": "IVA",
     "cart_estimated_tax": "IVA Incluido",

@@ -2,7 +2,7 @@
   Intended for use in a block similar to the button block.
 
   @param {string} link - link to render
-  @param {string} label - label to render
+  @param {string} [label] - label to render
   @param {object} [block] - The block
 
   @example
@@ -40,6 +40,9 @@
     {{ block_settings.style_class }}--{{ block.id }}
   "
   style="{% render 'size-style', settings: block_settings %}"
+  {% if block_settings.title != blank %}
+    title="{{ block_settings.title | escape }}"
+  {% endif %}
   {%- if block_settings.open_in_new_tab -%}
     target="_blank"
     rel="noopener noreferrer"
