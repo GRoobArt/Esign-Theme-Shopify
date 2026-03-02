@@ -613,7 +613,7 @@
           "blocks": {
             "group_JiKAcz": {
               "type": "group",
-              "name": "t:names.group",
+              "name": "Subtitle",
               "settings": {
                 "content_direction": "column",
                 "vertical_on_mobile": true,
