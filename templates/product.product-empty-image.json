@@ -657,10 +657,12 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "product_title_YEEVBA": {
-                  "type": "product-title",
-                  "name": "t:names.title",
+                "text_QEF7e4": {
+                  "type": "text",
+                  "name": "t:names.heading",
                   "settings": {
+                    "text": "<h1>{{ closest.product.title }}</h1>",
+                    "hidden": "none",
                     "width": "100%",
                     "max_width": "none",
                     "alignment": "center",
@@ -674,6 +676,8 @@
                     "color": "var(--color-foreground-heading)",
                     "background": false,
                     "background_color": "#00000026",
+                    "text_color": false,
+                    "text_color_foreground": "#00000026",
                     "corner_radius": 0,
                     "padding-block-start": 0,
                     "padding-block-end": 0,
@@ -713,7 +717,7 @@
                 }
               },
               "block_order": [
-                "product_title_YEEVBA",
+                "text_QEF7e4",
                 "text_aKdqnM"
               ]
             },
