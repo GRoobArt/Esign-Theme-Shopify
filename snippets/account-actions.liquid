@@ -1,7 +1,7 @@
 <div class="account-actions">
   <div class="account-actions__main-menu">
     <header class="account-actions__header">
-      <h2
+      <p
         id="account-drawer-heading"
         class="account-actions__title h5"
       >
@@ -10,7 +10,7 @@
         {% else %}
           {{ 'content.account_title' | t }}
         {% endif %}
-      </h2>
+      </p>
       {% if customer %}
         <span class="account-actions__email">
           {% if customer.email %}

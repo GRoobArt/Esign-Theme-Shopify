@@ -61,12 +61,12 @@
             class="cart-drawer__content motion-reduce"
             aria-label="{{ 'accessibility.cart' | t }}"
           >
-            <h2
+            <p
               class="cart-drawer__heading h3 cart-drawer__heading--empty"
               id="cart-drawer-heading-empty"
             >
               {{ 'content.your_cart_is_empty' | t }}
-            </h2>
+            </p>
 
             <div class="cart-drawer__items">
               {% render 'cart-products' %}
@@ -77,13 +77,13 @@
             class="cart-drawer__header"
             id="cart-drawer-header"
           >
-            <h2
+            <p
               class="cart-drawer__heading h3"
               id="cart-drawer-heading"
             >
               {{ 'content.cart_title' | t }}
               {% render 'cart-bubble' %}
-            </h2>
+            </p>
 
             <button
               ref="closeButton"
