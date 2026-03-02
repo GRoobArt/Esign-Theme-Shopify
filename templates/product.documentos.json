@@ -701,7 +701,7 @@
                     "color": "var(--color-primary)",
                     "background": false,
                     "background_color": "#00000026",
-                    "text_color": false,
+                    "text_color": true,
                     "text_color_foreground": "#534f4f",
                     "corner_radius": 0,
                     "padding-block-start": 0,
