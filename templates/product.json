@@ -12,6 +12,12 @@
     "main": {
       "type": "product-information",
       "blocks": {
+        "breadcrumb": {
+          "type": "_breadcrumb",
+          "static": true,
+          "settings": {},
+          "blocks": {}
+        },
         "column-left": {
           "type": "group",
           "name": "Header",
@@ -655,7 +661,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Comprar {{ closest.product.title }}</p>",
+                    "text": "<h2>Comprar {{ closest.product.title }}</h2>",
                     "hidden": "none",
                     "width": "100%",
                     "max_width": "none",

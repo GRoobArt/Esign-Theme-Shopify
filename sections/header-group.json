@@ -240,6 +240,7 @@
           "settings": {
             "label": "Firma Documentos Online",
             "link": "https://aqui.firma.cl/firmaCu",
+            "title": "",
             "open_in_new_tab": true,
             "hidden": "none",
             "style_class": "button",
