@@ -341,7 +341,7 @@
                     "hidden": "none",
                     "width": "100%",
                     "max_width": "none",
-                    "alignment": "left",
+                    "alignment": "center",
                     "type_preset": "h3",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
