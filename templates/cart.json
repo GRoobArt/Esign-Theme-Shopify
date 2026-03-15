@@ -12,8 +12,8 @@
     "cart-section": {
       "type": "main-cart",
       "blocks": {
-        "esign_form_cart_WwAdxj": {
-          "type": "shopify://apps/esign/blocks/form-cart/019cab73-1061-78f7-8345-ff6258ea9160",
+        "esign_form_cart_U9n9VW": {
+          "type": "shopify://apps/esign/blocks/form-cart/019cf361-3811-7b65-a212-d1d6ddb1200f",
           "settings": {}
         },
         "cart-page-title": {
@@ -62,7 +62,7 @@
         }
       },
       "block_order": [
-        "esign_form_cart_WwAdxj"
+        "esign_form_cart_U9n9VW"
       ],
       "settings": {
         "section_width": "page-width",
