@@ -2667,7 +2667,7 @@
                     "vertical_alignment": "center",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "center",
+                    "vertical_alignment_flex_direction_column": "flex-end",
                     "gap": 12,
                     "width": "fill",
                     "custom_width": 100,
@@ -2738,22 +2738,32 @@
                       },
                       "blocks": {}
                     },
-                    "button_ygdkzx": {
-                      "type": "button",
-                      "name": "t:names.button",
-                      "disabled": true,
+                    "text_H8XPG7": {
+                      "type": "text",
+                      "name": "t:names.text",
                       "settings": {
-                        "label": "Ver Más Información",
-                        "link": "{{ closest.product.url }}",
-                        "title": "",
-                        "open_in_new_tab": false,
+                        "text": "<p>Link View</p>",
                         "hidden": "none",
-                        "style_class": "link",
-                        "size_class": "none",
-                        "width": "custom",
-                        "custom_width": 100,
-                        "width_mobile": "custom",
-                        "custom_width_mobile": 100
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "text_color": true,
+                        "text_color_foreground": "#ffffff",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
                       },
                       "blocks": {}
                     }
@@ -2761,7 +2771,7 @@
                   "block_order": [
                     "price_custom_pTknrw",
                     "button_qR38EX",
-                    "button_ygdkzx"
+                    "text_H8XPG7"
                   ]
                 }
               },
