@@ -792,7 +792,7 @@ body,
   font-weight: var(--font-paragraph--weight);
   font-size: var(--font-paragraph--size);
   line-height: var(--font-paragraph--line-height);
-  text-transform: var(--font-paragraph--case);
+  text-transform: var(--text-transform, var(--font-paragraph--case));
   -webkit-font-smoothing: antialiased;
   color: var(--color, var(--color-foreground));
 }
@@ -822,7 +822,7 @@ h1,
   font-size: var(--font-h1--size);
   line-height: var(--font-h1--line-height);
   letter-spacing: var(--font-h1--letter-spacing);
-  text-transform: var(--font-h1--case);
+  text-transform: var(--text-transform, var(--font-h1--case));
   color: var(--color, var(--font-h1-color));
 }
 
@@ -843,7 +843,7 @@ h2,
   font-size: var(--font-h2--size);
   line-height: var(--font-h2--line-height);
   letter-spacing: var(--font-h2--letter-spacing);
-  text-transform: var(--font-h2--case);
+  text-transform: var(--text-transform, var(--font-h2--case));
   color: var(--color, var(--font-h2-color));
 }
 
@@ -865,7 +865,7 @@ h3,
   font-size: var(--font-h3--size);
   line-height: var(--font-h3--line-height);
   letter-spacing: var(--font-h3--letter-spacing);
-  text-transform: var(--font-h3--case);
+  text-transform: var(--text-transform, var(--font-h3--case));
   color: var(--color, var(--font-h3-color));
 }
 
@@ -886,7 +886,7 @@ h4,
   font-size: var(--font-h4--size);
   line-height: var(--font-h4--line-height);
   letter-spacing: var(--font-h4--letter-spacing);
-  text-transform: var(--font-h4--case);
+  text-transform: var(--text-transform, var(--font-h4--case));
   color: var(--color, var(--font-h4-color));
 }
 
@@ -907,7 +907,7 @@ h5,
   font-size: var(--font-h5--size);
   line-height: var(--font-h5--line-height);
   letter-spacing: var(--font-h5--letter-spacing);
-  text-transform: var(--font-h5--case);
+  text-transform: var(--text-transform, var(--font-h5--case));
   color: var(--color, var(--font-h5-color));
 }
 
@@ -928,7 +928,7 @@ h6,
   font-size: var(--font-h6--size);
   line-height: var(--font-h6--line-height);
   letter-spacing: var(--font-h6--letter-spacing);
-  text-transform: var(--font-h6--case);
+  text-transform: var(--text-transform, var(--font-h6--case));
   color: var(--color, var(--font-h6-color));
 }
 
