@@ -4101,11 +4101,12 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_dxkEPd": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
+            "text_fJLdTG": {
+              "type": "text",
+              "name": "Title",
               "settings": {
                 "text": "<h2>Realiza tus trámites notariales 100% online</h2>",
+                "hidden": "none",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -4114,11 +4115,13 @@
                 "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
-                "case": "none",
+                "case": "uppercase",
                 "wrap": "pretty",
                 "color": "var(--color-foreground-heading)",
                 "background": false,
                 "background_color": "#00000026",
+                "text_color": false,
+                "text_color_foreground": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -4158,7 +4161,7 @@
             }
           },
           "block_order": [
-            "product_list_text_dxkEPd",
+            "text_fJLdTG",
             "text_68UwpQ"
           ]
         },
