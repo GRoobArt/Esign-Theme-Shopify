@@ -333,5 +333,8 @@
       "in_cart": "in cart"
     },
     "add_product": "Agregar {{ product }}"
+  },
+  "promotion": {
+    "two-three": "Aprovecha 3x2 Años"
   }
 }

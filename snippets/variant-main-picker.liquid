@@ -17,6 +17,19 @@
     endif
 
     assign label_options = product_resource.metafields.option.description.value
+
+    assign is_cert = false
+    assign variant_year = null
+    assign variant_three_year = null 
+    assign two_three = false
+    if product_resource.options contains "Vigencia Certificado"
+      assign is_cert = true
+      assign variant_year = product_resource.variants | find: "title", "2 Año"
+      assign variant_three_year = product_resource.variants | find: "title", "3 Año"
+      if variant_year.price == variant_three_year.price
+        assign two_three = true
+      endif
+    endif
   %}
   <variant-picker
     class="variant-picker variant-picker--{{ block_settings.alignment }}"
@@ -154,7 +167,10 @@
             "
           >
             <div class="variant-picker__header">
-              <label for="Option-{{ block.id }}-{{ forloop.index0 }}" class="h4" style="
+              <p class="h4" style="
+                --color: var(--color-foreground-heading); margin: 0;
+              ">{{ product_option.name | escape }}</p>
+              <label for="Option-{{ block.id }}-{{ forloop.index0 }}" class="h4" hidden style="
                 --color: var(--color-foreground-heading);
               ">{{ product_option.name | escape }}</label>
               <div class="text-block">
@@ -251,7 +267,10 @@
                   overflow: initial;
                ">
             <div class="variant-picker__header">
-              <label for="Option-{{ block.id }}-{{ forloop.index0 }}" class="h4" style="
+                 <p class="h4" style="
+                --color: var(--color-foreground-heading); margin: 0;
+              ">{{ product_option.name | escape }}</p>
+              <label for="Option-{{ block.id }}-{{ forloop.index0 }}" class="h4" hidden style="
                 --color: var(--color-foreground-heading);
               ">{{ product_option.name | escape }}</label>
               <div class="text-block">
@@ -382,6 +401,9 @@
                           {{ product_option_value | escape }} - {{ 'content.unavailable' | t }}
                         {% else %}
                          <span> {{ product_option_value | escape }} </span>
+                         {% if is_cert and two_three and product_option_value == "3 Año" %}
+                            <span class="promotion  promotion-badge">{{ 'promotion.two-three' | t }}</span>
+                         {% endif %}
                          <span class="variant-option__dropdown-price">{{ product_option_value.variant.price | money }} + IVA</span>
                         {% endif %}
                       </button>
@@ -931,6 +953,21 @@
     cursor: pointer;
     display: flex;
     border-top: var(--style-border-width-inputs) solid var(--color-border);
+    position: relative;
+
+
+    .promotion.promotion-badge{
+      padding: 4px 12px;
+      background-color: #F6DD00;
+      color: #9D6E00;
+      font-size: calc(var(--font-size--h6) - 0.25rem);
+      border-radius: 6px;
+      position: absolute;
+      bottom: calc(100% - 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+    }
   }
 
   .variant-option__dropdown-option[aria-selected='true'] {

@@ -37,6 +37,19 @@
     assign can_add_to_cart = false
     assign add_to_cart_text = 'products.product.sold_out' | t
   endif
+
+  assign is_cert = false
+  assign variant_year = null
+  assign variant_three_year = null 
+  assign two_three = false
+  if product_resource.options contains "Vigencia Certificado"
+    assign is_cert = true
+    assign variant_year = product_resource.variants | find: "title", "2 Año"
+    assign variant_three_year = product_resource.variants | find: "title", "3 Año"
+    if variant_year.price == variant_three_year.price
+      assign two_three = true
+    endif
+  endif
 %}
 
 {% if product_resource %}
@@ -84,6 +97,7 @@
           </summary>
           <div class="product-card-variant-buttons__list color-scheme-1" role="listbox">
             {%- for variant in product_resource.variants -%}
+
               <button
                 type="button"
                 class="product-card-variant-buttons__option"
@@ -97,12 +111,19 @@
                 data-variant-id="{{ variant.id }}"
                 data-variant-label="{{ variant.title | escape }}"
               >
+                {% if is_cert and two_three and variant.title == "3 Año" %}
+                  <span class="promotion  promotion-badge">{{ 'promotion.two-three' | t }}</span>
+                {% endif %}
                 <span class="product-card-variant-buttons__option-title">
                   {{ variant.title | escape }}
                 </span>
-                <span class="product-card-variant-buttons__option-price">
-                  {{ variant.price | money }}
+                <span class="product-card-variant-buttons__option-price h3">
+                  {{ variant.price | money }} 
+                  <span class="taxes">
+                    + IVA
+                  </span>
                 </span>
+          
               </button>
             {%- endfor -%}
           </div>
@@ -190,16 +211,39 @@
   .product-card-variant-buttons__option {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: var(--gap-xs);
     width: 100%;
     text-align: left;
-    padding: var(--padding-lg) var(--padding-md);
+    padding: var(--padding-sm) var(--padding-md);
     border-radius: var(--style-border-radius-inputs);
     border: 0;
     background: transparent;
     color: var(--color-foreground);
     cursor: pointer;
+    flex-wrap: wrap;
+    position: relative;
+
+    .product-card-variant-buttons__option-price{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-2xs);
+    }
+
+    .taxes{
+      font-size: var(--font-paragraph--size);
+      font-weight: var(--font-paragraph--weight);
+    }
+
+    .promotion.promotion-badge{
+      position: absolute;
+      bottom: calc(100% - 12px);
+      padding: 4px 12px;
+      background-color: #F6DD00;
+      color: #9D6E00;
+      font-size: calc(var(--font-size--h6) - 0.25rem);
+      border-radius: 6px;
+    }
   }
 
   .product-card-variant-buttons__option:disabled {
