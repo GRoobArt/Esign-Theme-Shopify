@@ -67,6 +67,7 @@
                     form="{{ product_form_id }}"
                     {% endif %}
                     data-variant-id="{{ product_option_value.variant.id }}"
+                    data-variant-available="{{ product_option_value.variant.available }}"
                   >
                 <label for="{{ input_id }}" class="{{ input_type }}__label" role="{{ input_type }}">
                     {% if input_type == 'checkbox' %}

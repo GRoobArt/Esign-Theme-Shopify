@@ -30,6 +30,14 @@ class MetafieldBundle extends Component {
   }
 
   /**
+   * @param {HTMLInputElement} input
+   * @returns {boolean}
+   */
+  #isAvailable(input) {
+    return input.dataset.variantAvailable === 'true';
+  }
+
+  /**
    * @param {HTMLInputElement} target
    */
   #updateBundleInput(target) {
@@ -41,14 +49,14 @@ class MetafieldBundle extends Component {
     if (target.type === 'checkbox') {
       if (target.checked) {
         bundleInput.value = variantId;
-        bundleInput.disabled = false;
+        bundleInput.disabled = !this.#isAvailable(target);
         return;
       }
 
       const checkedInput = this.querySelector('input[type="checkbox"][data-variant-id]:checked');
       if (checkedInput instanceof HTMLInputElement) {
         bundleInput.value = checkedInput.dataset.variantId || '';
-        bundleInput.disabled = false;
+        bundleInput.disabled = !this.#isAvailable(checkedInput);
       } else {
         bundleInput.value = '';
         bundleInput.disabled = true;
@@ -57,7 +65,7 @@ class MetafieldBundle extends Component {
     }
 
     bundleInput.value = variantId;
-    bundleInput.disabled = false;
+    bundleInput.disabled = !this.#isAvailable(target);
   }
 
   #syncBundleInput() {
@@ -69,7 +77,7 @@ class MetafieldBundle extends Component {
 
     if (checkedInput instanceof HTMLInputElement) {
       bundleInput.value = checkedInput.dataset.variantId || '';
-      bundleInput.disabled = false;
+      bundleInput.disabled = !this.#isAvailable(checkedInput);
     } else {
       bundleInput.value = '';
       bundleInput.disabled = true;
