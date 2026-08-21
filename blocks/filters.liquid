@@ -138,9 +138,7 @@
     {{ block.shopify_attributes }}
   >
     {% if should_show_search_filter %}
-      {% render 'filter-search',
-        input_id: 'FilterSearch-' | append: section.id | append: '-desktop'
-      %}
+      {% render 'filter-search', input_id: 'FilterSearch-', append: '-desktop' %}
     {% endif %}
     <div
       class="facets facets--{{ block_settings.filter_style }} spacing-style"
@@ -1324,3 +1322,16 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'filter-search',
+            input_id: 'FilterSearch-' | append: section.id | append: '-desktop'
+          %}
+  to: "{% render 'filter-search', input_id: 'FilterSearch-', append: '-desktop' %}"
+  position: 4827..4902
+{% endcomment %}
